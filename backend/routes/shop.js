@@ -7,12 +7,12 @@ const Kit = require('../models/Kit');
 router.get('/beats', async (req, res) => {
   try {
     try {
-   const beats = Beat.find().toArray;
+      const beats = await Beat.find(); // Correct usage of Mongoose find() method
+      res.render('beats', { beats });
     } catch (error) {
       console.error('Error getting beats:', error);
       throw error;
     }
-    res.render('beats', { beats});
   } catch (error) {
     console.error('Error rendering beats page:', error);
     res.status(500).send('Internal Server Error');
