@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
-
+const { ObjectId } = mongoose.Schema.Types;
 const kitSchema = mongoose.Schema({
+    _id:{
+        type:ObjectId
+    },
     title:{
         type:String
     },
