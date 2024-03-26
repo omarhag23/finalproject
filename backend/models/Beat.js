@@ -17,21 +17,24 @@ const beatSchema = mongoose.Schema({
     cover:{
         type:String
     },
-    category:{
-        type:String
-    },
-    mp3Price:{
+    mp3price:{
         type:Number
     },
-    wavPrice:{
+    wavprice:{
         type:Number
     },
-    exclusivePrice:{
-        type:String
+    exclusive:{
+        type:Number
     },
     dateUploaded:{
         type:Date
-    }
+    },
+    mp3path:{
+        type:String
+    },
+    wavpath:{
+        type:String
+    },
 })
 
 module.exports = mongoose.model('beats',beatSchema)
