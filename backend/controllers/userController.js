@@ -22,6 +22,7 @@ registerUser :async (username,email,password) => {
         password:hashedPassword
     })
     try{
+        alert("trying to register user")
         const savedUser = await user.save()
         res.send(savedUser)
     

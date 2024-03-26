@@ -359,6 +359,7 @@ $(document).ready(function() {
       password: $('#password').val() // Get the value of the password input field
     };
 
+    alert (formData)
     $.ajax({
       type: 'POST',
       url: '/api/user/register', 
