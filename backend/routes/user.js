@@ -8,8 +8,7 @@ router.post('/register', async (req, res) => {
       const { username, email, password } = req.body;
       await UserController.registerUser(username, email, password);
       res.status(201).send('User registered successfully');
-      alert("successfully added");
-      res.redirect('/index');
+      //res.redirect('/index');
     } catch (error) {
       console.error(error);
       res.status(500).send('Error registering user');

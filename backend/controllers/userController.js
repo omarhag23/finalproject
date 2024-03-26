@@ -22,14 +22,13 @@ registerUser :async (username,email,password) => {
         password:hashedPassword
     })
     try{
-        alert("trying to register user")
-        const savedUser = await user.save()
-        res.send(savedUser)
-    
-    }catch(err){
-        res.status(400).send({message:err})
-    }
-    
+      // Save the user
+      const savedUser = await user.save();
+      return savedUser;
+  } catch (err) {
+      // Throw error to be caught by the route handler
+      throw err;
+  }
 } ,
 
 
