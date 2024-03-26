@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 app.set('view engine', 'ejs');
 const path = require('path');
 app.set('views', path.join(__dirname, '..','frontend'));
-//app.use(express.static(path.join(__dirname, '..', 'frontend')));
+app.use(express.static(path.join(__dirname, '..', 'frontend')));
 
 
 
@@ -49,6 +49,6 @@ app.get('/', (req, res) => {
 });
 
 // Start the server
-app.listen(3000, () => {
+app.listen(3001, () => {
     console.log('Server is up and running...');
 });
