@@ -9,6 +9,7 @@ router.post('/register', async (req, res) => {
         return res.status(400).send('Request body is empty');
     }
       const { username, email, password } = req.body;
+      console.log('userjs : email:', email,'username:', username,'password:', password,);
       await UserController.registerUser(username, email, password);
       res.status(201).send('User registered successfully');
       //res.redirect('/index');
