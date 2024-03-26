@@ -3,13 +3,17 @@ const app = express();
 const mongoose = require('mongoose');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+app.set('view engine', 'ejs');
+const path = require('path');
 app.set('views', path.join(__dirname, '..','frontend'));
+
+
+
 // Import routes
 const shopRoutes = require('./routes/shop');
 const userRoutes = require('./routes/user');
 const cartRoutes = require('./routes/cart');
-app.set('view engine', 'ejs');
-const path = require('path');
+
 
 
 
@@ -21,11 +25,6 @@ app.use(session({
     saveUninitialized: true
 }));
 
-
-// Route
-app.get('/', (req, res) => {
-    res.render('index');
-});
 
 app.use((req, res, next) => {
     res.locals.username = req.session.username; // Add session data to locals
@@ -40,6 +39,11 @@ mongoose.connect(MURL, () => {
     console.log('MongoDB is up and running...');
 });
 
+
+// Route
+app.get('/', (req, res) => {
+    res.render('index');
+});
 
 // Start the server
 app.listen(3000, () => {
