@@ -11,7 +11,7 @@ const cartRoutes = require('./routes/cart');
 
 app.set('view engine', 'ejs');
 const path = require('path');
-app.set('views', path.join(__dirname, 'frontend'));
+app.set('views', path.join(__dirname, '..','frontend'));
 
 // Middleware
 app.use(cookieParser());
