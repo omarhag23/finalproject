@@ -3,6 +3,9 @@ const router = express.Router();
 const Beat = require('../models/Beat');
 const Service = require('../models/Service');
 const Kit = require('../models/Kit');
+const path = require('path');
+app.set('views', path.join(__dirname, '..','frontend'));
+app.use(express.static(path.join(__dirname, '..', 'frontend')))
 
 router.get('/beats', async (req, res) => {
   try {
