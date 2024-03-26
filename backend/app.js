@@ -35,7 +35,7 @@ mongoose.connect(MURL, () => {
     console.log('MongoDB is up and running...');
 });
 
-app.use(express.static('..','frontend'));//render static css 
+app.use(express.static(path.join(__dirname, '..', 'frontend')));//render static css 
 // Route
 app.get('/', (req, res) => {
     res.render('index');
