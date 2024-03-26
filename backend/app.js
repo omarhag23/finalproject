@@ -3,6 +3,8 @@ const app = express();
 const mongoose = require('mongoose');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 const path = require('path');
 app.set('views', path.join(__dirname, '..','frontend'));

@@ -5,6 +5,9 @@ const UserController = require('../controllers/userController');
 //register
 router.post('/register', async (req, res) => {
     try {
+      if (!req.body || Object.keys(req.body).length === 0) {
+        return res.status(400).send('Request body is empty');
+    }
       const { username, email, password } = req.body;
       await UserController.registerUser(username, email, password);
       res.status(201).send('User registered successfully');
