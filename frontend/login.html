@@ -164,7 +164,7 @@
                 </div>
         
                 <div class="container-login100-form-btn m-t-17">
-                  <button type="submit" class="login100-form-btn">
+                  <button class="login100-form-btn">
                     Sign In
                   </button>
                 </div>
@@ -335,31 +335,33 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-  $(document).ready(function() {
-    $('#loginForm').submit(function(event) {
-      event.preventDefault(); // Prevent the form from submitting normally
-      
-      var formData = {
-        username: $('#username').val(), // Get the value of the username input field
-        password: $('#password').val() // Get the value of the password input field
-      };
+ $(document).ready(function() {
+  $('#loginForm').submit(function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+    
+    var formData = {
+      username: $('#username').val(), // Get the value of the username input field
+      // Get the value of the username input field
+      password: $('#password').val() // Get the value of the password input field
+    };
 
-      $.ajax({
-        type: 'POST',
-        url: '/api/user/login', // Replace this with the actual endpoint where you want to send the POST request
-        data: formData,
-        success: function(response) {
-          // Handle success response
-          console.log(response);
-          // Redirect or do something else based on the response
-        },
-        error: function(xhr, status, error) {
-          // Handle error
-          console.error(xhr.responseText);
-        }
-      });
+    console.log(formData);
+    $.ajax({
+      type: 'POST',
+      url: '/api/user/login', 
+      data: formData,
+      success: function(response) {
+        // Handle success response
+        console.log(response);
+        // Redirect or do something else based on the response
+      },
+      error: function(xhr, status, error) {
+        // Handle error
+        console.error(xhr.responseText);
+      }
     });
   });
+});
 </script>
 
 
