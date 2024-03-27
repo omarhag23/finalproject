@@ -51,6 +51,6 @@ app.get('/', (req, res) => {
 });
 
 // Start the server
-app.listen(3001, () => {
+app.listen(3000, () => {
     console.log('Server dfd is up and running...');
 });
