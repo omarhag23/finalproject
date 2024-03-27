@@ -22,7 +22,7 @@ registerUser :async (username,email,pass) => {
     const user = new User({
         username:username,
         email:email,
-        pass:hashedPassword
+        password:hashedPassword
     })
     console.log('User object before saving:', user);
     try{
