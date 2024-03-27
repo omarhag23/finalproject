@@ -4,7 +4,7 @@ const bcryptjs = require('bcryptjs')
 
 const UserController = {
 //register
-registerUser :async (username,email,password) => {
+registerUser :async (username,email,pass) => {
     console.log('controller  pass : email:', email,'username:', username,'password:', password,);
     // Validation  to check if user exists!
     const userExists = await User.findOne({email:email})

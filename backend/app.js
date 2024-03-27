@@ -37,7 +37,7 @@ app.use('/api/shop', shopRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/cart', cartRoutes);
 mongoose.set('strictQuery', false);
-const MURL = 'mongodb+srv://omarabbas300:BreezyWave88@cluster0.cj2gpyv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const MURL = 'mongodb+srv://omarabbas300:BreezyWave88@cluster0.cj2gpyv.mongodb.net/finalproject1?retryWrites=true&w=majority&appName=Cluster0';
 mongoose.connect(MURL, () => {
     console.log('MongoDB is up and running...');
 });
