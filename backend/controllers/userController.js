@@ -5,7 +5,7 @@ const bcryptjs = require('bcryptjs')
 const UserController = {
 //register
 registerUser :async (username,email,pass) => {
-    console.log('controller  pass : email:', email,'username:', username,'password:', password,);
+    console.log('controller  pass : email:', email,'username:', username,'password:', pass,);
     // Validation  to check if user exists!
     const userExists = await User.findOne({email:email})
     if(userExists){
@@ -14,13 +14,13 @@ registerUser :async (username,email,pass) => {
 
     // I created a hashed represenation of my password!
     const salt = await bcryptjs.genSalt(5)
-    const hashedPassword = await bcryptjs.hash(password,salt)
+    const hashedPassword = await bcryptjs.hash(pass,salt)
 
     // Code to insert data
     const user = new User({
         username:username,
         email:email,
-        password:hashedPassword
+        pass:hashedPassword
     })
     console.log('User object before saving:', user);
     try{
