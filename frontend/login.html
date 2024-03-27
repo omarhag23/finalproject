@@ -297,9 +297,7 @@
         </div>
       </footer>
 	  	
-
-
-	<script src="js/main.js"></script>
+      <script src="js/main.js"></script>
       <!-- JavaScript files-->
       <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
       <script src="vendor/glightbox/js/glightbox.min.js"></script>
@@ -332,16 +330,13 @@
         injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg'); 
         
       </script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
- $(document).ready(function() {
+$(document).ready(function() {
   $('#loginForm').submit(function(event) {
     event.preventDefault(); // Prevent the form from submitting normally
     
     var formData = {
       username: $('#username').val(), // Get the value of the username input field
-      // Get the value of the username input field
       password: $('#password').val() // Get the value of the password input field
     };
 
@@ -351,15 +346,12 @@
       url: '/api/user/login', 
       data: formData,
       success: function(response) {
-                // Handle success response
-                console.log(response);
+        console.log(response);
                 if (response.message === 'Authentication successful') {
                     // Redirect to frontend page
                     window.location.href = '/index'; // Change '/index' to your frontend page URL
-                } else {
-                    // Handle other responses if needed
-                }
-            },
+                } 
+      },
       error: function(xhr, status, error) {
         // Handle error
         console.error(xhr.responseText);
