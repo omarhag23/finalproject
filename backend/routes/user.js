@@ -38,7 +38,6 @@ router.post('/register', async (req, res) => {
         // Authentication successful
         res.status(200).json({ user });
         req.session.username = username;
-        alert("successfully added");
         res.redirect('/index');
       } else {
         // Authentication failed (invalid credentials)
