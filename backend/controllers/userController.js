@@ -16,6 +16,8 @@ registerUser :async (username,email,pass) => {
     const salt = await bcryptjs.genSalt(5)
     const hashedPassword = await bcryptjs.hash(pass,salt)
 
+    console.log('HASHED PASS:', hashedPassword, "salt : ",salt);
+
     // Code to insert data
     const user = new User({
         username:username,
