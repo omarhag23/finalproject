@@ -13,10 +13,9 @@ router.post('/register', async (req, res) => {
       console.log('userjs :  email:', email,'usernamde:', username,'pass:', pass,'confpassb:',confpass);
       if (pass==confpass)
       {
-        console.log('sending everyting to userController function');
-      await UserController.registerUser(username,email,pass)
-      if (UserController.registerUser.userExists==true) {
-        // User already exists, trigger pop-up window
+        const userExists = await UserController.registerUser(username, email, pass);
+            
+        if (userExists) {
         res.status(409).send('User already exists');
       }
       else
@@ -32,11 +31,12 @@ router.post('/register', async (req, res) => {
   // login
   router.post('/login', async (req, res) => {
     try {
+      console.error('in the login')
       const { username, password } = req.body;
       const user = await UserController.authenticateUser(username, password);
       if (user) {
         // Authentication successful
-        res.status(200).json({ user });
+        console.error('authentication OK')
         req.session.username = username;
         res.redirect('/index');
       } else {
