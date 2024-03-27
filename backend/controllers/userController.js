@@ -29,7 +29,7 @@ registerUser :async (username,email,pass) => {
       console.log('User object after saving:', SavedUser);
       return savedUser;
   } catch (err) {
-    console.error('Error saving user:', err);
+    console.error('Error saving user controller:', err);
       // Throw error to be caught by the route handler
       throw err;
   }
