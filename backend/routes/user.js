@@ -36,16 +36,16 @@ router.post('/register', async (req, res) => {
       const user = await UserController.authenticateUser(username, password);
       if (user) {
         // Authentication successful
-        console.error('authentication OK')
+        console.error('authentication super OK')
         req.session.username = username;
-        res.redirect('/index');
+        res.redirect('index');
       } else {
         // Authentication failed (invalid credentials)
         res.status(401).send('username or password wrong');
       }
     } catch (error) {
       console.error(error);
-      res.status(500).send('Error authenticating user');
+      
     }
   });
 
