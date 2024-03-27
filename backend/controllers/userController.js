@@ -10,6 +10,7 @@ registerUser :async (username,email,pass) => {
     const userExists = await User.findOne({email:email})
     if(userExists){
       console.log('User already exists')
+      return { userExists: true };
     }
 
     // I created a hashed represenation of my password!

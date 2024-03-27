@@ -15,6 +15,11 @@ router.post('/register', async (req, res) => {
       {
         console.log('sending everyting to userController function');
       await UserController.registerUser(username,email,pass)
+      if (registrationResult.userExists) {
+        // User already exists, trigger pop-up window
+        return res.status(409).send('User already exists');
+      }
+      else
       res.status(201).send('User registered successfullssy'); 
       }
       //res.redirect('/index');
