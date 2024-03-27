@@ -22,11 +22,14 @@ registerUser :async (username,email,pass) => {
         email:email,
         password:hashedPassword
     })
+    console.log('User object before saving:', user);
     try{
       // Save the user
       const savedUser = await user.save();
+      console.log('User object after saving:', SavedUser);
       return savedUser;
   } catch (err) {
+    console.error('Error saving user:', err);
       // Throw error to be caught by the route handler
       throw err;
   }
