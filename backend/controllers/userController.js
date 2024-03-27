@@ -9,7 +9,7 @@ registerUser :async (username,email,pass) => {
     // Validation  to check if user exists!
     const userExists = await User.findOne({email:email})
     if(userExists){
-      return res.status(400).send({message:'User already exists'})
+      console.log('User already exists')
     }
 
     // I created a hashed represenation of my password!
@@ -26,7 +26,7 @@ registerUser :async (username,email,pass) => {
     try{
       // Save the user
       const savedUser = await user.save();
-      console.log('User object after saving:', SavedUser);
+      console.log('User object after saving:', savedUser);
       return savedUser;
   } catch (err) {
     console.error('Error saving user controller:', err);
