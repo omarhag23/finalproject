@@ -10,7 +10,7 @@ router.post('/register', async (req, res) => {
     }
       const { username, email, pass,confpass } = req.body;
       console.log('req body ',req.body);
-      console.log('userjs : email:', email,'username:', username,'pass:', pass,'confpass:',confpass);
+      console.log('userjs : email:', email,'username:', username,'pass:', pass,'confpassb:',confpass);
       if (pass==confpass)
       {
       await UserController.registerUser(username, email, pass);
