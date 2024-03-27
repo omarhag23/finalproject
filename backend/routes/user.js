@@ -13,7 +13,8 @@ router.post('/register', async (req, res) => {
       console.log('userjs :  email:', email,'usernamde:', username,'pass:', pass,'confpassb:',confpass);
       if (pass==confpass)
       {
-      await UserController.registerUser(username, email, pass);
+        console.log('sending everyting to userController function');
+      await UserController.registerUser(username,email,pass)
       res.status(201).send('User registered successfullssy'); 
       }
       //res.redirect('/index');
