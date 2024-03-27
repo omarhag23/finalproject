@@ -38,7 +38,7 @@ router.post('/register', async (req, res) => {
         // Authentication successful
         console.error('authentication super OK',username, ' logged in,trying to redirect ')
         req.session.username = username;
-        res.redirect('index');
+        res.redirect('/');
         console.error('after redirect ')
       } else {
         // Authentication failed (invalid credentials)
