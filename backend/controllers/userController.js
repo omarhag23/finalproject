@@ -41,22 +41,16 @@ registerUser :async (username,email,pass) => {
 
 authenticateUser: async(username,password)=>{
 
-    // Validation 1 to check user input
-   const {error} = loginValidation(req.body)
-    if(error){
-        return res.status(400).send({message:error['details'][0]['message']})
-    }
-
-    // Validation 2 to check if user exists!
+    // Validation to check if user exists!
      const user = await User.findOne({username:req.body.username})
       if(!user){
-         return res.status(400).send({message:'User does not exist'})
+        console.error('User does not exist')
      } 
     
     // Validation 3 to check user password
       const passwordValidation = await bcryptjs.compare(req.body.password,user.password)
       if(!passwordValidation){
-          return res.status(400).send({message:'Password is wrong'})
+        console.error('password wrong')
       }
       else return user;
     
