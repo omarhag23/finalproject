@@ -6,15 +6,15 @@ const UserController = require('../controllers/userController');
 router.post('/register', async (req, res) => {
     try {
       if (!req.body || Object.keys(req.body).length === 0) {
-        return res.status(400).send('Request body is empty');
+        return res.status(400).send('Request body is emptyness');
     }
       const { username, email, pass,confpass } = req.body;
-      console.log('req body ',req.body);
-      console.log('userjs : email:', email,'username:', username,'pass:', pass,'confpassb:',confpass);
+      console.log('req body look ',req.body);
+      console.log('userjs :  email:', email,'usernamde:', username,'pass:', pass,'confpassb:',confpass);
       if (pass==confpass)
       {
-      await UserController.registerUser(username, email, pass);
-      res.status(201).send('User registered successfully');
+      await UserController.registerUser(username, email, pass,confpass);
+      res.status(201).send('User registered successfullssy'); 
       }
       //res.redirect('/index');
     } catch (error) {
