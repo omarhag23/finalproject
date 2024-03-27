@@ -351,10 +351,15 @@
       url: '/api/user/login', 
       data: formData,
       success: function(response) {
-        // Handle success response
-        console.log(response);
-        // Redirect or do something else based on the response
-      },
+                // Handle success response
+                console.log(response);
+                if (response.message === 'Authentication successful') {
+                    // Redirect to frontend page
+                    window.location.href = '/index'; // Change '/index' to your frontend page URL
+                } else {
+                    // Handle other responses if needed
+                }
+            },
       error: function(xhr, status, error) {
         // Handle error
         console.error(xhr.responseText);
