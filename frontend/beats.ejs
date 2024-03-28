@@ -210,9 +210,9 @@
 
       <script>
            console.log('in tha scrpt')
-           $(document).ready(function() {
+      
             const addToCartButtons = document.querySelectorAll('.addToCartButton');
-        
+            $(document).ready(function() {
             addToCartButtons.forEach(button => {
               console.log('in tha clicked button')
                 button.addEventListener('click', async (event) => {
@@ -225,7 +225,7 @@
                       type : button.getAttribute('data-type')
     };
 
-                    console.log(formData)
+                    console.log(formData);
                     $.ajax({
       type: 'POST',
       url: '/api/cart/add', 
