@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, '..', 'frontend')));
 
 
 // Import routes
-const shopRoutes = require('../routes/shop');
+const shopRoutes = require('./routes/shop');
 const userRoutes = require('./routes/user');
 const cartRoutes = require('./routes/cart');
 
