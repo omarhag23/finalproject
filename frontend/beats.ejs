@@ -131,7 +131,10 @@
                         <div class="product-overlay">
                           <ul class="mb-0 list-inline">
                             <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
+                            <% if (username) { %>
                             <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark addToCartButton" href="#" data-userId="<%= username %>" data-productId="<%= beat.productId %>" data-license="mp3lease" data-type="beat">Add to cart</a></li>
+                            <% }else{ %>
+                              <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark addToCartButton" href="login.html" >Login to buy</a></li>
                             <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
                           </ul>
                         </div>
