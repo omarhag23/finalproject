@@ -22,7 +22,7 @@ const cartRoutes = require('./routes/cart');
 // Middleware
 app.use(cookieParser());
 app.use(session({
-    secret: 'your_secret_key_here',
+    secret: 'your_secret_key_heree',
     resave: false,
     saveUninitialized: true
 }));
@@ -32,10 +32,11 @@ app.use((req, res, next) => {
     res.locals.username = req.session.username; // Add session data to locals
     next();
 });
+mongoose.set('strictQuery', false);
 app.use('/api/shop', shopRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/cart', cartRoutes);
-mongoose.set('strictQuery', false);
+
 const MURL = 'mongodb+srv://omarabbas300:BreezyWave88@cluster0.cj2gpyv.mongodb.net/Finalproject1?retryWrites=true&w=majority&appName=Cluster0';
 mongoose.connect(MURL, () => {
     console.log('MongoDB is up and running...');
