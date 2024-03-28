@@ -346,8 +346,8 @@ $(document).ready(function() {
       url: '/api/user/login', 
       data: formData,
       success: function(response) {
-        console.log(response);
-                if (response.message === 'Authentication successful frontebd') {
+        console.log(response,'front 1');
+                if (response.message === 'Authentication successful frontebd2') {
                     // Redirect to frontend page
                     window.location.href = 'index'; // Change '/index' to your frontend page URL
                 } 
