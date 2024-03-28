@@ -20,7 +20,7 @@ router.post('/add', async (req, res) => {
 });
 
 // Example of getting user's cart
-router.get('/cart', async (req, res) => {
+router.get('/', async (req, res) => {
   const { userId } = req.query;
   try {
     const cart = await Cart.findOne({ user_id: userId }).populate('items.product_id');
