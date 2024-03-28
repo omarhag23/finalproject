@@ -7,10 +7,10 @@ router.use(express.static(path.join(__dirname, '..', 'frontend')));
 // Example of adding an item to the cart
 router.post('/add', async (req, res) => {
   const { userId, productId, license, type } = req.body;
-  console.log('user ',userId,' produ :',productId,'lice :',license,' ty: ',type)
+  console.log('trying to find a beat ...');
   try {
     const beat = await Beat.findOne({ productId });
-
+     
     // Initialize price variable
     let price = null;
 
@@ -18,6 +18,7 @@ router.post('/add', async (req, res) => {
     let cover = null;
     let title = null;
     if (beat) {
+      console.log('beat found ...');
         cover = beat.cover;
         title = beat.title;
 
