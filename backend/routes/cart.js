@@ -1,15 +1,17 @@
 const express = require('express')
 const router = express.Router()
 const Cart = require('../models/Cart');
-const Beat = require('../models/Beat');
+
 const path = require('path');
 router.use(express.static(path.join(__dirname, '..', 'frontend')));
 // Example of adding an item to the cart
 router.post('/add', async (req, res) => {
   const { userId, productId, license, type } = req.body;
+
+  const model = require('../models/',type);
   console.log('trying to find a beat ...');
   try {
-    const product = await type.findOne({_id: productId });
+    const product = await model.findOne({_id: productId });
      
     // Initialize price variable
     let price = null;
