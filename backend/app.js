@@ -76,7 +76,7 @@ app.get('/api/cart', async (req, res) => {
 app.get('/', (req, res) => {
 
     
-    res.render('index');
+    res.render('beats');
 });
 // Start the server
 app.listen(3000, () => {
