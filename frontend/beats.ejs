@@ -208,10 +208,12 @@
       </footer>
 
       <script>
+           console.log('in tha scrpt')
         document.addEventListener('DOMContentLoaded', () => {
             const addToCartButtons = document.querySelectorAll('.addToCartButton');
         
             addToCartButtons.forEach(button => {
+              console.log('in tha clicked button')
                 button.addEventListener('click', async (event) => {
                     event.preventDefault(); // Prevent the default action of clicking the link
         
