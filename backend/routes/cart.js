@@ -13,7 +13,7 @@ router.post('/add', async (req, res) => {
       { $push: { items: { product_id: productId, type: type,license:license } } },
       { upsert: true, new: true }
     );
-    console.error('added item to cart:',cart);
+    console.log('added item to cart:',cart);
   } catch (error) {
     console.error('Error adding item to cart:', error);
     throw error;

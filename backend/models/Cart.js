@@ -8,7 +8,7 @@ const cartItemSchema = new mongoose.Schema({
   
   // Define Schema for Cart
   const cartSchema = new mongoose.Schema({
-    user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    username: String ,
     items: [cartItemSchema]
   });
 
