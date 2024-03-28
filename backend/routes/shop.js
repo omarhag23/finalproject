@@ -5,7 +5,7 @@ const router = express.Router();
 const Beat = require('../models/Beat');
 const Service = require('../models/Service');
 const Kit = require('../models/Kit');
-;
+
 
 router.get('/beats', async (req, res) => {
   try {
