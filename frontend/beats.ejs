@@ -206,7 +206,7 @@
           </div>
         </div>
       </footer>
-      
+
       <script>
         document.addEventListener('DOMContentLoaded', () => {
             const addToCartButtons = document.querySelectorAll('.addToCartButton');
@@ -219,6 +219,7 @@
                     const productId = button.getAttribute('data-productId');
                     const license = button.getAttribute('data-license');
                     const type = button.getAttribute('data-type');
+                    console.log('scrpt : user ',userId,' produ :',productId,'lice :',license,' ty: ',type)
         
                     try {
                         const response = await fetch('/api/cart/add', {
