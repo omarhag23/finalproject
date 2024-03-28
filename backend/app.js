@@ -61,12 +61,12 @@ app.get('/api/cart', async (req, res) => {
   app.get('/api/shop/beats', async (req, res) => {
     try {
       // Assuming you've made a request to the endpoint that sends cart data
-      const response = await fetch('/api/cart');
+      const response = await fetch('/api/shop/beats');
       const data = await response.json();
       const cart = data.cart;
       
       // Render the view here using the cart data
-      res.render('cart', { cart });
+      res.render('beats', { cart });
     } catch (error) {
       console.error('Error fetching cart data:', error);
       res.status(500).send('Internal Server Error');
