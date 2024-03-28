@@ -9,7 +9,7 @@ router.post('/add', async (req, res) => {
   const { userId, productId, license, type } = req.body;
 
   const model = require('../models/',type);
-  console.log('trying to find a beat ...');
+  console.log('trying to find a model ...');
   try {
     const product = await model.findOne({_id: productId });
      
