@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const fetch = require('node-fetch'); 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 const path = require('path');
@@ -43,7 +44,7 @@ mongoose.connect(MURL, () => {
 });
 
 
-app.get('/api/cart', async (req, res) => {
+app.get('/cart', async (req, res) => {
     try {
       // Assuming you've made a request to the endpoint that sends cart data
       const response = await fetch('/api/cart');
@@ -58,7 +59,7 @@ app.get('/api/cart', async (req, res) => {
     }
   });
 
-  app.get('/api/shop/beats', async (req, res) => {
+  app.get('/beats', async (req, res) => {
     try {
       // Assuming you've made a request to the endpoint that sends cart data
       const response = await fetch('/api/shop/beats');
