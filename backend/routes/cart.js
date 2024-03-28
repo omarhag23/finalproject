@@ -11,7 +11,7 @@ router.post('/add', async (req, res) => {
   console.log('require ...',type);
 
   const model = require('../models/',type);
-  console.log('trying to find a model ...');
+  console.log('trying to find a model . ...');
   try {
     const product = await model.findOne({_id: productId });
      
