@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Cart = require('../models/Cart');
+const Beat = require('../models/Beat');
 const path = require('path');
 router.use(express.static(path.join(__dirname, '..', 'frontend')));
 // Example of adding an item to the cart
