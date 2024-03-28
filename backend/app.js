@@ -47,10 +47,12 @@ mongoose.connect(MURL, () => {
 app.get('/cart', async (req, res) => {
     try {
       // Assuming you've made a request to the endpoint that sends cart data
+      console.log('about to fetch')
       const response = await fetch('http://linux01.dcs.bbk.ac.uk:3000/api/cart');
       const data = await response.json();
+      console.log('fetched,response',data.cart)
       const cart = data.cart;
-      
+      console.log('about to render')
       // Render the view here using the cart data
       res.render('cart', { cart });
     } catch (error) {
@@ -62,10 +64,12 @@ app.get('/cart', async (req, res) => {
   app.get('/beats', async (req, res) => {
     try {
       // Assuming you've made a request to the endpoint that sends cart data
+      console.log('about to fetch')
       const response = await fetch('http://linux01.dcs.bbk.ac.uk:3000/beats');
       const data = await response.json();
+      console.log('fetched,response',data.beats)
       const beats = data.beats;
-      
+      console.log('about to render')
       // Render the view here using the cart data
       res.render('beats', { beats });
     } catch (error) {
