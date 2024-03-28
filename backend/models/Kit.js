@@ -13,7 +13,7 @@ const kitSchema = mongoose.Schema({
     category:{
         type:String
     },
-    price:{
+    exclusive:{
         type:Number
     },
     dateUploaded:{

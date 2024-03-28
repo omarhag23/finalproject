@@ -9,7 +9,7 @@ router.post('/add', async (req, res) => {
   const { userId, productId, license, type } = req.body;
   console.log('trying to find a beat ...');
   try {
-    const beat = await Beat.findOne({ productId });
+    const product = await type.findOne({_id: productId });
      
     // Initialize price variable
     let price = null;
@@ -17,28 +17,17 @@ router.post('/add', async (req, res) => {
     // Retrieve cover, title, and set price based on license
     let cover = null;
     let title = null;
-    if (beat) {
+    if (product) {
       console.log('beat found ...');
-        cover = beat.cover;
-        title = beat.title;
-
-        switch (license) {
-            case "mp3lease":
-                price = beat.mp3price;
-                break;
-            case "wavlease":
-                price = beat.wavprice;
-                break;
-            case "exclusive":
-                price = beat.exclusive;
-                break;
-            default:
-                price = null;
+        cover = product.cover;
+        title = product.title;
+        price = product.license;
+               
         }
-    }
+    
     const cart = await Cart.findOneAndUpdate(
       { username: userId },
-      { $push: { items: { product_id: productId, type: type,license:license,cover:cover } } },
+      { $push: { items: { product_id: productId, type: type,license:license,cover:cover,title:title,price:price } } },
       { upsert: true, new: true }
     );
     console.log('added item to cart:',cart);

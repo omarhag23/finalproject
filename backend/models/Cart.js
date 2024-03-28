@@ -1,10 +1,13 @@
 const mongoose = require('mongoose')
 
 const cartItemSchema = new mongoose.Schema({
-    type: String,
+    
     product_id: { type: mongoose.Schema.Types.ObjectId },
+    title :String,
     license: String,
-    cover: String
+    cover: String,
+    price :Number,
+    type: String    
   });
   
   // Define Schema for Cart
