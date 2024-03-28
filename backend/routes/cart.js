@@ -8,9 +8,35 @@ router.post('/add', async (req, res) => {
   const { userId, productId, license, type } = req.body;
   console.log('user ',userId,' produ :',productId,'lice :',license,' ty: ',type)
   try {
+    const beat = await Beat.findOne({ productId });
+
+    // Initialize price variable
+    let price = null;
+
+    // Retrieve cover, title, and set price based on license
+    let cover = null;
+    let title = null;
+    if (beat) {
+        cover = beat.cover;
+        title = beat.title;
+
+        switch (license) {
+            case "mp3lease":
+                price = beat.mp3price;
+                break;
+            case "wavlease":
+                price = beat.wavprice;
+                break;
+            case "exclusive":
+                price = beat.exclusive;
+                break;
+            default:
+                price = null;
+        }
+    }
     const cart = await Cart.findOneAndUpdate(
       { username: userId },
-      { $push: { items: { product_id: productId, type: type,license:license } } },
+      { $push: { items: { product_id: productId, type: type,license:license,cover:cover } } },
       { upsert: true, new: true }
     );
     console.log('added item to cart:',cart);
