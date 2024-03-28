@@ -16,10 +16,6 @@ app.use(express.static(path.join(__dirname, '..', 'frontend')));
 const shopRoutes = require('./routes/shop');
 const userRoutes = require('./routes/user');
 const cartRoutes = require('./routes/cart');
-app.get('/api/shop/css', (req, res) => {
-    res.setHeader('Content-Type', 'text/css');
-    // Includi il codice per leggere e inviare il file CSS
-  });
 
 
 
