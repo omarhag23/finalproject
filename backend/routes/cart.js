@@ -7,8 +7,22 @@ router.use(express.static(path.join(__dirname, '..', 'frontend')));
 // Example of adding an item to the cart
 router.post('/add', async (req, res) => {
   const { userId, productId, license, type } = req.body;
-  
-  console.log('require ...',type);
+  switch (type)
+  {
+    case 'Beat':
+      model = require('../models/Beat');
+      break;
+    case 'Kit':
+      model = require('../models/Kit');
+      break;
+    case 'Service':
+        model = require('../models/Service');
+        break;  
+    // Add more cases as needed for other models
+    default:
+      // Handle the case when the type is not recognized
+      console.error('Unknown model type:', type);
+  }
 
   const model = require('../models/',type);
   console.log('trying to find a model . ...');
