@@ -347,14 +347,10 @@ $(document).ready(function() {
       data: formData,
       success: function(response) {
         console.log(response);
-                if (response.message === 'Authentication successful') {
+                if (response.message === 'Authentication successful frontebd') {
                     // Redirect to frontend page
                     window.location.href = 'index'; // Change '/index' to your frontend page URL
                 } 
-      },
-      error: function(xhr, status, error) {
-        // Handle error
-        console.error(xhr.responseText);
       }
     });
   });
