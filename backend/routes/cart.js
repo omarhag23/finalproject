@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
   const { userId } = req.query;
   try {
     const cart = await Cart.findOne({ user_id: userId }).populate('items.product_id');
-    res.render('index', { cart }); // Render the cart.ejs view with cart data
+    res.json({ cart }); // Send cart data as JSON response
   } catch (error) {
     console.error('Error getting user cart:', error);
     throw error;
