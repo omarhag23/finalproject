@@ -7,13 +7,13 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 const path = require('path');
-app.set('views', path.join(__dirname, '..','frontend'));
+app.set('views', path.join(__dirname, '..',''));
 app.use(express.static(path.join(__dirname, '..', 'frontend')));
 
 
 
 // Import routes
-const shopRoutes = require('./routes/shop');
+const shopRoutes = require('../routes/shop');
 const userRoutes = require('./routes/user');
 const cartRoutes = require('./routes/cart');
 

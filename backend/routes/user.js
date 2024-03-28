@@ -19,7 +19,7 @@ router.post('/register', async (req, res) => {
         res.status(409).send('User already exists');
       }
       else
-      res.status(201).send('User registered successfullssy'); 
+      res.redirect('/api/shop/login');
       }
       //res.redirect('/index');
     } catch (error) {

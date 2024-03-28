@@ -4,7 +4,7 @@ const Beat = require('../models/Beat');
 const Service = require('../models/Service');
 const Kit = require('../models/Kit');
 const path = require('path');
-
+router.use(express.static(path.join(__dirname, '..', 'frontend')));
 
 router.get('/beats', async (req, res) => {
   try {
