@@ -65,7 +65,7 @@ app.get('/cart', async (req, res) => {
     try {
       // Assuming you've made a request to the endpoint that sends cart data
       console.log('about to fetch')
-      const response = await fetch('http://linux01.dcs.bbk.ac.uk:3000/beats');
+      const response = await fetch('http://linux01.dcs.bbk.ac.uk:3000/api/shop/beats');
       const data = await response.json();
       console.log('fetched,response',data.beats)
       const beats = data.beats;
