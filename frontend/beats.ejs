@@ -209,7 +209,7 @@
 
       <script>
            console.log('in tha scrpt')
-        document.addEventListener('DOMContentLoaded', () => {
+           $(document).ready(function() {
             const addToCartButtons = document.querySelectorAll('.addToCartButton');
         
             addToCartButtons.forEach(button => {
@@ -225,7 +225,6 @@
     };
 
                     console.log(formData)
-        
                     $.ajax({
       type: 'POST',
       url: '/api/cart/add', 
