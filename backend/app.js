@@ -42,14 +42,17 @@ mongoose.connect(MURL, () => {
     console.log('MongoDB is up and running...');
 });
 
+app.get('/api/cart', (req, res) => {
 
-// Route
+    
+    res.render('cart');
+});
+
 app.get('/', (req, res) => {
 
     
     res.render('index');
 });
-
 // Start the server
 app.listen(3000, () => {
     console.log('Server dfd is up and running...');
