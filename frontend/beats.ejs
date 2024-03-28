@@ -202,7 +202,42 @@
           </div>
         </div>
       </footer>
-      
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const addToCartButtons = document.querySelectorAll('.addToCartButton');
+        
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', async (event) => {
+                    event.preventDefault(); // Prevent the default action of clicking the link
+        
+                    const userId = button.getAttribute('data-userId');
+                    const productId = button.getAttribute('data-productId');
+                    const license = button.getAttribute('data-license');
+                    const type = button.getAttribute('data-type');
+        
+                    try {
+                        const response = await fetch('/api/cart/add', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ userId, productId, license, type })
+                        });
+        
+                        if (response.ok) {
+                            // Handle success, such as updating UI or showing a success message
+                            console.log('Item added to cart successfully');
+                        } else {
+                            // Handle errors
+                            console.error('Failed to add item to cart');
+                        }
+                    } catch (error) {
+                        console.error('Error adding item to cart:', error);
+                    }
+                });
+            });
+        });
+        </script>
       <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     </div>
