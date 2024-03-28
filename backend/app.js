@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 mongoose.set('strictQuery', false);
 app.use('/api/shop', shopRoutes);
 app.use('/api/user', userRoutes);
-app.use('/api/cart', cartRoutes);
+//app.use('/api/cart', cartRoutes);
 
 const MURL = 'mongodb+srv://omarabbas300:BreezyWave88@cluster0.cj2gpyv.mongodb.net/Finalproject1?retryWrites=true&w=majority&appName=Cluster0';
 mongoose.connect(MURL, () => {
