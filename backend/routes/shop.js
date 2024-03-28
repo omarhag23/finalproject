@@ -10,7 +10,7 @@ router.get('/beats', async (req, res) => {
   try {
     try {
       const beats = await Beat.find(); // Correct usage of Mongoose find() method
-      res.render('frontend/beats', { beats });
+      res.render('beats', { beats });
     } catch (error) {
       console.error('Big Error getting beats:', error);
       throw error;
