@@ -37,9 +37,10 @@ router.post('/add', async (req, res) => {
       console.log('beat found ...');
         cover = product.cover;
         title = product.title;
-        price = product.price;
+        price = product.license;
                
         }
+        console.log('price...',price);
     
     const cart = await Cart.findOneAndUpdate(
       { username: userId },

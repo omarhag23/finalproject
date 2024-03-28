@@ -17,10 +17,10 @@ const beatSchema = mongoose.Schema({
     cover:{
         type:String
     },
-    mp3price:{
+    mp3lease:{
         type:Number
     },
-    wavprice:{
+    wavlease:{
         type:Number
     },
     exclusive:{
