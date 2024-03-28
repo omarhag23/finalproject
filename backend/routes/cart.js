@@ -37,7 +37,7 @@ router.post('/add', async (req, res) => {
       console.log('beat found ...');
         cover = product.cover;
         title = product.title;
-        price = product.license;
+        price = product.price;
                
         }
     
