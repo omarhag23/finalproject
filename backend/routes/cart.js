@@ -9,7 +9,7 @@ router.post('/add', async (req, res) => {
   console.log('user ',userId,' produ :',productId,'lice :',license,' ty: ',type)
   try {
     const cart = await Cart.findOneAndUpdate(
-      { user_id: userId },
+      { username: userId },
       { $push: { items: { product_id: productId, type: type,license:license } } },
       { upsert: true, new: true }
     );
