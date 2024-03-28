@@ -6,6 +6,7 @@ router.use(express.static(path.join(__dirname, '..', 'frontend')));
 // Example of adding an item to the cart
 router.post('/add', async (req, res) => {
   const { userId, productId, license, type } = req.body;
+  console.log('user ',userId,' produ :',productId,'lice :',license,' ty: ',type)
   try {
     const cart = await Cart.findOneAndUpdate(
       { user_id: userId },
@@ -13,7 +14,6 @@ router.post('/add', async (req, res) => {
       { upsert: true, new: true }
     );
     console.error('added item to cart:',cart);
-    alert("successfully added")
   } catch (error) {
     console.error('Error adding item to cart:', error);
     throw error;
