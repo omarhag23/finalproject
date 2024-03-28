@@ -47,7 +47,7 @@ mongoose.connect(MURL, () => {
 app.get('/cart', async (req, res) => {
     try {
       // Assuming you've made a request to the endpoint that sends cart data
-      const response = await fetch('/api/cart');
+      const response = await fetch('http://linux01.dcs.bbk.ac.uk:3000/api/cart');
       const data = await response.json();
       const cart = data.cart;
       
@@ -62,7 +62,7 @@ app.get('/cart', async (req, res) => {
   app.get('/beats', async (req, res) => {
     try {
       // Assuming you've made a request to the endpoint that sends cart data
-      const response = await fetch('/api/shop/beats');
+      const response = await fetch('http://linux01.dcs.bbk.ac.uk:3000/beats');
       const data = await response.json();
       const beats = data.beats;
       
