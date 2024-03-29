@@ -30,15 +30,12 @@ router.post('/add', async (req, res) => {
     const product = await model.findOne({_id: productId });
      
     // Initialize price variable
-
-     let price;
     // Retrieve cover, title, and set price based on license
   
     if (product) {
       console.log('beat found ...');
         cover = product.cover;
         title = product.title;
-        price = product.price;
                
         }
         console.log('price...',price);
