@@ -106,7 +106,7 @@
               <div class="bg-light px-4 py-3"  id="cartNav">
                 <div class="row align-items-center text-center">
                   <div class="col-md-6 mb-3 mb-md-0 text-md-start"><a class="btn btn-link p-0 text-dark btn-sm" href="shop.html"><i class="fas fa-long-arrow-alt-left me-2"> </i>Continue shopping</a></div>
-                  <div class="col-md-6 text-md-end"><a class="btn btn-outline-dark btn-sm" href="checkout.html">Procceed to checkout<i class="fas fa-long-arrow-alt-right ms-2"></i></a></div>
+                  <div class="col-md-6 text-md-end"><a class="btn btn-outline-dark btn-sm .checkout" href="checkout.html">Procceed to checkout<i class="fas fa-long-arrow-alt-right ms-2"></i></a></div>
                 </div>
               </div>
             </div>
@@ -211,6 +211,39 @@
         injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg'); 
         
       </script>
+  <script>
+          
+            const checkout = document.querySelectorAll('.checkout');
+            $(document).ready(function() {
+            checkout.forEach(button => {
+              console.log('in tha clicked button')
+                button.addEventListener('click', async (event) => {
+                    event.preventDefault(); // Prevent the default action of clicking the link
+        
+                    var formData = {
+                      cart: cart,
+                      total:total
+    };
+
+                    console.log(formData);
+                    $.ajax({
+      type: 'POST',
+      url: '/api/cart/checkout', 
+      data: formData,
+      success: function(response) {
+        console.log(response,'front 1');
+                if (response.message === 'Authentication successful frontesbd2') {
+                    // Redirect to frontend page
+                    window.location.href = 'index'; // Change '/index' to your frontend page URL
+                } 
+      }
+    });
+  });
+})
+});
+</script>
+
+
       <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     </div>

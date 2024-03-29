@@ -63,4 +63,17 @@ router.get('/', async (req, res) => {
     throw error;
   }
 });
+
+
+router.post('/checkout', async (req, res) => {
+  try {
+  const  cart = req.body;
+  console.log('checkout  ...',cart);
+  res.json({ cart });
+} catch (error) {
+  console.error('Error getting user cart:', error);
+  throw error;
+}
+});
+
 module.exports = router;
