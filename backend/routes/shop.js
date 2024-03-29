@@ -21,20 +21,21 @@ router.get('/beats', async (req, res) => {
 });
 
 
-router.get('/kits', async (req, res) => {
+router.get('/kit', async (req, res) => {
   try {
     try {
-      const kits = Kit.find().toArray;
+      const kits = await Kit.find(); // Correct usage of Mongoose find() method
+      res.json({ kits }); // Send cart data as JSON response
     } catch (error) {
-      console.error('Error getting kits:', error);
+      console.error('Big Error getting services:', error);
       throw error;
     }
-    res.render('kits', { kits});
   } catch (error) {
-    console.error('Error rendering beats page:', error);
+    console.error('Error rendering kits page:', error);
     res.status(500).send('Internal Server Error');
   }
 });
+
 
 
 router.get('/services', async (req, res) => {
