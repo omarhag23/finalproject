@@ -10,13 +10,13 @@ router.post('/add', async (req, res) => {
   switch (type)
   {
     case 'Beat':
-      const model = require('../models/Beat');
+       const model = require('../models/Beat');
       break;
     case 'Kit':
-      const model = require('../models/Kit');
+       model = require('../models/Kit');
       break;
     case 'Service':
-      const model = require('../models/Service');
+       model = require('../models/Service');
         break;  
     // Add more cases as needed for other models
     default:
