@@ -6,7 +6,7 @@ const path = require('path');
 router.use(express.static(path.join(__dirname, '..', 'frontend')));
 // Example of adding an item to the cart
 router.post('/add', async (req, res) => {
-  const { userId, productId, license, type } = req.body;
+  const { userId, productId, license, type,price } = req.body;
   switch (type)
   {
     case 'Beat':
@@ -37,7 +37,7 @@ router.post('/add', async (req, res) => {
       console.log('beat found ...');
         cover = product.cover;
         title = product.title;
-        price = product.license;
+        price = product.price;
                
         }
         console.log('price...',price);
