@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Cart = require('../models/Cart');
+let model;
 const path = require('path');
 router.use(express.static(path.join(__dirname, '..', 'frontend')));
 // Example of adding an item to the cart
@@ -10,7 +11,7 @@ router.post('/add', async (req, res) => {
   switch (type)
   {
     case 'Beat':
-       const model = require('../models/Beat');
+        model = require('../models/Beat');
       break;
     case 'Kit':
        model = require('../models/Kit');
