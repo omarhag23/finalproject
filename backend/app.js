@@ -106,7 +106,7 @@ app.get('/cart', async (req, res) => {
   app.get('/checkout', async (req, res) => {
     try {
       // Make a request to the /api/cart/checkout endpoint to fetch the cart data
-      const response = await fetch('http://localhost:3000/api/cart/checkout');
+      const response = await fetch('http://linux01.dcs.bbk.ac.uk:3000/api/cart/checkout');
       if (!response.ok) {
         throw new Error('Failed to fetch cart data');
       }
