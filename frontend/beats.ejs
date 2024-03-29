@@ -124,8 +124,9 @@
                  
                   <!-- PRODUCT-->
                   <div class="col-lg-4 col-sm-6">
+                    <% beats.forEach(beat => { %>
                     <div class="product text-center">
-                      <% beats.forEach(beat => { %>
+                    
                       <div class="mb-3 position-relative">
                         <div class="badge text-white bg-"></div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src=<%= beat.cover %> alt="..."></a>
                         <div class="product-overlay">
@@ -144,8 +145,9 @@
                       <p class="small text-muted"><%= beat.price %></p>
                       
                     </div>
+                    <% })%>
                   </div>
-                  <% })%>
+                 
                 </div> 
                 <!-- PAGINATION-->
                 <nav aria-label="Page navigation example">
