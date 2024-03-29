@@ -7,6 +7,7 @@ router.use(express.static(path.join(__dirname, '..', 'frontend')));
 // Example of adding an item to the cart
 router.post('/add', async (req, res) => {
   const { userId, productId, license, type, price } = req.body;
+  console.log('price 1  ...',price);
   switch (type)
   {
     case 'Beat':
