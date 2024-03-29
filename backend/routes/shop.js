@@ -21,7 +21,7 @@ router.get('/beats', async (req, res) => {
 });
 
 
-router.get('/kit', async (req, res) => {
+router.get('/kits', async (req, res) => {
   try {
     try {
       const kits = await Kit.find(); // Correct usage of Mongoose find() method
