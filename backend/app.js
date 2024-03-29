@@ -78,11 +78,11 @@ app.get('/cart', async (req, res) => {
   app.get('/services', async (req, res) => {
     try {
       // Assuming you've made a request to the endpoint that sends cart data
-      const response = await fetch('http://linux01.dcs.bbk.ac.uk:3000/api/shop/beats');
+      const response = await fetch('http://linux01.dcs.bbk.ac.uk:3000/api/shop/services');
       const data = await response.json();
-      const beats = data.beats;
+      const services = data.services;
       // Render the view here using the cart data
-      res.render('beats', { beats });
+      res.render('services', { services });
     } catch (error) {
       console.error('Error fetching cart data:', error);
       res.status(500).send('Internal Server Error');
