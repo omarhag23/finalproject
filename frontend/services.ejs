@@ -35,7 +35,7 @@
           <div class="container">
             <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
               <div class="col-lg-6">
-                <h1 class="h2 text-uppercase mb-0">Beats</h1>
+                <h1 class="h2 text-uppercase mb-0">Services</h1>
               </div>
               <div class="col-lg-6 text-lg-end">
                 <nav aria-label="breadcrumb">
@@ -128,12 +128,12 @@
                     <div class="product text-center">
                     
                       <div class="mb-3 position-relative">
-                        <div class="badge text-white bg-"></div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src=<%= beat.cover %> alt="..."></a>
+                        <div class="badge text-white bg-"></div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src=<%= service.cover %> alt="..."></a>
                         <div class="product-overlay">
                           <ul class="mb-0 list-inline">
                             <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
                             <% if (username) { %>
-                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark addToCartButton" href="#" data-price="<%=beat.mp3price %>" data-userId="<%= username %>" data-productId="<%= beat._id %>" data-license="Mp3 Lease" data-type="Beat">Add to cart</a></li>
+                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark addToCartButton" href="#" data-price="<%=service.price %>" data-userId="<%= username %>" data-productId="<%= service._id %>" data-license="Exclusive" data-type="Service">Add to cart</a></li>
                             <% }else{ %>
                               <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark " href="login.html" >Login to buy</a></li>
                               <% } %>
@@ -141,8 +141,8 @@
                           </ul>
                         </div>
                       </div>
-                      <h6> <a class="reset-anchor" href="detail.html"><%= beat.title %></li></a></h6>
-                      <p class="small text-muted"><%= beat.price %></p>
+                      <h6> <a class="reset-anchor" href="detail.html"><%= service.title %></li></a></h6>
+                      <p class="small text-muted"><%= service.price %></p>
                       
                     </div>
                  

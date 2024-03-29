@@ -40,14 +40,14 @@ router.get('/kits', async (req, res) => {
 router.get('/services', async (req, res) => {
   try {
     try {
-      const services = Service.find().toArray;
+      const services = await Service.find(); // Correct usage of Mongoose find() method
+      res.json({ services }); // Send cart data as JSON response
     } catch (error) {
-      console.error('Error getting services:', error);
+      console.error('Big Error getting services:', error);
       throw error;
     }
-    res.render('beats', { beats});
   } catch (error) {
-    console.error('Error rendering services page:', error);
+    console.error('Error rendering serices page:', error);
     res.status(500).send('Internal Server Error');
   }
 });
