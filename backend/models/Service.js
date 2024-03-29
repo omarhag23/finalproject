@@ -11,7 +11,7 @@ const serviceSchema = mongoose.Schema({
     cover:{
         type:String
     },
-    exclusive:{
+    price:{
         type:Number
     },
     dateUploaded:{

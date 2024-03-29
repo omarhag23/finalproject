@@ -10,10 +10,10 @@ const kitSchema = mongoose.Schema({
     cover:{
         type:String
     },
-    category:{
+    description:{
         type:String
     },
-    exclusive:{
+    price:{
         type:Number
     },
     dateUploaded:{
