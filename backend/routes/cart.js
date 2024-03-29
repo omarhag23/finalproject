@@ -67,7 +67,7 @@ router.get('/', async (req, res) => {
 
 router.post('/checkout', async (req, res) => {
   try {
-  const  cart = req.body;
+  const  cart = req.body.cart;
   console.log('checkout  ...',cart);
   res.json({ cart });
 } catch (error) {

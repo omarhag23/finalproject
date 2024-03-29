@@ -106,7 +106,7 @@
               <div class="bg-light px-4 py-3"  id="cartNav">
                 <div class="row align-items-center text-center">
                   <div class="col-md-6 mb-3 mb-md-0 text-md-start"><a class="btn btn-link p-0 text-dark btn-sm" href="shop.html"><i class="fas fa-long-arrow-alt-left me-2"> </i>Continue shopping</a></div>
-                  <div class="col-md-6 text-md-end"><a class="btn btn-outline-dark btn-sm .checkout" href="/checkout">Procceed to checkout<i class="fas fa-long-arrow-alt-right ms-2"></i></a></div>
+                  <div class="col-md-6 text-md-end"><a id="checkButton"class="btn btn-outline-dark btn-sm " href="/checkout">Procceed to checkout<i class="fas fa-long-arrow-alt-right ms-2"></i></a></div>
                 </div>
               </div>
             </div>
@@ -212,34 +212,34 @@
         
       </script>
   <script>
-          
-            const checkout = document.querySelectorAll('.checkout');
-            $(document).ready(function() {
-            checkout.forEach(button => {
-              console.log('in tha clicked button')
-                button.addEventListener('click', async (event) => {
-                    event.preventDefault(); // Prevent the default action of clicking the link
-        
-                    var formData = {
-                      cart: cart,
-                      total:total
-    };
+    document.getElementById('checkoutButton').addEventListener('click', async function(event) {
+  event.preventDefault(); // Prevent the default action of clicking the link
 
-                    console.log(formData);
-                    $.ajax({
-      type: 'POST',
-      url: '/api/cart/checkout', 
-      data: formData,
-      success: function(response) {
-        console.log(response,'front 1');
-                if (response.message === 'Authentication successful frontesbd2') {
-                    // Redirect to frontend page
-                    window.location.href = 'index'; // Change '/index' to your frontend page URL
-                } 
-      }
+  try {
+    // Make a POST request to the checkout API endpoint
+    const response = await fetch('/api/cart/checkout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      // Convert the cart data to JSON and send it in the request body
+      body: JSON.stringify({ cart: cart }) // Replace with the actual cart data from your template
     });
-  });
-})
+
+    if (response.ok) {
+      // If the request is successful, log a success message
+      console.log('Checkout successful');
+      // Optionally, redirect to another page or perform other actions
+    } else {
+      // If the request fails, log an error message
+      console.error('Failed to checkout:', response.statusText);
+      // Optionally, display an error message to the user or retry the operation
+    }
+  } catch (error) {
+    // If an error occurs during the request, log it
+    console.error('Error during checkout:', error);
+    // Optionally, display an error message to the user or retry the operation
+  }
 });
 </script>
 

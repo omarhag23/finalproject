@@ -105,17 +105,18 @@ app.get('/cart', async (req, res) => {
 
   app.get('/checkout', async (req, res) => {
     try {
-      // Assuming you've made a request to the endpoint that sends cart data
-      console.log('about to fetch')
-      const response = await fetch('http://linux01.dcs.bbk.ac.uk:3000/api/cart/checkout');
+      // Make a request to the /api/cart/checkout endpoint to fetch the cart data
+      const response = await fetch('http://localhost:3000/api/cart/checkout');
+      if (!response.ok) {
+        throw new Error('Failed to fetch cart data');
+      }
       const data = await response.json();
-      console.log('fetched,response',data.cart)
       const cart = data.cart;
-      console.log('about to render')
-      // Render the view here using the cart data
+  
+      // Render the checkout page and pass the cart data to the template
       res.render('checkout', { cart });
     } catch (error) {
-      console.error('Error fetching cart data:', error);
+      console.error('Error rendering checkout page:', error);
       res.status(500).send('Internal Server Error');
     }
   });
