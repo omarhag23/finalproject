@@ -12,7 +12,6 @@ registerUser :async (username,email,pass) => {
       console.log('User already exists')
       return { userExists: true };
     }
-
     // I created a hashed represenation of my password!
     const salt = await bcryptjs.genSalt(5)
     const hashedPassword = await bcryptjs.hash(pass,salt)

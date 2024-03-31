@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Cart = require('../models/Cart');
+const outcome ="success";
+const Blockchain = require('./blockchain');
 let model;
 
 const path = require('path');
@@ -66,13 +68,21 @@ router.get('/', async (req, res) => {
 
 
 router.post('/checkout', async (req, res) => {
+
+  const { userId, total} = req.body;
   console.log('in tha  ...');
   try {
-  const  cart = req.body.cart;
-  console.log('checkout  ...',cart);
-  res.json({ cart });
+    const errorhand = await Blockchain.deployContrac(userId, total);
+            
+    if (error) {
+    res.status(409).send('error performing transaction');
+  }
+  else
+  res.redirect('/api/shop/login');
+  console.log('checkout  done ...');
+  res.json({ outcome });
 } catch (error) {
-  console.error('Error getting user cart:', error);
+  console.error('Error with transaction', error);
   throw error;
 }
 });

@@ -111,7 +111,7 @@ app.get('/cart', async (req, res) => {
         throw new Error('Failed to fetch cart data');
       }
       const data = await response.json();
-      const cart = data.cart;
+      const cart = data.outcome;
   
       // Render the checkout page and pass the cart data to the template
       res.render('checkout', { cart });
