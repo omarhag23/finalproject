@@ -111,12 +111,13 @@ app.get('/cart', async (req, res) => {
         throw new Error('Failed to fetch cart data');
       }
       const data = await response.json();
-      const cart = data.outcome;
-  
-      // Render the checkout page and pass the cart data to the template
+      console.log('fetched,response',data.cart)
+      const cart = data.cart;
+      console.log('about to render')
+      // Render the view here using the cart data
       res.render('checkout', { cart });
     } catch (error) {
-      console.error('Error rendering checkout page:', error);
+      console.error('Error fetching cart data:', error);
       res.status(500).send('Internal Server Error');
     }
   });
