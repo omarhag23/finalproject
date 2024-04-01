@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-//const fetch = require('node-fetch'); 
+const fetch = require('node-fetch'); 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 const path = require('path');
