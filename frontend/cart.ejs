@@ -213,42 +213,6 @@
       </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-   <script>
-    
-               console.log('in tha script button');
-          const addToCartButtons = document.querySelectorAll('.addToCartButton');
-          $(document).ready(function() {
-          addToCartButtons.forEach(button => {
-            console.log('in tha clicked button');
-              button.addEventListener('click', async (event) => {
-                  event.preventDefault(); // Prevent the default action of clicking the link
-      
-                  var formData = {
-                    userId: button.getAttribute('data-userId'),
-                    total: button.getAttribute('data-price'),
-                    
-  };
-
-                  console.log(formData);
-                  $.ajax({
-    type: 'POST',
-    url: '/api/cart/checkout', 
-    data: formData,
-    success: function(response) {
-      console.log(response,'front 1');
-              if (response.message === 'Authentication successful frontesbd2') {
-                  // Redirect to frontend page
-                  window.location.href = 'index'; // Change '/index' to your frontend page URL
-              } 
-    }
-  });
-});
-})
-});
-</script>
-
-
-
       <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     </div>
