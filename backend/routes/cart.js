@@ -74,6 +74,7 @@ router.post('/checkout', async (req, res) => {
    // const errorhand = await Blockchain.deployContrac(userId, total);
    const { userId, total} = req.body; 
    try {
+    console.log('username  ...',userId);
     const cart = await Cart.findOne({ user_id: userId }).populate('items.product_id');
     res.json({ cart }); // Send cart data as JSON response
   } catch (error) {
