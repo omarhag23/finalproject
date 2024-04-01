@@ -106,7 +106,7 @@
               <div class="bg-light px-4 py-3"  id="cartNav">
                 <div class="row align-items-center text-center">
                   <div class="col-md-6 mb-3 mb-md-0 text-md-start"><a class="btn btn-link p-0 text-dark btn-sm" href="shop.html"><i class="fas fa-long-arrow-alt-left me-2"> </i>Continue shopping</a></div>
-                  <div class="col-md-6 text-md-end"><a id="checkButton"class="btn btn-outline-dark btn-sm addToCartButton" data-price="<%=total %>" data-userId="<%= username %>"href="#">Procceed to checkout<i class="fas fa-long-arrow-alt-right ms-2"></i></a></div>
+                  <div class="col-md-6 text-md-end"><a class="btn btn-outline-dark btn-sm addToCartButton" data-price="<%=total %>" data-userId="<%= username %>"href="#">Procceed to checkout<i class="fas fa-long-arrow-alt-right ms-2"></i></a></div>
                 </div>
               </div>
             </div>
@@ -213,11 +213,11 @@
       </script>
 
    <script>
-          
+               console.log('in tha script button');
           const addToCartButtons = document.querySelectorAll('.addToCartButton');
           $(document).ready(function() {
           addToCartButtons.forEach(button => {
-            console.log('in tha clicked button')
+            console.log('in tha clicked button');
               button.addEventListener('click', async (event) => {
                   event.preventDefault(); // Prevent the default action of clicking the link
       
