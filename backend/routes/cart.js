@@ -73,6 +73,8 @@ router.post('/checkout', async (req, res) => {
    try {
     console.log('username  ...',userId);
     const cart = await Cart.findOne({ user_id: userId }).populate('items.product_id');
+    console.log('cart  ...',cart);
+
     res.json({ cart }); // Send cart data as JSON response
   } catch (error) {
     console.error('Error getting user cart:', error);
