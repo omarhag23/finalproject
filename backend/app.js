@@ -113,7 +113,7 @@ app.get('/cart', async (req, res) => {
       const cart = data.cart;
       console.log('about to render')
       // Render the view here using the cart data
-      res.render('cart', { cart });
+      res.render('checkout', { cart });
     } catch (error) {
       console.error('Error fetching cart data:', error);
       res.status(500).send('Internal Server Error');
