@@ -67,10 +67,7 @@ router.get('/', async (req, res) => {
 
 
 router.post('/checkout', async (req, res) => {
-
- 
   console.log('in tha  ...');
-  try {
    // const errorhand = await Blockchain.deployContrac(userId, total);
    const { userId, total} = req.body; 
    try {
@@ -81,17 +78,7 @@ router.post('/checkout', async (req, res) => {
     console.error('Error getting user cart:', error);
     throw error;
   }   
-    if (error) {
-    res.status(409).send('error performing transaction');
-  }
-  else
-  //res.redirect('/api/shop/login');
-  console.log('checkout  done ...');
-  res.json({ userId,total });
-} catch (error) {
-  console.error('Error with transaction', error);
-  throw error;
-}
+    
 });
 
 module.exports = router;
