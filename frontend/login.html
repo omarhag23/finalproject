@@ -383,6 +383,8 @@ if (elPassword.addEventListener) {
 
     $(document).ready(function() {
   $('#loginForm').submit(function(event) {
+    if (checkFilled==true)
+    {
     event.preventDefault(); // Prevent the form from submitting normally
     
     var formData = {
@@ -391,8 +393,7 @@ if (elPassword.addEventListener) {
     };
     
     console.log(formData);
-    if (checkFilled===true)
-    {
+  
      $.ajax({
       type: 'POST',
       url: '/api/user/login', 
@@ -405,8 +406,8 @@ if (elPassword.addEventListener) {
                     window.location.href = 'index'; // Change '/index' to your frontend page URL
                 } 
       }
-    });}
-  });
+    });
+  }});
 });
 </script>
 
