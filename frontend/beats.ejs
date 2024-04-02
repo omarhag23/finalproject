@@ -70,14 +70,7 @@
                   <li class="mb-2"><a class="reset-anchor" href="#!">RnB</a></li>
                 </ul>
               
-                <h6 class="text-uppercase mb-4">BPM range</h6>
-                <div class="price-range pt-4 mb-5">
-                  <div id="range"></div>
-                  <div class="row pt-2">
-                    <div class="col-6"><strong class="small fw-bold text-uppercase">From</strong></div>
-                    <div class="col-6 text-end"><strong class="small fw-bold text-uppercase">To</strong></div>
-                  </div>
-                </div>
+             
                 <h6 class="text-uppercase mb-3">Show only</h6>
                 <div class="form-check mb-1">
                   <input class="form-check-input" type="checkbox" id="checkbox_1">
@@ -235,6 +228,9 @@
       success: function(response) {
         console.log(response,'front 1');
                 if (response.message === 'Authentication successful frontesbd2') {
+                  
+            alert("Product added to cart");
+      
                     // Redirect to frontend page
                     window.location.href = 'index'; // Change '/index' to your frontend page URL
                 } 

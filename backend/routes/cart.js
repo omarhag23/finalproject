@@ -29,26 +29,15 @@ router.post('/add', async (req, res) => {
   console.log('trying to find a model . ...');
   try {
     const product = await model.findOne({_id: productId });
-     
-    // Initialize price variable
-    // Retrieve cover, title, and set price based on license
-  
     if (product) {
-      console.log('beat found ...');
         cover = product.cover;
-        title = product.title;
-               
-        }
-        console.log('price...',price);
-    
+        title = product.title;}
     const cart = await Cart.findOneAndUpdate(
       { username: userId },
       { $push: { items: { product_id: productId, type: type,license:license,cover:cover,title:title,price:price } } },
       { upsert: true, new: true }
     );
-    console.log('added item to cart:',cart);
   } catch (error) {
-    console.error('Error adding item to cart:', error);
     throw error;
   }
 });
