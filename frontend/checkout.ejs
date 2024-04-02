@@ -297,38 +297,41 @@
         
       </script>
 
-
 <script>
-
 $(document).ready(function () {
-            // Attach click event listener to the "Place order" button
-            $('#order').on('click', function () {
- console.log("in the order script")
-    event.preventDefault(); // Prevent the form from submitting normally
-    
-    var formData = {
-      total: total // Get the value of the password input field
-    };
-    
-    console.log(formData);
-  
-     $.ajax({
-      type: 'POST',
-      url: '/api/cart/checkout/', 
-      data: formData,
-      success: function(response) {
-        alert("User succesfully logged in");
-        console.log(response,'front 1');
-                if (response.message === 'Authentication successful frontesbd2') {
-                    // Redirect to frontend page
-                    window.location.href = 'index'; // Change '/index' to your frontend page URL
-                } 
-      }
-    });
+  // Attach click event listener to the "Place order" button
+  $('#order').on('click', function (event) {
+      console.log("in the order script");
+      event.preventDefault(); // Prevent the form from submitting normally
+
+      // Assuming 'total' is defined or retrieved from somewhere
+       // Example value, replace with actual total
+
+      var formData = {
+          total: total // Include the total in the form data
+      };
+
+      console.log(formData);
+
+      $.ajax({
+          type: 'POST',
+          url: '/api/cart/checkout/',
+          data: formData,
+          success: function(response) {
+              console.log(response);
+              // Handle successful response
+              alert("Order placed successfully!");
+              // Optionally, redirect or perform other actions based on the response
+          },
+          error: function(xhr, status, error) {
+              console.error('Error:', error);
+              // Handle errors
+              alert("Error placing order. Please try again later.");
+          }
+      });
   });
 });
 </script>
-
 
       <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
