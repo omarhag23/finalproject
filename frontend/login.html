@@ -336,14 +336,14 @@
 
   var elForm = document.getElementById('loginForm');
   var elPassword = document.getElementById('password');
-  var length =elPassword.value.length;
-  console.log("value length : ",length)
+
   var elMsg = document.getElementById('feedback');
   var elUsername = document.getElementById('username');
 
 
 function checkFilled() {
-    if (elUsername.value == "" || elPassword.value == "" ||length <8) {
+    if (elUsername.value == "" || elPassword.value == "" ||elPassword.value.length <8) {
+      console.log("value length : ",elPassword.value.length)
         elMsg.innerHTML = 'Please check your credentials';
         event.preventDefault();
         return false
