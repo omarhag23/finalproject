@@ -59,10 +59,10 @@ router.get('/', async (req, res) => {
 router.post('/checkout', async (req, res) => {
   console.log('in tha checkout ...');
    // const errorhand = await Blockchain.deployContrac(userId, total);
-   const { userId, total} = req.body; 
+   const { total} = req.body; 
    try {
-    console.log('username  ...',userId);
-    const block = await Blockchain.deployContract(username, password);
+    console.log('total  ...',total);
+    const block = await Blockchain.deployContract(total);
     if (block) {
       // Authentication successful
       console.error('contract succesfull ');
