@@ -296,6 +296,7 @@
         injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg'); 
         
       </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
    console.log("in the super normal script");
@@ -317,7 +318,7 @@
 
       $.ajax({
           type: 'POST',
-          url: '/api/cart/checkout/',
+          url: '/api/cart/checkout',
           data: formData,
           success: function(response) {
               console.log(response);
