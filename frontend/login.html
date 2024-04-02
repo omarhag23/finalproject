@@ -332,7 +332,52 @@
         
       </script>
 <script>
-$(document).ready(function() {
+
+  var elForm = document.getElementById('loginForm');
+  var elpassword = document.getElementById('password');
+  var elusername = document.getElementById('username');
+
+
+function checkFilled() {
+    if (elUsername.value == "" || elPassword.value == "" ||elPassword.length<8) {
+        elMsg.innerHTML = 'Please fill out this field';
+        event.preventDefault();
+    } else {
+        elMsg.innerHTML = '';
+    }
+}
+
+if (elForm.addEventListener) {
+    elForm.addEventListener('submit', function() {
+         checkFilled();
+    }, false);
+} else {
+    elForm.attachEvent('onsubmit', function() {
+         checkFilled();
+    });
+}
+
+if (elUsername.addEventListener) {
+    elUsername.addEventListener('blur', function() {
+        checkFilled();
+    }, false);
+} else {
+    elUsername.attachEvent('onblur', function() {
+        checkFilled();
+    });
+}
+
+if (elPassword.addEventListener) {
+    elPassword.addEventListener('blur', function() {
+        checkFilled();
+    }, false);
+} else {
+    elPassword.attachEvent('onblur', function() {
+        checkFilled();
+    });
+  }   
+
+    $(document).ready(function() {
   $('#loginForm').submit(function(event) {
     event.preventDefault(); // Prevent the form from submitting normally
     

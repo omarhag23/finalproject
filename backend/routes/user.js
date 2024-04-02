@@ -41,7 +41,7 @@ router.post('/register', async (req, res) => {
         res.redirect('/');
       } else {
         // Authentication failed (invalid credentials)
-        res.redirect('/login');
+          res.redirect('/');
       }
     } catch (error) {
       console.error(error);
