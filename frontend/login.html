@@ -342,8 +342,9 @@
 
 
 function checkFilled() {
-    if (elUsername.value == "" || elPassword.value == "" ||elPassword.value.length <8) {
-      console.log("value length : ",elPassword.value.length)
+  len = elPassword.value.length;
+    if (elUsername.value == "" || elPassword.value == "" ||len <8) {
+      console.log("value length : ",len)
         elMsg.innerHTML = 'Please check your credentials';
         event.preventDefault();
         return false
