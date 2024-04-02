@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Cart = require('../models/Cart');
-const Blockchain = require('./blockchain');
+//const Blockchain = require('./blockchain');
 let model;
 
 const path = require('path');
@@ -57,10 +57,11 @@ router.get('/', async (req, res) => {
 
 
 router.post('/checkout', async (req, res) => {
-  console.log('in tha checkout ...');
+  console.log('in tha  ...');
    // const errorhand = await Blockchain.deployContrac(userId, total);
    const { total} = req.body; 
    try {
+<<<<<<< HEAD
     console.log('total  ...',total);
     const block = await Blockchain.deployContract(total);
     if (block) {
@@ -68,8 +69,14 @@ router.post('/checkout', async (req, res) => {
       console.error('contract succesfull ');
       res.redirect('/download');
     cart=null; // Send cart data as JSON response
+=======
+    console.log('username  ...',userId);
+    const cart = await Cart.findOne({ user_id: userId });
+    console.log('cart  ...',cart);
+>>>>>>> parent of a162876 (try checkout)
 
-  } }catch (error) {
+    res.json({ cart }); // Send cart data as JSON response
+  } catch (error) {
     console.error('Error getting user cart:', error);
     throw error;
   }   
