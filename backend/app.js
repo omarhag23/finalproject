@@ -5,6 +5,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch'); 
+const crypto = require('crypto')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 const path = require('path');
