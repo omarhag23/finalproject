@@ -343,8 +343,11 @@ function checkFilled() {
     if (elUsername.value == "" || elPassword.value == "" ||elPassword.length<8) {
         elMsg.innerHTML = 'Please fill out this field';
         event.preventDefault();
+        return false
     } else {
+        
         elMsg.innerHTML = '';
+        return true;
     }
 }
 
@@ -386,9 +389,11 @@ if (elPassword.addEventListener) {
       username: $('#username').val(), // Get the value of the username input field
       password: $('#password').val() // Get the value of the password input field
     };
-
+    
     console.log(formData);
-    $.ajax({
+    if (checkFilled===true)
+    {
+     $.ajax({
       type: 'POST',
       url: '/api/user/login', 
       data: formData,
@@ -400,7 +405,7 @@ if (elPassword.addEventListener) {
                     window.location.href = 'index'; // Change '/index' to your frontend page URL
                 } 
       }
-    });
+    });}
   });
 });
 </script>
