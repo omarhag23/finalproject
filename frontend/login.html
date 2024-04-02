@@ -380,11 +380,11 @@ if (elPassword.addEventListener) {
         checkFilled();
     });
   }   
-
+  if (checkFilled==true)
+    {
     $(document).ready(function() {
   $('#loginForm').submit(function(event) {
-    if (checkFilled==true)
-    {
+ 
     event.preventDefault(); // Prevent the form from submitting normally
     
     var formData = {
@@ -407,8 +407,8 @@ if (elPassword.addEventListener) {
                 } 
       }
     });
-  }});
-});
+  });
+});}
 </script>
 
 
