@@ -58,7 +58,7 @@ router.post('/register', async (req, res) => {
             return res.status(500).send('Error destroying session');
         }
         // Redirect the user to the homepage or login page
-        res.redirect('/index');
+        res.redirect('/');
     });
 });
 router.get('/index', (req, res) => {
