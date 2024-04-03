@@ -43,6 +43,24 @@ mongoose.connect(MURL, () => {
     console.log('MongoDB is up and running...');
 });
 
+app.get('/detail', async (req, res) => {
+  try {
+    // Assuming you
+    const productId = req.query.productId;
+    const type = req.query.type;
+
+    // Construct the URL with the parameters
+    const url = `http://linux01.dcs.bbk.ac.uk:3000/api/cart/detail?productId=${productId}&type=${type}`;
+    const response = await fetch('http://linux01.dcs.bbk.ac.uk:3000/api/cart/detail');
+    const beat = await response.json();
+    // Render the view here using the cart data
+    res.render('detail', { beat });
+  } catch (error) {
+    console.error('Error fetching cart data:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 
 app.get('/cart', async (req, res) => {
     try {

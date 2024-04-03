@@ -7,6 +7,8 @@ let model;
 const path = require('path');
 router.use(express.static(path.join(__dirname, '..', 'frontend')));
 // Example of adding an item to the cart
+
+
 router.post('/add', async (req, res) => {
   const { userId, price, productId, license, type } = req.body;
   console.log('price 1  ...',price);
@@ -75,5 +77,40 @@ router.post('/checkout', async (req, res) => {
   }   
     
 });
+
+router.get('/detail', async (req, res) => {
+  const productId = req.query.productId;
+  const type = req.query.type;
+ 
+  switch (type)
+  {
+    case 'Beat':
+        model = require('../models/Beat');
+      break;
+    case 'Kit':
+       model = require('../models/Kit');
+      break;
+    case 'Service':
+       model = require('../models/Service');
+        break;  
+    // Add more cases as needed for other models
+    default:
+      // Handle the case when the type is not recognized
+      console.error('Unknown model type:', type);
+  }
+
+  try {
+    console.log("trying to find details");
+    const product = await model.findOne({_id: productId });
+    console.log("details found,",product);
+    res.json( product);
+
+     // Send cart data as JSON response
+  } catch (error) {
+    console.error('Error getting user cart:', error);
+    throw error;
+  }
+});
+
 
 module.exports = router;
