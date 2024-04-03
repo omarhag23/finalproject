@@ -72,7 +72,7 @@ const buyerAddress =accounts[1];
             });
             console.log("contract deployed, estimating gas... ");
             const as = '8750000';
-            const gas = await deploy.estimateGas();
+       //     const gas = await deploy.estimateGas();
             console.log("estimated gas:", gas);
             console.log(" estimated gas :  ",gas); 
             const receipt = await deploy.send({
