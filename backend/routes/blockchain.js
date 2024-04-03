@@ -127,12 +127,12 @@ const buyerAddress =accounts[1];
                 arguments: [sellerAddress]
             });
             console.log("contract deployed, estimating gas... ");
-            const as = '875000';
-       //     const gas = await deploy.estimateGas();
+           // const as = '875000';
+            const gas = await deploy.estimateGas();
             
             const receipt = await deploy.send({
                 from: sellerAddress,
-                gas: as,
+                gas: gas,
                 gasPrice: '3000000000' // Gas price
             });
             const contractAddress = receipt.options.address;
@@ -150,8 +150,8 @@ const buyerAddress =accounts[1];
             const totalPriceInEther = totalPriceInDollars / exchangeRate;
             const totalPriceInWei = web3.utils.toWei(totalPriceInEther.toString(), 'ether');
             const contractInstance = new web3.eth.Contract(abi, contractAddress);
-            const tx = await contractInstance.methods.buy(account.address, totalPriceInWei).send({
-                from: account.address,
+            const tx = await contractInstance.methods.buy(buyerAddress, totalPriceInWei).send({
+                from: sellerAddress,
                 value: totalPriceInWei,
                 gas: '500000', // Adjust the gas limit as needed
                 gasPrice: '1000000000' // Gas price
