@@ -118,7 +118,7 @@ var block =false;
 /*
 
  */
-const contractAddress= '0xE0e450Dfa15591CF333B4f5642700e3f4044930';                                                                                        0
+const contractAddress= '0xE0e450Dfa15591CF333B4f5642700e3f40449300';                                                                                        0
 
 const Blockchain = {
     getBalance: async(buyerAddress)=> {
