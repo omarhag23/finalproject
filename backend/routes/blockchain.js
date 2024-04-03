@@ -173,8 +173,7 @@ const Blockchain = {
         return true
     } else {
         console.log('Insufficient balance to make the purchase, make a deposit before purchasing');
-        res.redirect('/');
-        return false;
+        return { success: false, message: 'Insufficient balance to make the purchase, make a deposit before purchasing' };
     }
         } catch (error) {
             console.error('Error performing transaction:', error);

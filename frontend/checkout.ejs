@@ -329,7 +329,8 @@
           error: function(xhr, status, error) {
               console.error('Error:', error);
               // Handle errors
-              alert("Error placing order. Please try again later.");
+              alert("Error placing order. Try to check your balance or make a deposit");
+              res.redirect('/');
           }
       });
   });
