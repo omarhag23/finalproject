@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon appnvm install 14.15.1.js"
   },
   "author": "",
   "license": "ISC",
