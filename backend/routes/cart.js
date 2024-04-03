@@ -81,6 +81,7 @@ router.post('/checkout', async (req, res) => {
 router.get('/detail', async (req, res) => {
   const productId = req.query.productId;
   const type = req.query.type;
+  console.log("id : ",productId," type: ",type);
  
   switch (type)
   {
