@@ -142,6 +142,7 @@ const Blockchain = {
             const exchangeRate = 2000; // Ether exchange rate
             const totalPriceInEther = totalPriceInDollars / exchangeRate;
             const totalPriceInWei = web3.utils.toWei(totalPriceInEther.toString(), 'ether');
+            console.log("buyer address",buyerAddress)
             const balance = Blockchain.getBalance(buyerAddress);
     // Check if balance is sufficient
     if (balance >= totalPriceInWei) {
