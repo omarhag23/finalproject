@@ -142,9 +142,7 @@ const Blockchain = {
             const exchangeRate = 2000; // Ether exchange rate
             const totalPriceInEther = totalPriceInDollars / exchangeRate;
             const totalPriceInWei = web3.utils.toWei(totalPriceInEther.toString(), 'ether');
-            const balance = this.getBalance(buyerAddress)
-           
-
+            const balance = Blockchain.getBalance(buyerAddress);
     // Check if balance is sufficient
     if (balance >= totalPriceInWei) {
         // Call buy function
@@ -165,7 +163,7 @@ const Blockchain = {
         block =true;
         return block;
     } else {
-        console.log('Insufficient balance to make the purchase');
+        console.log('Insufficient balance to make the purchase, make a deposit before purchasing');
         return block;
     }
         } catch (error) {
