@@ -70,7 +70,7 @@ const buyerAddress =accounts[1];
                 data: bytecode,
                 arguments: [sellerAddress]
             });
-
+            console.log("contract deployed, estimating gas... ");
             const gas = await deploy.estimateGas();
             const receipt = await deploy.send({
                 from: sellerAddress,
