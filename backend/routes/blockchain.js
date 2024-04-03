@@ -59,44 +59,48 @@ const bytecode = '608060405234801561000f575f80fd5b506040516106c93803806106c98339
 const accounts = web3.eth.accounts;
 const userAccount =accounts[1]; 
 const sellerAddress = '0x2516F83D12E50A1980caFd962AB73226319D5AF7'; 
+
 const Blockchain = {
     deployContract: async () => {
-        // Replace with actual seller address
-        const contract = new web3.eth.Contract(abi);
-        const deploy = contract.deploy({
-            data: bytecode,
-            arguments: [sellerAddress]
-        });
-    
-        const gas = await deploy.estimateGas();
-        const receipt = await deploy.send({
-            from: account.address,
-            gas: gas,
-            gasPrice: '1000000000' // Gas price
-        });
-        const contractAddress = receipt.options.address;
-        console.log('Contract deployed at address:', contractAddress);
-        return contractAddress;
+        try {
+            const contract = new web3.eth.Contract(abi);
+            const deploy = contract.deploy({
+                data: bytecode,
+                arguments: [sellerAddress]
+            });
+
+            const gas = await deploy.estimateGas();
+            const receipt = await deploy.send({
+                from: account.address,
+                gas: gas,
+                gasPrice: '1000000000' // Gas price
+            });
+            const contractAddress = receipt.options.address;
+            console.log('Contract deployed at address:', contractAddress);
+            return contractAddress;
+        } catch (error) {
+            console.error('Error deploying contract:', error);
+            throw error; // Ensure to throw the error for proper handling
+        }
     },
 
-    performTransaction: async (contractAddress,totalPrice) => {
+    performTransaction: async (contractAddress, totalPriceInDollars) => {
         try {
-            const exchangeRate = 2000;//ether exchange rate
-            const totaleth =   totalPrice / exchangeRate;
-            totalWei =web3.utils.toWei(totaleth.toString(), 'ether');
+            const exchangeRate = 2000; // Ether exchange rate
+            const totalPriceInEther = totalPriceInDollars / exchangeRate;
+            const totalPriceInWei = web3.utils.toWei(totalPriceInEther.toString(), 'ether');
             const contractInstance = new web3.eth.Contract(abi, contractAddress);
-            console.log("user address : ",userAccount, "seller address ",sellerAddress, "contract address : ",contractAddress,"total rpice",totalPrice);
-            const tx = await contractInstance.methods.buy(userAccount, totalPrice).send({
+            const tx = await contractInstance.methods.buy(account.address, totalPriceInWei).send({
                 from: account.address,
-                value: totalWei,
+                value: totalPriceInWei,
                 gas: '500000', // Adjust the gas limit as needed
                 gasPrice: '1000000000' // Gas price
             });
             console.log('Transaction receipt:', tx);
             return tx;
         } catch (error) {
-            console.error('Error occurred:', error);
-            return { error: true };
+            console.error('Error performing transaction:', error);
+            throw error; // Ensure to throw the error for proper handling
         }
     }
 };
