@@ -63,7 +63,14 @@ router.post('/checkout', async (req, res) => {
    try {
 
     console.log('total  ...',total);
-    const tx = await Blockchain.performTransaction(total);
+    Blockchain.deployContract()
+    .then(contractAddress => {
+        console.log('Contract deployed!');
+        const tx= Blockchain.performTransaction(contractAddress, totalPriceInDollars);
+    })
+    .catch(error => {
+        console.error('Error deploying contract:', error);
+    });
     if (tx) {
       // Authentication successful
       console.error('contract succesfull ');
