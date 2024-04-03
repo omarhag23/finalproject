@@ -5,8 +5,6 @@ const fs = require('fs');
 const web3 = new Web3('HTTP://193.61.44.23:7545'); // Update with your Ganache RPC server address
 
 
-const privateKey = '0x4939312b50468914d8e19aec58dde91aa18b3321e361a5e5f41b62a9d2ed298e'; // Replace with your private key from Ganache
-const account = web3.eth.accounts.privateKeyToAccount(privateKey);
 
 const abi = 
 [
@@ -57,14 +55,14 @@ const bytecode = '608060405234801561000f575f80fd5b506040516105c53803806105c58339
 
 
 const accounts = web3.eth.accounts;
-const userAccount =accounts[1]; 
-const sellerAddress = '0x2516F83D12E50A1980caFd962AB73226319D5AF7'; 
+const buyerAddress =accounts[1].address; 
+const sellerAddress = accounts[0].address;  
 
 const Blockchain = {
     deployContract: async () => {
         try {
             const contract = new web3.eth.Contract(abi);
-            console.log("contract found,trying to log");
+            console.log("contract found,trying to deploy, seller address : ",sellerAddress);
             const deploy = contract.deploy({
                 data: bytecode,
                 arguments: [sellerAddress]
@@ -72,7 +70,7 @@ const Blockchain = {
 
             const gas = await deploy.estimateGas();
             const receipt = await deploy.send({
-                from: account.address,
+                from: sellerAddress,
                 gas: gas,
                 gasPrice: '1000000000' // Gas price
             });
