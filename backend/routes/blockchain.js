@@ -112,7 +112,6 @@ const bytecode = '608060405234801561001057600080fd5b5060405161075738038061075783
 
 const privateKey ='0xf52ad7084aa1fe9b5a1be33eba6d453d7e06b4d3ecb5971e2e469f4ab42670b1';
 
-var block =false;
 //const bytecode = '0x' +code;
 /*
 
@@ -170,16 +169,17 @@ const Blockchain = {
         // Send the signed transaction
         const receipt = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
         console.log('Transaction receipt:', receipt);
-        block =true;
-        return block;
+      
+        return true
     } else {
         console.log('Insufficient balance to make the purchase, make a deposit before purchasing');
-        return block;
+        res.redirect('/');
+        return false;
     }
         } catch (error) {
             console.error('Error performing transaction:', error);
             throw error; // Ensure to throw the error for proper handling
-            return block;
+            return false;
         }
     },
 
