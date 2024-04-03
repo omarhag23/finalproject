@@ -150,10 +150,13 @@ const Blockchain = {
     if (balance >= totalPriceInWei) {
         // Call buy function
         const encodedABI = contractInstance.methods.buy(buyerAddress, totalPriceInWei).encodeABI();
+        const gasPrice = await web3.eth.getGasPrice();
+        const gasLimit = 2000000; // Adjust gas limit as needed
         const tx = {
             from : sellerAddress,
             to: contractAddress,
-            gas: 2000000,
+            gas: gasLimit,
+            gasPrice: gasPrice,
             data: encodedABI,
             value: 0 // This is for transferring any additional value, but your function doesn't accept ether, so set it to 0
         };
