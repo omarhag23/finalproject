@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const fetch = require('node-fetch'); 
 let crypto;
 try {
-  crypto = require('node:crypto');
+  crypto = require('crypto');
 } catch (err) {
   console.error('crypto support is disabled!');
 } 
