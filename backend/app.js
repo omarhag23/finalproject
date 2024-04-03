@@ -5,12 +5,6 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch'); 
-let crypto;
-try {
-  crypto = require('node:crypto');
-} catch (err) {
-  console.error('crypto support is disabled! i dont know why');
-} 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 const path = require('path');
