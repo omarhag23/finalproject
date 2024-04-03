@@ -45,6 +45,8 @@ mongoose.connect(MURL, () => {
 
 app.get('/detail', async (req, res) => {
   try {
+
+    console.log("in tha app detail , id : ",productId," type: ",type);
     // Assuming you
     const productId = req.query.productId;
     const type = req.query.type;
