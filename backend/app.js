@@ -7,9 +7,9 @@ const bodyParser = require('body-parser');
 const fetch = require('node-fetch'); 
 let crypto;
 try {
-  crypto = require('crypto');
+  crypto = require('node:crypto');
 } catch (err) {
-  console.error('crypto support is disabled!');
+  console.error('crypto support is disabled! i dont know why');
 } 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
