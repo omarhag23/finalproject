@@ -46,11 +46,11 @@ mongoose.connect(MURL, () => {
 app.get('/detail', async (req, res) => {
   try {
 
-    console.log("in tha app detail , id : ",productId," type: ",type);
+    
     // Assuming you
     const productId = req.query.productId;
     const type = req.query.type;
-
+    console.log("in tha app detail , id : ",productId," type: ",type);
     // Construct the URL with the parameters
     const url = `http://linux01.dcs.bbk.ac.uk:3000/api/cart/detail?productId=${productId}&type=${type}`;
     const response = await fetch('http://linux01.dcs.bbk.ac.uk:3000/api/cart/detail');
