@@ -55,6 +55,7 @@ const bytecode = '608060405234801561000f575f80fd5b506040516105c53803806105c58339
 
 
 const accounts = web3.eth.accounts;
+console.log("accounts",accounts);
 const buyerAddress =accounts[1];
 const sellerAddress = accounts[0];
  
