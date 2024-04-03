@@ -26,7 +26,7 @@ router.post('/add', async (req, res) => {
       // Handle the case when the type is not recognized
       console.error('Unknown model type:', type);
   }
-  console.log('trying to find a model . ...');
+
   try {
     const product = await model.findOne({_id: productId });
     if (product) {
