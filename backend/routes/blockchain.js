@@ -55,14 +55,14 @@ const bytecode = '608060405234801561000f575f80fd5b506040516105c53803806105c58339
 
 
 const accounts = web3.eth.getAccounts();
-
-const buyerAddress =accounts[1];
 const sellerAddress = accounts[0];
+const buyerAddress =accounts[1];
+
  
 
 const Blockchain = {
     deployContract: async () => {
-        console.log("accounts",accounts);
+        console.log("accounts",accounts,"first account",accounts[0],"second : ",accounts[1]);
         try {
             const contract = new web3.eth.Contract(abi);
             console.log("contract found,trying to deploy, seller address : ",sellerAddress);
