@@ -58,9 +58,10 @@ const bytecode = '608060405234801561000f575f80fd5b506040516106c93803806106c98339
 
 const accounts = web3.eth.accounts;
 const userAccount =accounts[1]; 
+const sellerAddress = '0x2516F83D12E50A1980caFd962AB73226319D5AF7'; 
 const Blockchain = {
     deployContract: async () => {
-        const sellerAddress = '0x2516F83D12E50A1980caFd962AB73226319D5AF7'; // Replace with actual seller address
+        // Replace with actual seller address
         const contract = new web3.eth.Contract(abi);
         const deploy = contract.deploy({
             data: bytecode,
@@ -84,7 +85,7 @@ const Blockchain = {
             const totalPrice =   totalPrice / exchangeRate;
             totalPrice =web3.utils.toWei(totalPrice.toString(), 'ether');
             const contractInstance = new web3.eth.Contract(abi, contractAddress);
-            console.log("user address : ",userAccount, "contract address : ",contractAddress,"total rpice",totalPrice);
+            console.log("user address : ",userAccount, "seller address ",sellerAddress, "contract address : ",contractAddress,"total rpice",totalPrice);
             const tx = await contractInstance.methods.buy(userAccount, totalPrice).send({
                 from: account.address,
                 value: totalPrice,
