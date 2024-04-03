@@ -57,19 +57,18 @@ router.get('/', async (req, res) => {
 
 
 router.post('/checkout', async (req, res) => {
-  console.log('in tha  ...');
+  console.log('in tha  checkout...');
    // const errorhand = await Blockchain.deployContrac(userId, total);
    const { total} = req.body; 
    try {
 
     console.log('total  ...',total);
-    performTransaction: async (totalPrice) => {
     const tx = await Blockchain.performTransaction(total);
     if (tx) {
       // Authentication successful
       console.error('contract succesfull ');
       res.redirect('/download');
-  }}} catch (error) {
+  }} catch (error) {
     console.error('Error getting user cart:', error);
     throw error;
   }   
