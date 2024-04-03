@@ -47,6 +47,9 @@ app.get('/detail', async (req, res) => {
   try {
 
     
+    // Assuming you
+    const productId = req.query.productId;
+    const type = req.query.type;
     console.log("in tha app detail , id : ",productId," type: ",type);
     // Construct the URL with the parameters
     const url = `http://linux01.dcs.bbk.ac.uk:3000/api/cart/detail?productId=${productId}&type=${type}`;
