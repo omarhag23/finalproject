@@ -145,7 +145,7 @@ const Blockchain = {
             const totalPriceInEther = totalPriceInDollars / exchangeRate;
             const totalPriceInWei = web3.utils.toWei(totalPriceInEther.toString(), 'ether');
             console.log("buyer address",buyerAddress)
-            const balance = Blockchain.getBalance(buyerAddress);
+            const balance = await Blockchain.getBalance(buyerAddress);
             const bala =balance.toString() ;
             console.log("buyer balance ",bala);
 
