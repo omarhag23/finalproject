@@ -57,7 +57,7 @@ const bytecode = '608060405234801561000f575f80fd5b506040516106c93803806106c98339
 
 
 const accounts = web3.eth.accounts;
-const userAccount =accounts[1];
+const userAccount =accounts[1]; 
 const Blockchain = {
     deployContract: async () => {
         const sellerAddress = '0x2516F83D12E50A1980caFd962AB73226319D5AF7'; // Replace with actual seller address
