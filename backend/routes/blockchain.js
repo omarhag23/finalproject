@@ -124,9 +124,8 @@ const Blockchain = {
         try {
             const contractInstance = new web3.eth.Contract(abi, contractAddress);
             const balance = await contractInstance.methods.getBalance(buyerAddress).call();       
-            if (balance.toString() == '0n'){balance = 0;}
             console.log('Buyer balance now:', balance.toString());
-            return balance;
+            return balance.toString();
         } catch (error) {
             console.error('Error getting Balance:', error);
             throw error; 
@@ -147,6 +146,7 @@ const Blockchain = {
             const totalPriceInWei = web3.utils.toWei(totalPriceInEther.toString(), 'ether');
             console.log("buyer address",buyerAddress)
             const balance = Blockchain.getBalance(buyerAddress);
+
     // Check if balance is sufficient
     if (balance >= totalPriceInWei) {
         // Call buy function
