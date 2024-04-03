@@ -125,7 +125,7 @@ const Blockchain = {
             const contractInstance = new web3.eth.Contract(abi, contractAddress);
             const balance = await contractInstance.methods.getBalance(buyerAddress).call();       
             if (balance.toString() == '0n'){balance = 0;}
-            console.log('Buyer balance now:', balance.toString);
+            console.log('Buyer balance now:', balance.toString());
             return balance;
         } catch (error) {
             console.error('Error getting Balance:', error);
