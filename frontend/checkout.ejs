@@ -330,7 +330,7 @@
               console.error('Error:', error);
               // Handle errors
               alert("Error placing order. Try to check your balance or make a deposit");
-              res.redirect('/');
+              window.location.href = '/';
           }
       });
   });
