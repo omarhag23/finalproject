@@ -63,12 +63,13 @@ router.post('/checkout', async (req, res) => {
    try {
 
     console.log('total  ...',total);
-    const block = await Blockchain.deployContract(total);
-    if (block) {
+    performTransaction: async (totalPrice) => {
+    const tx = await Blockchain.performTransaction(total);
+    if (tx) {
       // Authentication successful
       console.error('contract succesfull ');
       res.redirect('/download');
-  }} catch (error) {
+  }}} catch (error) {
     console.error('Error getting user cart:', error);
     throw error;
   }   

@@ -78,7 +78,7 @@ const Blockchain = {
         return contractAddress;
     },
 
-    performTransaction: async (contractAddress, userAccount, totalPrice) => {
+    performTransaction: async (totalPrice) => {
         try {
             const contractInstance = new web3.eth.Contract(abi, contractAddress);
             const tx = await contractInstance.methods.buy(userAccount, totalPrice).send({
