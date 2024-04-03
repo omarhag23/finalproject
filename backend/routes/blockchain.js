@@ -71,9 +71,7 @@ const buyerAddress =accounts[1];
                 arguments: [sellerAddress]
             });
             console.log("contract deployed, estimating gas... ");
-            const gas = await web3.eth.estimateGas({
-                data: bytecode
-            });
+            const gas = '30000';
             console.log(" estimated gas :  ",gas); 
             const receipt = await deploy.send({
                 from: sellerAddress,
