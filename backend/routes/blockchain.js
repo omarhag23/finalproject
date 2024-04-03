@@ -82,13 +82,13 @@ const Blockchain = {
     performTransaction: async (contractAddress,totalPrice) => {
         try {
             const exchangeRate = 2000;//ether exchange rate
-            const totalPrice =   totalPrice / exchangeRate;
-            totalPrice =web3.utils.toWei(totalPrice.toString(), 'ether');
+            const totaleth =   totalPrice / exchangeRate;
+            totalWei =web3.utils.toWei(totaleth.toString(), 'ether');
             const contractInstance = new web3.eth.Contract(abi, contractAddress);
             console.log("user address : ",userAccount, "seller address ",sellerAddress, "contract address : ",contractAddress,"total rpice",totalPrice);
             const tx = await contractInstance.methods.buy(userAccount, totalPrice).send({
                 from: account.address,
-                value: totalPrice,
+                value: totalWei,
                 gas: '500000', // Adjust the gas limit as needed
                 gasPrice: '1000000000' // Gas price
             });
