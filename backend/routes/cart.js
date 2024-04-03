@@ -62,19 +62,10 @@ router.post('/checkout', async (req, res) => {
    // const errorhand = await Blockchain.deployContrac(userId, total);
    const { total} = req.body; 
    try {
-   
-   
     console.log('total  ...',total);
     const totalPriceInDollars = total;
-    Blockchain.deployContract()
-    .then(contractAddress => {
-        console.log('Contract deployed!');
-        tx = Blockchain.performTransaction(contractAddress, totalPriceInDollars);
-    })
-    .catch(error => {
-        console.error('Error deploying contract:', error);
-    });
-    if (tx) {
+    block = Blockchain.performTransaction(totalPriceInDollars);
+    if (block) {
       // Authentication successful
       console.error('contract succesfull ');
       res.redirect('/download');

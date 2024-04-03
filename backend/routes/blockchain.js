@@ -113,6 +113,7 @@ const accounts = await web3.eth.getAccounts();
 const sellerAddress = accounts[0];
 const privateKey ='0xf52ad7084aa1fe9b5a1be33eba6d453d7e06b4d3ecb5971e2e469f4ab42670b1';
 const buyerAddress =accounts[1];
+var block =false;
 //const bytecode = '0x' +code;
 /*
 deployContract: async () => {
@@ -146,23 +147,34 @@ deployContract: async () => {
 const contractAddress= '0xE0e450Dfa15591CF333B4f5642700e3f4044930';                                                                                        0
 
 const Blockchain = {
+    getBalance: async(buyerAddress)=> {
+        try {
+            const contractInstance = new web3.eth.Contract(abi, contractAddress);
+            const balance = await contractInstance.methods.getBalance(buyerAddress).call();
+            console.log('Buyer balance:', balance);
+            return balance;
+        } catch (error) {
+            console.error('Error getting Balance:', error);
+            throw error; 
+            return null;// Ensure to throw the error for proper handling
+        
+        }
+    },
     
 
     performTransaction: async (totalPriceInDollars) => {
         try {
+            const contractInstance = new web3.eth.Contract(abi, contractAddress);
             const exchangeRate = 2000; // Ether exchange rate
             const totalPriceInEther = totalPriceInDollars / exchangeRate;
             const totalPriceInWei = web3.utils.toWei(totalPriceInEther.toString(), 'ether');
-            const contractInstance = new web3.eth.Contract(abi, contractAddress);
-
-            const balance = await contractInstance.methods.getBalance(buyerAddress).call();
-
-    console.log('Buyer balance:', balance);
+            const balance = this.getBalance(buyerAddress)
+           
 
     // Check if balance is sufficient
     if (balance >= totalPriceInWei) {
         // Call buy function
-        const encodedABI = contract.methods.buy(buyerAddress, totalPriceInWei).encodeABI();
+        const encodedABI = contractInstance.methods.buy(buyerAddress, totalPriceInWei).encodeABI();
         const tx = {
             to: contractAddress,
             gas: 2000000,
@@ -176,12 +188,16 @@ const Blockchain = {
         // Send the signed transaction
         const receipt = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
         console.log('Transaction receipt:', receipt);
+        block =true;
+        return block;
     } else {
         console.log('Insufficient balance to make the purchase');
+        return block;
     }
         } catch (error) {
             console.error('Error performing transaction:', error);
             throw error; // Ensure to throw the error for proper handling
+            return block;
         }
     }
 };
