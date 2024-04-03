@@ -71,7 +71,7 @@ const buyerAddress =accounts[1];
                 arguments: [sellerAddress]
             });
             console.log("contract deployed, estimating gas... ");
-            const gas = '30000';
+            const gas = '300000';
             console.log(" estimated gas :  ",gas); 
             const receipt = await deploy.send({
                 from: sellerAddress,
