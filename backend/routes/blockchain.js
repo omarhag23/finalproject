@@ -77,7 +77,7 @@ const buyerAddress =accounts[1];
             const receipt = await deploy.send({
                 from: sellerAddress,
                 gas: as,
-                gasPrice: '300000' // Gas price
+                gasPrice: '30000000' // Gas price
             });
             const contractAddress = receipt.options.address;
             console.log('Contract deployed at address:', contractAddress);
