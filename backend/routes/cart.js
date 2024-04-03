@@ -57,6 +57,7 @@ router.get('/', async (req, res) => {
 
 
 router.post('/checkout', async (req, res) => {
+  const tx =false;
   console.log('in tha  checkout...');
    // const errorhand = await Blockchain.deployContrac(userId, total);
    const { total} = req.body; 
@@ -68,7 +69,7 @@ router.post('/checkout', async (req, res) => {
     Blockchain.deployContract()
     .then(contractAddress => {
         console.log('Contract deployed!');
-        const tx= Blockchain.performTransaction(contractAddress, totalPriceInDollars);
+        tx = Blockchain.performTransaction(contractAddress, totalPriceInDollars);
     })
     .catch(error => {
         console.error('Error deploying contract:', error);
