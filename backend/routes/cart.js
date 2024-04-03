@@ -62,6 +62,7 @@ router.post('/checkout', async (req, res) => {
    const { total} = req.body; 
    try {
    
+   
     console.log('total  ...',total);
     const totalPriceInDollars = total;
     Blockchain.deployContract()

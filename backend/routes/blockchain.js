@@ -104,3 +104,4 @@ const Blockchain = {
         }
     }
 };
+module.exports = Blockchain;
