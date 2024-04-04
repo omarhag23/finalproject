@@ -70,12 +70,13 @@ authenticateUser: async(username,password)=>{
     
      if (user)
      {
+
     // Validation 3 to check user password
       const passwordValidation = await bcryptjs.compare(password,user.password)
       if(!passwordValidation){
         console.error('password wrong')
       }
-      else return user;
+      else {req.session.username = username;return user;}
     }
  }}
 module.exports = UserController;
