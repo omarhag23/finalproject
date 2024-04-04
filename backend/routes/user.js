@@ -54,10 +54,14 @@ router.post('/register', async (req, res) => {
   router.get('/detail',async (req, res) => {
     // Destroy the session
     const username = req.session.username;
+    console.log('username : ',username  );
       try {
         const cart = await Cart.findOne({ username: username }).populate('myItems.product_id');
         const user = await User.findOne({username:username});
         const balance = UserController.checkBalance(username);
+
+        console.log('fetched,response',data.cart," user data : ",data.user," balance : ",data.balance);
+
         res.json({ cart,user,balance });
          // Send cart data as JSON response
       } catch (error) {
