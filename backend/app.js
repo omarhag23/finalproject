@@ -56,6 +56,7 @@ app.get('/detail', async (req, res) => {
     const response = await fetch(url);
     const data = await response.json();
     const product =data.product;
+    console.log("in tha app detail 2 , id : ",productId," type: ",type);
     // Render the view here using the cart data
     res.render('detail', { product,type });
   } catch (error) {
