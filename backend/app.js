@@ -58,7 +58,7 @@ app.get('/detail', async (req, res) => {
     const product =data.product;
     console.log("in tha app detail 2 , product: ",data);
     // Render the view here using the cart data
-    res.render('detail', { product,type });
+    res.render('detail', { data,type });
   } catch (error) {
     console.error('Error fetching cart data:', error);
     res.status(500).send('Internal Server Error');
