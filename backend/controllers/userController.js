@@ -25,8 +25,7 @@ registerUser :async (username,email,pass) => {
         username:username,
         email:email,
         password:hashedPassword,
-        ethAddress:ethAddress,
-        balance:0
+        ethAddress:ethAddress
     })
     console.log('User object before saving:', user);
     try{
