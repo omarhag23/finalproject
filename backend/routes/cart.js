@@ -62,17 +62,26 @@ router.post('/checkout', async (req, res) => {
   const tx =false;
   console.log('in tha  checkout...');
    // const errorhand = await Blockchain.deployContrac(userId, total);
-   const { total} = req.body; 
+   const { total,cart} = req.body; 
    try {
     console.log('total  ...',total);
     const totalPriceInDollars = total;
     block = Blockchain.performTransaction(totalPriceInDollars);
     if (block) {
       // Authentication successful
+      try {
+        const result = await cart.updateMany({}, { 
+          $set: { 'cart.myItems': '$cart.items' }, 
+                $unset: { 'cart.items': "" } 
+      });
+      console.log(`${result.modifiedCount} documents updated.`);
+    } catch (error) {
+        console.error('Error copying and removing data:', error);
+    }
       console.error('contract succesfull ');
-      res.redirect('/download');
+      res.redirect('/user');
   }} catch (error) {
-    console.error('Error getting user cart:', error);
+    console.error('Error checking out:', error);
     throw error;
   }   
     

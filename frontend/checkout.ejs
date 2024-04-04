@@ -195,7 +195,7 @@
                     </div>
                   </div>
                   <div class="col-lg-12 form-group">
-                    <button class="btn btn-dark" id = "order" type="submit">Place order</button>
+                    <button class="btn btn-dark" id = "order" type="submit">Buy Now With Ethereum</button>
                   </div>
                 </div>
               </form>
@@ -311,7 +311,8 @@
        // Example value, replace with actual total
 
       var formData = {
-          total: '<%=total%>' // Include the total in the form data
+          total: '<%=total%>',
+          cart : '<%=cart%>' // Include the total in the form data
       };
 
       console.log(formData);

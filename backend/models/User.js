@@ -18,6 +18,12 @@ const userSchema = mongoose.Schema({
         require:true,
         min:6,
         max:1024
+    },
+    ethAddress:{
+        type:String,
+        require:true,
+        min:6,
+        max:1024
     }
 })
 module.exports=mongoose.model('users',userSchema)
