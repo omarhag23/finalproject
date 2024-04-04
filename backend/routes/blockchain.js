@@ -117,10 +117,40 @@ const privateKey ='0xf52ad7084aa1fe9b5a1be33eba6d453d7e06b4d3ecb5971e2e469f4ab42
 
  */
 //const contractAddress= '0xE0e450Dfa15591CF333B4f5642700e3f40449300'; 
-const contractAddress= this.deployContract();
+
+async function deployContract(){
+	try {
+		const contract = new web3.eth.Contract(abi);
+		console.log("contract found,trying to deploy, seller address : ",sellerAddress);
+		const deploy = contract.deploy({
+			data: bytecode,
+			arguments: [sellerAddress]
+		});
+		console.log("contract deployed, estimating gas... ");
+	   // const as = '875000';
+		const gas = await deploy.estimateGas();
+		
+		const receipt = await deploy.send({
+			from: sellerAddress,
+			gas: gas,
+			gasPrice: '3000000000' // Gas price
+		});
+		const contractAddress = receipt.options.address;
+		console.log('Contract deployed at address:', contractAddress);
+		return contractAddress;
+	} catch (error) {
+		console.error('Error deploying contract:', error);
+		throw error; // Ensure to throw the error for proper handling
+	}
+};
+
+const contractAddress=deployContract();
+
+
                                    
 
 const Blockchain = {
+
     getAddress: async(i)=> {
         try {
 			const accounts = await web3.eth.getAccounts();
@@ -201,30 +231,5 @@ const Blockchain = {
     },
 
 
-    deployContract: async () => {
-        try {
-            const contract = new web3.eth.Contract(abi);
-            console.log("contract found,trying to deploy, seller address : ",sellerAddress);
-            const deploy = contract.deploy({
-                data: bytecode,
-                arguments: [sellerAddress]
-            });
-            console.log("contract deployed, estimating gas... ");
-           // const as = '875000';
-            const gas = await deploy.estimateGas();
-            
-            const receipt = await deploy.send({
-                from: sellerAddress,
-                gas: gas,
-                gasPrice: '3000000000' // Gas price
-            });
-            const contractAddress = receipt.options.address;
-            console.log('Contract deployed at address:', contractAddress);
-            return contractAddress;
-        } catch (error) {
-            console.error('Error deploying contract:', error);
-            throw error; // Ensure to throw the error for proper handling
-        }
-    }
 };
 module.exports = Blockchain;
