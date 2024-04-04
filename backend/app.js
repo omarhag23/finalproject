@@ -81,6 +81,28 @@ app.get('/cart', async (req, res) => {
     }
   });
 
+
+  
+app.get('/user', async (req, res) => {
+  try {
+    // Assuming you've made a request to the endpoint that sends cart data
+    console.log('about to fetch')
+    const response = await fetch('http://linux01.dcs.bbk.ac.uk:3000/api/user/detail');
+    const data = await response.json();
+    console.log('fetched,response',data.cart," user data : ",data.user," balance : ",data.balance)
+    const cart = data.cart;
+    const user = data.user;
+    const balance = data.balance;
+    console.log('about to render')
+    // Render the view here using the cart data
+    res.render('user', { cart,user,balance });
+  } catch (error) {
+    console.error('Error fetching cart data:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
   app.get('/beats', async (req, res) => {
     try {
       // Assuming you've made a request to the endpoint that sends cart data

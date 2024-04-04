@@ -36,7 +36,7 @@ router.post('/register', async (req, res) => {
       const user = await UserController.authenticateUser(username, password);
       if (user) {
         // Authentication successful
-        console.error('authentication super OK',username, ' logged in,trying to redirect ')
+        console.error('authentication super OK',username, ' logged in,trying to redirect ');
         req.session.username = username;
         res.redirect('/');
       } else {
@@ -48,6 +48,22 @@ router.post('/register', async (req, res) => {
       
     }
   });
+
+  router.get('/detail',async (req, res) => {
+    // Destroy the session
+    const username = req.session.username;
+      try {
+        const cart = await Cart.findOne({ username: username }).populate('myItems.product_id');
+        const user = await User.findOne({username:username});
+        const balance = UserController.checkBalance(username);
+        res.json({ cart,user,balance });
+         // Send cart data as JSON response
+      } catch (error) {
+        console.error('Error getting user cart:', error);
+        throw error;
+      }
+    });
+
 
 
   router.get('/logout', (req, res) => {

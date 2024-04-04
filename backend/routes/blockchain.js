@@ -119,12 +119,26 @@ const privateKey ='0xf52ad7084aa1fe9b5a1be33eba6d453d7e06b4d3ecb5971e2e469f4ab42
 const contractAddress= '0xE0e450Dfa15591CF333B4f5642700e3f40449300';                                                                                        0
 
 const Blockchain = {
-    getBalance: async(buyerAddress)=> {
+    getAddress: async(i)=> {
+        try {
+			const accounts = await web3.eth.getAccounts();
+            const buyerAddress =accounts[i];
+            return buyerAddress
+        } catch (error) {
+            console.error('Error getting Accounts:', error);
+            throw error; 
+            return null;// Ensure to throw the error for proper handling
+        
+        }
+    },
+
+	getBalance: async(buyerAddress)=> {
         try {
             const contractInstance = new web3.eth.Contract(abi, contractAddress);
             const balance = await contractInstance.methods.getBalance(buyerAddress).call();       
             console.log('Buyer balance now:', balance.toString());
-            return balance
+			const bala =balance.toString() ;
+            return bala;
         } catch (error) {
             console.error('Error getting Balance:', error);
             throw error; 
@@ -132,6 +146,8 @@ const Blockchain = {
         
         }
     },
+    
+
     
 
     performTransaction: async (totalPriceInDollars) => {
@@ -145,7 +161,7 @@ const Blockchain = {
             const totalPriceInWei = web3.utils.toWei(totalPriceInEther.toString(), 'ether');
             console.log("buyer address",buyerAddress)
             const balance = await Blockchain.getBalance(buyerAddress);
-            const bala =balance.toString() ;
+          
             console.log("buyer balance ",bala);
 
     // Check if balance is sufficient

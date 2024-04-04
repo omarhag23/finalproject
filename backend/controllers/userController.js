@@ -1,6 +1,7 @@
-const User = require('../models/User')
-const bcryptjs = require('bcryptjs')
-  const jsonwebtoken = require('jsonwebtoken')
+const User = require('../models/User');
+const bcryptjs = require('bcryptjs');
+  const jsonwebtoken = require('jsonwebtoken');
+  const Blockchain = require('../routes/blockchain');
 
 const UserController = {
 //register
@@ -17,12 +18,15 @@ registerUser :async (username,email,pass) => {
     const hashedPassword = await bcryptjs.hash(pass,salt)
 
     console.log('HASHED PASS:', hashedPassword, "salt : ",salt);
-
+    const count = await User.countDocuments();
+    const ethAddress = Blockchain.getAddress(count);
     // Code to insert data
     const user = new User({
         username:username,
         email:email,
-        password:hashedPassword
+        password:hashedPassword,
+        ethAddress:ethAddress,
+        balance:0
     })
     console.log('User object before saving:', user);
     try{
@@ -36,6 +40,24 @@ registerUser :async (username,email,pass) => {
       throw err;
   }
 } ,
+
+checkBalance : async (username) => {
+
+  const user = await User.findOne({username:username});
+  const addy = user.ethAddress;
+  const balance = Blockchain.getBalance(addy);
+  return balance;
+},
+
+
+deposit : async (username) => {
+
+  const user = await User.findOne({username:username});
+  const addy = user.ethAddress;
+  const balance = Blockchain.getBalance(addy);
+  return balance;
+},
+
 
 
 authenticateUser: async(username,password)=>{
