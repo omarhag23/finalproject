@@ -60,7 +60,7 @@ router.post('/register', async (req, res) => {
         const user = await User.findOne({username:username});
         const balance = UserController.checkBalance(username);
 
-        console.log('fetched,response',data.cart," user data : ",data.user," balance : ",data.balance);
+        console.log('fetched,response',cart," user data : ",user," balance : ",balance);
 
         res.json({ cart,user,balance });
          // Send cart data as JSON response
