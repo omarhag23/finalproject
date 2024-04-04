@@ -113,7 +113,7 @@ router.get('/detail', async (req, res) => {
     console.log("trying to find details");
     const product = await model.findOne({_id: productId });
     console.log("details found,",product);
-    res.json(product);
+    res.json({product});
 
      // Send cart data as JSON response
   } catch (error) {

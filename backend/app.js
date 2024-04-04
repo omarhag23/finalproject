@@ -54,10 +54,11 @@ app.get('/detail', async (req, res) => {
     // Construct the URL with the parameters
     const url = `http://linux01.dcs.bbk.ac.uk:3000/api/cart/detail?productId=${productId}&type=${type}`;
     const response = await fetch(url);
-    const product = await response.json();
+    const data = await response.json();
+    const product =data.product;
     console.log("in tha app detail 2 , product: ",product);
     // Render the view here using the cart data
-    res.render('detail', { product,type });
+    res.render('detail', { product :product,type:type });
   } catch (error) {
     console.error('Error fetching cart data:', error);
     res.status(500).send('Internal Server Error');
