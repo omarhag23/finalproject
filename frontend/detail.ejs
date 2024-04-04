@@ -122,9 +122,9 @@
                 <li class="list-inline-item m-0 3"><i class="fas fa-star small text-warning"></i></li>
                 <li class="list-inline-item m-0 4"><i class="fas fa-star small text-warning"></i></li>
               </ul>
-              <% if (product) {%>
+              <% if (product & type) {%>
               <h1><%=product.title %></h1>
-              <% if (product.type == "Beats"){ %>
+              <% if (type == "Beats"){ %>
               <p class="text-muted lead"><% product.bpm%> BPM C#Minor</p>
 
               <!-- Called of font style  file -->
@@ -219,7 +219,7 @@
           </div>
         </div>
 
-
+<% }}%>
           <!-- DETAILS TABS-->
           <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
             <li class="nav-item"><a class="nav-link text-uppercase active" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a></li>
