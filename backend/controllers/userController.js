@@ -76,7 +76,7 @@ authenticateUser: async(username,password)=>{
       if(!passwordValidation){
         console.error('password wrong')
       }
-      else {req.session.username = username;return user;}
+      else {return user;}
     }
  }}
 module.exports = UserController;

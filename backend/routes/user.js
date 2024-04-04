@@ -53,7 +53,7 @@ router.post('/register', async (req, res) => {
 
   router.get('/detail',async (req, res) => {
     // Destroy the session
-    const username = req.session.username;
+
     console.log('username : ',username  );
       try {
         const cart = await Cart.findOne({ username: username }).populate('myItems.product_id');
