@@ -104,10 +104,46 @@
                 <div class="col-sm-10 order-1 order-sm-2">
                   <div class="swiper product-slider">
                     <div class="swiper-wrapper">
-                      <div ><a class="glightbox product-view" href=<%=product.cover %> data-gallery="gallery2" data-glightbox="Product item 1"><img class="img-fluid" src=<%=product.cover %> alt="..."></a></div>
+                      <div ><a class="glightbox product-view" href=<%=product.cover %> data-gallery="gallery2" data-glightbox="Product item 1"><img  width="500" 
+     height="600" class="img-fluid" src=<%=product.cover %> alt="..."></a></div>
                   
                     </div>
                   </div>
+                  <% if (type=="Beat"){ %>
+                  <div class="container-audio">
+                    <audio controls  loop autoplay>
+                               <source src=<% product.mp3path%> type="audio/ogg">
+                               Your browser dose not Support the audio Tag
+                           </audio>
+                </div>
+                <div class="container-audio">
+                    <div class="colum1">
+                        <div class="row"></div>
+                    </div>
+                    <div class="colum1">
+                        <div class="row"></div>
+                    </div>
+                    <div class="colum1">
+                        <div class="row"></div>
+                    </div>
+                    <div class="colum1">
+                        <div class="row"></div>
+                    </div>
+                    <div class="colum1">
+                        <div class="row"></div>
+                    </div>
+                    <div class="colum1">
+                        <div class="row"></div>
+                    </div>
+                    <div class="colum1">
+                        <div class="row"></div>
+                    </div>
+                    <div class="colum1">
+                        <div class="row"></div>
+                    </div>
+                    
+                </div>
+                <%}%>
                 </div>
               </div>
             </div>
@@ -130,39 +166,6 @@
 <link href='https://fonts.googleapis.com/css?family=Allerta' rel='stylesheet'>
 
 
-<div class="container-audio">
-    <audio controls  loop autoplay>
-               <source src=<% product.mp3path%> type="audio/ogg">
-               Your browser dose not Support the audio Tag
-           </audio>
-</div>
-<div class="container-audio">
-    <div class="colum1">
-        <div class="row"></div>
-    </div>
-    <div class="colum1">
-        <div class="row"></div>
-    </div>
-    <div class="colum1">
-        <div class="row"></div>
-    </div>
-    <div class="colum1">
-        <div class="row"></div>
-    </div>
-    <div class="colum1">
-        <div class="row"></div>
-    </div>
-    <div class="colum1">
-        <div class="row"></div>
-    </div>
-    <div class="colum1">
-        <div class="row"></div>
-    </div>
-    <div class="colum1">
-        <div class="row"></div>
-    </div>
-    
-</div>
 
               <div class="row align-items-stretch mb-4">
                 <div class="col-sm-5 pr-sm-0">
