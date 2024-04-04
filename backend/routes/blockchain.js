@@ -146,10 +146,10 @@ async function deployContract(){
 	}
 };
 
-const contractAddress=deployContract();
+//const contractAddress=deployContract();
 
 
-                                   
+const contractAddress = '0x31E6C828D34651DA31A1D47e245f8e4Fc92345ff';                                   
 
 const Blockchain = {
 
