@@ -120,6 +120,8 @@ const privateKey ='0xf52ad7084aa1fe9b5a1be33eba6d453d7e06b4d3ecb5971e2e469f4ab42
 
 async function deployContract(){
 	try {
+		const accounts = await web3.eth.getAccounts();
+        const sellerAddress =accounts[0];
 		const contract = new web3.eth.Contract(abi);
 		console.log("contract found,trying to deploy, seller address : ",sellerAddress);
 		const deploy = contract.deploy({
