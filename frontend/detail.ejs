@@ -122,9 +122,9 @@
                 <li class="list-inline-item m-0 3"><i class="fas fa-star small text-warning"></i></li>
                 <li class="list-inline-item m-0 4"><i class="fas fa-star small text-warning"></i></li>
               </ul>
-              <% if (product!=null & type!=null) {%>
+              <% if (product!=null & type!=null) {console.log("type",type")%>
               <h1><%=product.title %></h1>
-              <% if (type == "Beats"){ %>
+              <% if (type=="Beats"){ %>
               <p class="text-muted lead"><% product.bpm%> BPM C#Minor</p>
 
               <!-- Called of font style  file -->
