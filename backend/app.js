@@ -54,9 +54,10 @@ app.get('/detail', async (req, res) => {
     // Construct the URL with the parameters
     const url = `http://linux01.dcs.bbk.ac.uk:3000/api/cart/detail?productId=${productId}&type=${type}`;
     const response = await fetch(url);
-    const beat = await response.json();
+    const data = await response.json();
+    const product =data.product;
     // Render the view here using the cart data
-    res.render('detail', { beat });
+    res.render('detail', { product,type });
   } catch (error) {
     console.error('Error fetching cart data:', error);
     res.status(500).send('Internal Server Error');
@@ -86,8 +87,9 @@ app.get('/cart', async (req, res) => {
 app.get('/user', async (req, res) => {
   try {
     // Assuming you've made a request to the endpoint that sends cart data
-    console.log('about to fetch')
-    const response = await fetch('http://linux01.dcs.bbk.ac.uk:3000/api/user/detail');
+    const username = req.query.username;
+    console.log('about to fetch, username : ',username);
+    const response = await fetch('http://linux01.dcs.bbk.ac.uk:3000/api/user/detail?username=${username}');
     const data = await response.json();
     console.log('fetched,response',data.cart," user data : ",data.user," balance : ",data.balance);
     const cart = data.cart;

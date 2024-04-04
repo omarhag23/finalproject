@@ -23,7 +23,7 @@
                 <% if (username) { %>
                     <li class="nav-item"><a class="nav-link" href="cart"> <i class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart</a></li>
                     <li class="nav-item"><a class="nav-link" href="/api/user/logout"> <i class="far fa-sign-out me-1"></i> Logout</a></li>
-                    <li class="nav-item"><a class="nav-link" href="user"> <i class="fas fa-user me-1 text-gray fw-normal"></i><%=username %></a></li>
+                    <li class="nav-item"><a class="nav-link" href="user?username=<%=username %>"> <i class="fas fa-user me-1 text-gray fw-normal"></i><%=username %></a></li>
                 <% } else { %>
                     <li class="nav-item"><a class="nav-link" href="login.html"> <i class="fas fa-user me-1 text-gray fw-normal"></i>Login</a></li>
                 <% } %>
