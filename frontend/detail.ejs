@@ -125,7 +125,7 @@
             
               <h1><%=product.title %></h1>
               <% if (type=="Beat"){ %>
-              <p class="text-muted lead"><% product.bpm%> BPM C#Minor</p>
+              <p class="text-muted lead"><%=product.bpm%> BPM C#Minor</p>
 
               <!-- Called of font style  file -->
 
@@ -172,7 +172,7 @@
               <div class="row align-items-stretch mb-4">
                 <div class="col-sm-5 pr-sm-0">
                   <div class="border d-flex align-items-center justify-content-between py-1 px-3 bg-white border-white"><span class="small text-uppercase text-black mr-4 no-select">WAV Lease</span>
-                    <span class="ms-2 text-muted">$<% product.mp3price%></span>
+                    <span class="ms-2 text-muted">$<%=product.mp3price%></span>
                   </div>
                 </div>
                 <div class="col-sm-3 pl-sm-0"><a class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0" href="cart.html">Add to cart</a></div>
@@ -180,7 +180,7 @@
               <div class="row align-items-stretch mb-4">
                 <div class="col-sm-5 pr-sm-0">
                   <div class="border d-flex align-items-center justify-content-between py-1 px-3 bg-white border-white"><span class="small text-uppercase text-black mr-4 no-select">MP3 Lease</span>
-                    <span class="ms-2 text-muted">$<% product.wavprice%></span>
+                    <span class="ms-2 text-muted">$<%=product.wavprice%></span>
                   </div>
                 </div>
                 <div class="col-sm-3 pl-sm-0"><a class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0" href="cart.html">Add to cart</a></div>
@@ -188,7 +188,7 @@
               <div class="row align-items-stretch mb-4">
                 <div class="col-sm-5 pr-sm-0">
                   <div class="border d-flex align-items-center justify-content-between py-1 px-3 bg-white border-white"><span class="small text-uppercase text-black mr-4 no-select">Exclusive</span>
-                    <span class="ms-2 text-muted">$<% product.exclusive%></span>
+                    <span class="ms-2 text-muted">$<%=product.exclusive%></span>
                   </div>
                 </div>
                 <div class="col-sm-3 pl-sm-0"><a class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0" href="cart.html">Add to cart</a></div>
@@ -205,8 +205,8 @@
     
             <div class="row align-items-stretch mb-4">
               <div class="col-sm-5 pr-sm-0">
-                <div class="border d-flex align-items-center justify-content-between py-1 px-3 bg-white border-white"><span class="small text-uppercase text-black mr-4 no-select">WAV Lease</span>
-                  <span class="ms-2 text-muted">$<% product.price%></span>
+                <div class="border d-flex align-items-center justify-content-between py-1 px-3 bg-white border-white"><span class="small text-uppercase text-black mr-4 no-select">Price</span>
+                  <span class="ms-2 text-muted">$<%=product.price%></span>
                 </div>
               </div>
               <div class="col-sm-3 pl-sm-0"><a class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0" href="cart.html">Add to cart</a></div>
