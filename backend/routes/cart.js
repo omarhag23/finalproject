@@ -65,7 +65,7 @@ router.post('/checkout', async (req, res) => {
    // const errorhand = await Blockchain.deployContrac(userId, total);
    const { total,username} = req.body;
    try {
-   const user = await User.find({ username: username });
+   const user = await User.findOne({ username: username });
    console.log('User Found ',user);
    const buyerAddress= user.ethAddress;
    console.log('EthAddress Found ',buyerAddress);
