@@ -90,7 +90,8 @@ app.get('/user', async (req, res) => {
     // Assuming you've made a request to the endpoint that sends cart data
     const username = req.query.username;
     console.log('about to fetch, username : ',username);
-    const response = await fetch('http://linux01.dcs.bbk.ac.uk:3000/api/user/detail?username=${username}');
+    const url = `http://linux01.dcs.bbk.ac.uk:3000/api/cart/detail?username=${username}`;
+    const response = await fetch(url);
     const data = await response.json();
     console.log('fetched,response',data.cart," user data : ",data.user," balance : ",data.balance);
     const cart = data.cart;
