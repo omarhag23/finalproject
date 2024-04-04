@@ -207,7 +207,7 @@
                   <h5 class="text-uppercase mb-4">Your order</h5>
                   <ul class="list-unstyled mb-0">
                     <% var total=0; %>
-                    <% if (cart && cart.items && cart.items.length > 0) { %>
+                    <% if (username && cart && cart.items && cart.items.length > 0) { %>
                       <% cart.items.forEach(item => { %>
                     <li class="d-flex align-items-center justify-content-between"><strong class="small fw-bold"><%=item.title%></strong><span class="text-muted small"><%=item.price%><%total=total + item.price %></span></li>
                     <li class="border-bottom my-2"></li>
@@ -312,7 +312,7 @@
 
       var formData = {
           total: '<%=total%>',
-          cart : '<%=cart%>' // Include the total in the form data
+          cart : '<%=username%>' // Include the total in the form data
       };
 
       console.log(formData);
@@ -331,7 +331,7 @@
               console.error('Error:', error);
               // Handle errors
               alert("Error placing order. Try to check your balance or make a deposit");
-              window.location.href = '/';
+              window.location.href = '/user';
           }
       });
   });

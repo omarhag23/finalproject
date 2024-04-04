@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Cart = require('../models/Cart');
 const Blockchain = require('./blockchain');
+const User = require('../models/User');
 let model;
 
 const path = require('path');
@@ -59,18 +60,25 @@ router.get('/', async (req, res) => {
 
 
 router.post('/checkout', async (req, res) => {
-  const tx =false;
+ 
   console.log('in tha  checkout...');
    // const errorhand = await Blockchain.deployContrac(userId, total);
-   const { total,cart} = req.body; 
+   const { total,username} = req.body;
    try {
+   const user = await User.find({ username: username });
+   console.log('User Found ',user);
+   const buyerAddress= user.ethAddress;
+   console.log('EthAddress Found ',buyerAddress);
+   const cart = await Cart.findOne({ username: username });
+   console.log('Cart Found ',cart);
+  
     console.log('total  ...',total);
     const totalPriceInDollars = total;
-    block = Blockchain.performTransaction(totalPriceInDollars);
-    if (block) {
+    const block = Blockchain.performTransaction(buyerAddress,totalPriceInDollars);
+    if (block.success) {
       // Authentication successful
       try {
-        const result = await cart.updateMany({}, { 
+        const result = await cart.update({}, { 
           $set: { 'cart.myItems': '$cart.items' }, 
                 $unset: { 'cart.items': "" } 
       });

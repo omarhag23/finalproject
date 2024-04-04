@@ -2,7 +2,7 @@ const { Web3 } = require('web3');
 
 const fs = require('fs');
 
-const web3 = new Web3('HTTP://193.61.44.33:7545'); // Update with your Ganache RPC server address
+const web3 = new Web3('HTTP://193.61.44.51:7545'); // Update with your Ganache RPC server address
 
 
 
@@ -184,19 +184,17 @@ const Blockchain = {
 
     
 
-    performTransaction: async (totalPriceInDollars) => {
+    performTransaction: async (buyerAddress,totalPriceInDollars) => {
         try {
             const contractInstance = new web3.eth.Contract(abi, contractAddress);
             const accounts = await web3.eth.getAccounts();
-            const buyerAddress =accounts[1];
             const sellerAddress = accounts[0];
             const exchangeRate = 2000; // Ether exchange rate
             const totalPriceInEther = totalPriceInDollars / exchangeRate;
             const totalPriceInWei = web3.utils.toWei(totalPriceInEther.toString(), 'ether');
             console.log("buyer address",buyerAddress)
-            const balance = await Blockchain.getBalance(buyerAddress);
+            const bala = await Blockchain.getBalance(buyerAddress);
           
-            console.log("buyer balance ",bala);
 
     // Check if balance is sufficient
     if (bala >= totalPriceInWei) {
@@ -220,7 +218,7 @@ const Blockchain = {
         const receipt = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
         console.log('Transaction receipt:', receipt);
       
-        return true
+		return { success: true };
     } else {
         console.log('Insufficient balance to make the purchase, make a deposit before purchasing');
         return { success: false, message: 'Insufficient balance to make the purchase, make a deposit before purchasing' };
@@ -228,9 +226,47 @@ const Blockchain = {
         } catch (error) {
             console.error('Error performing transaction:', error);
             throw error; // Ensure to throw the error for proper handling
-            return false;
+			return { success: false, message: 'Error performing transaction:' };
         }
     },
+
+
+	depositTransaction: async (buyerAddress,totalPriceInDollars) => {
+        try {
+            const contractInstance = new web3.eth.Contract(abi, contractAddress);
+            const accounts = await web3.eth.getAccounts();
+            const sellerAddress = accounts[0];
+            const exchangeRate = 2000; // Ether exchange rate
+            const totalPriceInEther = totalPriceInDollars / exchangeRate;
+            const totalPriceInWei = web3.utils.toWei(totalPriceInEther.toString(), 'ether');
+        // Call buy function
+        const encodedABI = contractInstance.methods.deposit(buyerAddress, totalPriceInWei).encodeABI();
+        const gasPrice = await web3.eth.getGasPrice();
+        const gasLimit = 2000000; // Adjust gas limit as needed
+        const tx = {
+            from : sellerAddress,
+            to: contractAddress,
+            gas: gasLimit,
+            gasPrice: gasPrice,
+            data: encodedABI,
+            value: 0 // This is for transferring any additional value, but your function doesn't accept ether, so set it to 0
+        };
+
+        // Sign the transaction
+        const signedTx = await web3.eth.accounts.signTransaction(tx, privateKey);
+
+        // Send the signed transaction
+        const receipt = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
+        console.log('Transaction receipt:', receipt);
+		return { success: true };
+        } catch (error) {
+            console.error('Error performing transaction:', error);
+            throw error; // Ensure to throw the error for proper handling
+			return { success: false, message: 'error making transaction' };
+        }
+    },
+
+
 
 
 };
