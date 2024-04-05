@@ -18,7 +18,7 @@ router.post('/register', async (req, res) => {
         const userExists = await UserController.registerUser(username, email, pass);
             
         if (userExists) {   
-          console.error('Error checking out:', error);
+      
    // throw error;
           res.status(500).json({ error: error.message });
 
