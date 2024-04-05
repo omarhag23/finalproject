@@ -6,33 +6,32 @@ const User = require('../models/User');
 
 //register
 router.post('/register', async (req, res) => {
-    try {
-      if (!req.body || Object.keys(req.body).length === 0) {
-        return res.status(400).send('Request body is emptyness');
+  try {
+    if (!req.body || Object.keys(req.body).length === 0) {
+      return res.status(400).send('Request body is empty');
     }
-      const { username, email, pass,confpass } = req.body;
-      console.log('req body look ',req.body);
-      console.log('userjs :  email:', email,'usernamde:', username,'pass:', pass,'confpassb:',confpass);
-      if (pass==confpass)
-      {
-        const userExists = await UserController.registerUser(username, email, pass);
-            
-        if (userExists) {   
-          console.error('Error checking out:', error);
-   // throw error;
-          res.status(500).json({ error: "user" });
 
+    const { username, email, pass, confpass } = req.body;
+    console.log('req body:', req.body);
+    console.log('userjs: email:', email, 'username:', username, 'pass:', pass, 'confpass:', confpass);
+
+    if (pass === confpass) {
+      const registrationResult = await UserController.registerUser(username, email, pass);
+
+      if (registrationResult.success) {
+        res.json({ success: true, message: "Registration successful" });
+      } else {
+        console.error('Error registering user:', registrationResult.message);
+        res.status(500).json({ error: registrationResult.message });
       }
-      else
-      res.json({ success: true, message: "Operation successful" });
-      }
-      //res.redirect('/index');
-    } catch (error) {
-      console.error('Error checking out:', error);
-   // throw error;
-   res.status(500).json({ error: error.message });
+    } else {
+      res.status(400).json({ error: "Passwords do not match" });
     }
-  });
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ error: "An unexpected error occurred" });
+  }
+});
   
   // login
   router.post('/login', async (req, res) => {
