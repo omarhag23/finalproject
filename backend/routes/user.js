@@ -22,14 +22,14 @@ router.post('/register', async (req, res) => {
         res.json({ success: true, message: "Registration successful" });
       } else {
         console.error('Error registering user:', registrationResult.message);
-        res.redirect('/register');
+        res.status(500).json({ error: "error.message" });
       }
     } else {
-      res.redirect('/register');
+      res.status(500).json({ error: "error.message" });
     }
   } catch (error) {
     console.error('Error:', error);
-    res.redirect('/register');
+    res.status(500).json({ error: "error.message" });
   }
 });
   
@@ -46,14 +46,14 @@ router.post('/register', async (req, res) => {
         res.redirect('/');
       } else {
         // Authentication failed (invalid credentials)
-        res.redirect('/login');
+        res.status(500).json({ error: "error.message" });
          
       }  
     } catch (error) {
-      res.redirect('/login');}
+      res.status(500).json({ error: "error.message" });
       
     
-  });
+  }});
 
   router.post('/deposit', async (req, res) => {
    try{
