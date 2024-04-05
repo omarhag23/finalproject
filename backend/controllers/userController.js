@@ -59,9 +59,9 @@ checkBalance : async (username) => {
   const addy = user.ethAddress;
   try
   {
-  const bala = Blockchain.getBalance(addy);
-  const balance= Blockchain.toEth(bala);
-  return balance;e
+  const bala = await Blockchain.getBalance(addy);
+  const balance= await Blockchain.toEth(bala);
+  return balance;
   }catch (err) {
     console.error('Error getting balance:', err);
     // Return error response
