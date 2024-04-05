@@ -203,7 +203,7 @@ const Blockchain = {
           
 
     // Check if balance is sufficient
-    if (bala >= totalPriceInWei) {
+    if (diff>0) {
         // Call buy function
         const encodedABI = contractInstance.methods.buy(buyerAddress, totalPriceInWei).encodeABI();
         const gasPrice = await web3.eth.getGasPrice();
