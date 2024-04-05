@@ -224,7 +224,7 @@ console.log("usrn ",username);
 
   function checkFilled() {
   len = elAmount.value.length;
-    if (isNan(elAmount.value)||len ==0) {
+    if (isNaN(elAmount.value)||len ==0) {
       console.log("value length : ",len)
         elMsg.innerHTML = 'Please check the deposit amount';
         event.preventDefault();
