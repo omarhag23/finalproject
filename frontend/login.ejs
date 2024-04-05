@@ -335,25 +335,6 @@ if (elForm.addEventListener) {
     });
 }
 
-if (elUsername.addEventListener) {
-    elUsername.addEventListener('blur', function() {
-        checkFilled();
-    }, false);
-} else {
-    elUsername.attachEvent('onblur', function() {
-        checkFilled();
-    });
-}
-
-if (elPassword.addEventListener) {
-    elPassword.addEventListener('blur', function() {
-        checkFilled();
-    }, false);
-} else {
-    elPassword.attachEvent('onblur', function() {
-        checkFilled();
-    });
-  }   
   if (checkFilled()==true)
     {
     $(document).ready(function() {
