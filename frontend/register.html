@@ -351,22 +351,24 @@ var elForm = document.getElementById('signupForm');
   var elEmail = document.getElementById('email');
   var elConf = document.getElementById('confpass');
 
+    // Get the typed email value
+    var email = elEmail.value.trim();
 
-  const validateEmail = (elEmail) => {
-  return elEmail.match(
-    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  );
-};
+    // Regular expression pattern for email validation
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+ 
 function checkFilled() {
   len = elPassword.value.length;
-    if (elUsername.value == "" || elPassword.value == "" || elEmail.value == "" || validateEmail(elEmail)==false ||len <8) {
+    if (elUsername.value == "" || elPassword.value == "" || elEmail.value == "" ||len <8) {
       console.log("value length : ",len)
         elMsg.innerHTML = 'Please check your credentials,Password must be not less than 8 characters';
         event.preventDefault();
         return false
-    }else 
-     {
+    }else if (!emailPattern.test(email)) {
+        // If the email does not match the pattern, display an error message
+        return false
+    } else {
     elMsg.innerHTML = '';
     return true;}
   }
