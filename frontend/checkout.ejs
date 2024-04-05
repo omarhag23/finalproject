@@ -312,10 +312,10 @@
 
       var formData = {
           total: '<%=total%>',
-          username : '<%=username%>' // Include the total in the form data
+          username : '<%=username %>' // Include the total in the form data
       };
 
-      console.log(formData);
+      console.log("form data",formData);
 
       $.ajax({
           type: 'POST',
