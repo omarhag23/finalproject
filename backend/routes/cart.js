@@ -88,7 +88,11 @@ router.post('/checkout', async (req, res) => {
     }
       console.error('contract succesfull ');
       res.redirect('/user');
-  }} catch (error) {
+  }
+  console.error('Error checking out:', error);
+   // throw error;
+    return error;
+} catch (error) {
     console.error('Error checking out:', error);
    // throw error;
     return error;

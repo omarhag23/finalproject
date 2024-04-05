@@ -178,7 +178,7 @@ const Blockchain = {
         } catch (error) {
             console.error('Error getting Balance:', error);
             throw error; 
-            return null;// Ensure to throw the error for proper handling
+            // Ensure to throw the error for proper handling
         
         }
     },
