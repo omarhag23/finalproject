@@ -22,14 +22,14 @@ router.post('/register', async (req, res) => {
         res.json({ success: true, message: "Registration successful" });
       } else {
         console.error('Error registering user:', registrationResult.message);
-        res.status(500).json({success: false, error: registrationResult.message });
+        res.status(500).json({success: false, message: registrationResult.message });
       }
     } else {
-      res.status(400).json({success: false, error: "Passwords do not match" });
+      res.status(400).json({success: false, message: "Passwords do not match" });
     }
   } catch (error) {
     console.error('Error:', error);
-    res.status(500).json({success: false, error: "An unexpected error occurred" });
+    res.status(500).json({success: false, message: "An unexpected error occurred" });
   }
 });
   
