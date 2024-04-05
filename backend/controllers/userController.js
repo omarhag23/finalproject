@@ -5,50 +5,52 @@ const bcryptjs = require('bcryptjs');
 
 const UserController = {
 //register
-registerUser :async (username,email,pass) => {
-  try{
-    console.log('controller  pass : email:', email,'username:', username,'password:', pass,);
-    // Validation  to check if user exists!
-    const emailExists = await User.findOne({email:email})
-    if(emailExists){
-      console.log('User already exists')
-      return { userExists: true, success: false, message: 'Error encountered while saving' };
-    }else {
-      const userExists = await User.findOne({username:username})
-    if(userExists){
-      console.log('User already exists')
-      return { userExists: true, success: false, message: 'Error encountered while saving' };
-    }
-    }
-    // I created a hashed represenation of my password!
-    const salt = await bcryptjs.genSalt(5)
-    const hashedPassword = await bcryptjs.hash(pass,salt)
+registerUser: async (username, email, pass) => {
+  try {
+    console.log('controller pass: email:', email, 'username:', username, 'password:', pass);
 
-    console.log('HASHED PASS:', hashedPassword, "salt : ",salt);
+    // Check if email already exists
+    const emailExists = await User.findOne({ email: email });
+    if (emailExists) {
+      console.log('User already exists with this email');
+      return { userExists: true, success: false, message: 'User already exists with this email' };
+    }
+
+    // Check if username already exists
+    const usernameExists = await User.findOne({ username: username });
+    if (usernameExists) {
+      console.log('User already exists with this username');
+      return { userExists: true, success: false, message: 'User already exists with this username' };
+    }
+
+    // Hash the password
+    const salt = await bcryptjs.genSalt(5); // Increased salt rounds for better security
+    const hashedPassword = await bcryptjs.hash(pass, salt);
+    console.log('Hashed password:', hashedPassword);
+
+    // Generate Ethereum address (assuming Blockchain.getAddress is an asynchronous function)
     const count = await User.countDocuments();
     const ethAddress = await Blockchain.getAddress(count);
-    // Code to insert data
-    const user = new User({
-        username:username,
-        email:email,
-        password:hashedPassword,
-        ethAddress:ethAddress
-    })
-    console.log('User object before saving:', user);
-    try{
-      // Save the user
-      const savedUser = await user.save();
-      console.log('User object after saving:', savedUser);
+
+    // Create new user object
+    const newUser = new User({
+      username: username,
+      email: email,
+      password: hashedPassword,
+      ethAddress: ethAddress
+    });
+
+    // Save the user
+    const savedUser = await newUser.save();
+    console.log('User saved:', savedUser);
+
+    // Return success response
+    return { success: true, message: 'User registered successfully' };
   } catch (err) {
-    console.error('Error saving user controller:', err);
-      // Throw error to be caught by the route handler
-      return { success: false, message: 'Error encountered while saving' };
+    console.error('Error saving user:', err);
+    // Return error response
+    return { success: false, message: 'Error encountered while registering user' };
   }
-} catch (err) {
-  console.error('Error saving user controller:', err);
-    // Throw error to be caught by the route handler
-    return { success: false, message: 'Error encountered while saving' };
-}
 },
 
 checkBalance : async (username) => {
