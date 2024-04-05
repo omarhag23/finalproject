@@ -70,8 +70,7 @@ router.post('/register', async (req, res) => {
         // Authentication successful
         console.error('deposit succesfull ');
         res.redirect('/user');
-    }
-    console.error('Error checking out:', error);
+    }else
      // throw error;
      return { success: false, message: 'Error making deposit failed (invalid credentials)' };
   
