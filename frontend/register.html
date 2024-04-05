@@ -435,9 +435,16 @@ $(document).ready(function() {
       data: formData,
       success: function(response) {
         // Handle success response
-        console.log(response);
-        alert("User succesfully signed up");
-        // Redirect or do something else based on the response
+        if (response.success) {
+      // Handle success response
+      console.log(response);
+      alert("User successfully signed up");
+      // Redirect or do something else based on the response
+    } else {
+      // Handle error response
+      console.error('Error:', response.error);
+      alert("Error signing in: " + response.error);
+    }
       },
       error: function(xhr, status, error) {
               console.error('Error:', error);
