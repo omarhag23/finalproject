@@ -117,7 +117,7 @@ const privateKey ='0xf52ad7084aa1fe9b5a1be33eba6d453d7e06b4d3ecb5971e2e469f4ab42
 
  */
 //const contractAddress= '0xE0e450Dfa15591CF333B4f5642700e3f40449300'; 
-const sellerAddress ='0x8FB9400d14CF18D2848B9888693e45f55d6F211A';
+const sellerAddress ='0xaF4220B85f07caA01d99b41bf8e7e6685eA42def';
 
 async function deployContract(){
 	try {
