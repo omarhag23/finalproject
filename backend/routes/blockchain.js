@@ -196,7 +196,7 @@ const Blockchain = {
             const contractInstance = new web3.eth.Contract(abi, contractAddress);
             const accounts = await web3.eth.getAccounts();
             const totalPriceInWei = await web3.utils.toWei(total.toString(), 'ether');
-            console.log("buyer address",buyerAddress)
+            console.log("buyer address",buyerAddress ,"price",totalPriceInWei);
             const bala = await Blockchain.getBalance(buyerAddress);
 
           
