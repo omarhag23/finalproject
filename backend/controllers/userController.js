@@ -61,7 +61,7 @@ checkBalance : async (username) => {
   {
   const bala = Blockchain.getBalance(addy);
   const balance= Blockchain.toEth(bala);
-  return balance;
+  return balance;e
   }catch (err) {
     console.error('Error getting balance:', err);
     // Return error response
