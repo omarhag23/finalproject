@@ -193,7 +193,7 @@ const Blockchain = {
         try {
             const contractInstance = new web3.eth.Contract(abi, contractAddress);
             const accounts = await web3.eth.getAccounts();
-            const totalPriceInWei = total;
+            const totalPriceInWei = await web3.utils.toWei(total.toString(), 'ether');
             console.log("buyer address",buyerAddress)
             const bala = await Blockchain.getBalance(buyerAddress);
           
@@ -236,7 +236,7 @@ const Blockchain = {
         try {
         const contractInstance = new web3.eth.Contract(abi, contractAddress);
         //const accounts = await web3.eth.getAccounts();
-		const totalPriceInWei = total ;
+		const totalPriceInWei = await web3.utils.toWei(total.toString(), 'ether');
         // Call deposit function
         const encodedABI = contractInstance.methods.deposit(buyerAddress, totalPriceInWei).encodeABI();
         const gasPrice = await web3.eth.getGasPrice();
