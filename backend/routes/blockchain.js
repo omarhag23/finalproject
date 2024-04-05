@@ -239,7 +239,7 @@ const Blockchain = {
         try {
             const contractInstance = new web3.eth.Contract(abi, contractAddress);
             //const accounts = await web3.eth.getAccounts();
-			const totalPriceInWei = web3.utils.toWei(total.toString(), 'ether');
+			const totalPriceInWei = total ;
         // Call deposit function
         const encodedABI = contractInstance.methods.deposit(buyerAddress, totalPriceInWei).encodeABI();
         const gasPrice = await web3.eth.getGasPrice();
