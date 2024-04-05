@@ -212,8 +212,8 @@
                     <li class="d-flex align-items-center justify-content-between"><strong class="small fw-bold"><%=item.title%></strong><span class="text-muted small"><%=item.price%><%total=total + item.price %></span></li>
                     <li class="border-bottom my-2"></li>
                     <% })}%>
-                    <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small fw-bold">Total</strong><span><%=total%></span></li>
-                    <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small fw-bold">Total (in Ethereum)</strong><span><%=total/3345%></span></li>
+                    <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small fw-bold">Total</strong><span><%=parseFloat(total.toFixed(2))%></span></li>
+                    <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small fw-bold">Total (in Ethereum)</strong><span><%=parseFloat(total/3345.toFixed(2))%></span></li>
                   </ul>
                 </div>
               </div>
