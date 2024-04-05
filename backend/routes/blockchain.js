@@ -254,10 +254,10 @@ const Blockchain = {
         };
 
         // Sign the transaction
-       const signedTx = await web3.eth.accounts.signTransaction(tx1, privateKey);
+       const signedTx1 = await web3.eth.accounts.signTransaction(tx1, privateKey);
         // Send the signed transaction
-        const receipt = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
-        console.log('Transaction receipt:', receipt);
+        const receipt1 = await web3.eth.sendSignedTransaction(signedTx1.rawTransaction);
+        console.log('Transaction receipt:', receipt1);
 		return { success: true };
         } catch (error) {
             console.error('Error performing transaction: ', error);
