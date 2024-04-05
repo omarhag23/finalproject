@@ -189,13 +189,11 @@ const Blockchain = {
 
     
 
-    performTransaction: async (buyerAddress,totalPriceInDollars) => {
+    performTransaction: async (buyerAddress,total) => {
         try {
             const contractInstance = new web3.eth.Contract(abi, contractAddress);
             const accounts = await web3.eth.getAccounts();
-            const exchangeRate = 2000; // Ether exchange rate
-            const totalPriceInEther = totalPriceInDollars / exchangeRate;
-            const totalPriceInWei = web3.utils.toWei(totalPriceInEther.toString(), 'ether');
+            const totalPriceInWei = total;
             console.log("buyer address",buyerAddress)
             const bala = await Blockchain.getBalance(buyerAddress);
           
