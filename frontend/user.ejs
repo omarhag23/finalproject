@@ -275,10 +275,8 @@ if (checkFilled()==true)
       success: function(response) {
         alert("Amount Deposited with Success");
         console.log(response,'front 1');
-                if (response.message === 'Authentication successful frontesbd2') {
-                    // Redirect to frontend page
-                    window.location.href = '/'; // Change '/index' to your frontend page URL
-                } 
+         window.location.href = '/'; // Change '/index' to your frontend page URL
+                
       },
       error: function(xhr, status, error) {
               console.error('Error:', error);
