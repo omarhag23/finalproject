@@ -327,7 +327,7 @@
               alert("Order placed successfully!");
               // Optionally, redirect or perform other actions based on the response
           },
-          error: function(error) {
+          error: function(xhr, status, error) {
               console.error('Error:', error);
               // Handle errors
               alert("Error placing order. Try to check your balance or make a deposit");

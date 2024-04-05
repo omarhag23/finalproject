@@ -91,11 +91,11 @@ router.post('/checkout', async (req, res) => {
   }
   console.error('Error checking out:', error);
    // throw error;
-    return error;
+   res.status(500).json({ error: error.message });
 } catch (error) {
     console.error('Error checking out:', error);
    // throw error;
-    return error;
+   res.status(500).json({ error: error.message });
   }   
     
 });
