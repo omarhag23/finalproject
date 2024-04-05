@@ -99,7 +99,7 @@ app.get('/user', async (req, res) => {
     const balance = data.balance;
     console.log('about to render')
     // Render the view here using the cart data
-    res.render('user', { cart,user,balance });
+    res.render('user', { cart,user,balance,username });
   } catch (error) {
     console.error('Error fetching cart data:', error);
     res.status(500).send('Internal Server Error');
