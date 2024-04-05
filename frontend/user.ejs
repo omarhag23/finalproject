@@ -256,10 +256,9 @@ if (elAmount.addEventListener) {
     });
 }
 if (checkFilled==true)
-    {
-        $('#order').on('click', function (event) {
-  
- 
+  {
+    $('#order').on('click', function (event) {
+    console.log("usrn 2 ",username);
     event.preventDefault(); // Prevent the form from submitting normally
     
     var formData = {
@@ -267,8 +266,8 @@ if (checkFilled==true)
       username: username // Get the value of the amount input field
      
     };
-    
-    console.log(formData);
+
+    console.log("usrn ",username);
   
      $.ajax({
       type: 'POST',
