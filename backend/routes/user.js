@@ -18,9 +18,9 @@ router.post('/register', async (req, res) => {
         const userExists = await UserController.registerUser(username, email, pass);
             
         if (userExists) {   
-      
-   // throw error;
-          res.status(500).json({ error: error.message });
+          console.error('Error checking out:', error);
+      throw error;
+        
 
       }
       else
@@ -29,8 +29,8 @@ router.post('/register', async (req, res) => {
       //res.redirect('/index');
     } catch (error) {
       console.error('Error checking out:', error);
-   // throw error;
-   res.status(500).json({ error: error.message });
+   throw error;
+   //res.status(500).json({ error: error.message });
     }
   });
   
