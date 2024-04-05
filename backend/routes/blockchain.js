@@ -198,7 +198,7 @@ const Blockchain = {
             const totalPriceInWei = await web3.utils.toWei(total.toString(), 'ether');
             
             const bala = await Blockchain.getBalance(buyerAddress);
-			console.log("buyer address",buyerAddress ,"price : ",totalPriceInWei,"balance :",bala);
+			console.log("buyer address",buyerAddress ,"price : ",totalPriceInWei.type,"balance :",bala.type);
           
 
     // Check if balance is sufficient
