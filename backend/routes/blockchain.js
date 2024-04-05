@@ -116,6 +116,7 @@ const bytecode = '608060405234801561001057600080fd5b5060405161075738038061075783
  */
 //const contractAddress= '0xE0e450Dfa15591CF333B4f5642700e3f40449300'; 
 const sellerAddress ='0xaF4220B85f07caA01d99b41bf8e7e6685eA42def';
+const privateKey='0x37ba16579f0d8cae7b97cd7944e0d0a3e5b9d4d5c317475fe468a48c55fc50ff';
 
 async function deployContract(){
 	try {
