@@ -221,15 +221,13 @@ console.log("usrn ",username);
 var elForm = document.getElementById('depositForm');
   var elAmount = document.getElementById('amount');
   var elMsg = document.getElementById('feedback');
-  
+  len = elAmount.value.length;
 
 
   function checkFilled() {
-  len = elAmount.value.length;
     if (isNaN(elAmount.value)||len ==0) {
-      console.log("value length : ",len)
+      console.log("value length : ",len);
         elMsg.innerHTML = 'Please check the deposit amount';
-        event.preventDefault();
         return false
     } else {
         
@@ -254,7 +252,7 @@ if (elForm.addEventListener) {
 if (checkFilled()==true)
   {
    
-        $('#order').on('click', function (event)  {
+    $('#order').on('click', function (event)  {
     console.log("usrn 2 ",username);
  
     event.preventDefault(); // Prevent the form from submitting normally
