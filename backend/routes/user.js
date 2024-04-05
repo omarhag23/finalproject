@@ -55,7 +55,7 @@ router.post('/register', async (req, res) => {
     
   });
 
-  router.get('/deposit', async (req, res) => {
+  router.post('/deposit', async (req, res) => {
    
       console.error('in the deposit')
       const {amount,username}  = req.body;
