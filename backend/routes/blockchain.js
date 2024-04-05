@@ -245,12 +245,12 @@ const Blockchain = {
         const gasPrice = await web3.eth.getGasPrice();
         const gasLimit = 6721975; // Adjust gas limit as needed
         const tx = {
-            from : '0x8FB9400d14CF18D2848B9888693e45f55d6F211A',
+            from : sellerAddress,
             to: contractAddress,
             gas: gasLimit,
             gasPrice: gasPrice,
             data: encodedABI,
-            value: 1 // This is for transferring any additional value, but your function doesn't accept ether, so set it to 0
+            value: 50 // This is for transferring any additional value, but your function doesn't accept ether, so set it to 0
         };
 
         // Sign the transaction
