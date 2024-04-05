@@ -95,7 +95,7 @@
           <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
             <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
              
-             <form id="loginForm" class="login100-form validate-form flex-sb flex-w" >
+             <form id="loginForm" class="login100-form validate-form flex-sb flex-w" action ="/api/user/login" method="POST">
                 <span class="login100-form-title p-b-53">
                   Sign In With
                 </span>
@@ -136,7 +136,7 @@
                 </div>
                 <span class="txt1" id = "feedback"></span>
                 <div class="container-login100-form-btn m-t-17">
-                  <button id="order" class="login100-form-btn " >
+                  <button class="login100-form-btn">
                     Sign In
                   </button>
                 </div>
@@ -303,7 +303,7 @@
         
       </script>
 <script>
-/*
+
   var elForm = document.getElementById('loginForm');
   var elPassword = document.getElementById('password');
 
@@ -335,12 +335,31 @@ if (elForm.addEventListener) {
     });
 }
 
+if (elUsername.addEventListener) {
+    elUsername.addEventListener('blur', function() {
+        checkFilled();
+    }, false);
+} else {
+    elUsername.attachEvent('onblur', function() {
+        checkFilled();
+    });
+}
+
+if (elPassword.addEventListener) {
+    elPassword.addEventListener('blur', function() {
+        checkFilled();
+    }, false);
+} else {
+    elPassword.attachEvent('onblur', function() {
+        checkFilled();
+    });
+  }   
   if (checkFilled()==true)
-    {*/
-      $('#loginForm').submit(function(event)
-  {
-        event.preventDefault(); 
-   console.log("in thascript");
+    {
+    $(document).ready(function() {
+  $('#loginForm').submit(function(event) {
+ 
+    event.preventDefault(); // Prevent the form from submitting normally
     
     var formData = {
       username: $('#username').val(), // Get the value of the username input field
@@ -365,11 +384,11 @@ if (elForm.addEventListener) {
               console.error('Error:', error);
               // Handle errors
               alert("Error logging in. Try to check your credentials");
-             // window.location.href = '/login';
+              window.location.href = '/login';
           }
     });
   });
-//}
+});}
 </script>
 
 
