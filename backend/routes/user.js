@@ -6,32 +6,33 @@ const User = require('../models/User');
 
 //register
 router.post('/register', async (req, res) => {
-  try {
-    if (!req.body || Object.keys(req.body).length === 0) {
-      return res.status(400).send('Request body is empty');
+    try {
+      if (!req.body || Object.keys(req.body).length === 0) {
+        return res.status(400).send('Request body is emptyness');
     }
+      const { username, email, pass,confpass } = req.body;
+      console.log('req body look ',req.body);
+      console.log('userjs :  email:', email,'usernamde:', username,'pass:', pass,'confpassb:',confpass);
+      if (pass==confpass)
+      {
+        const userExists = await UserController.registerUser(username, email, pass);
+            
+        if (userExists) {   
+          console.error('Error checking out:', error);
+      throw error;
+        
 
-    const { username, email, pass, confpass } = req.body;
-    console.log('req body:', req.body);
-    console.log('userjs: email:', email, 'username:', username, 'pass:', pass, 'confpass:', confpass);
-
-    if (pass === confpass) {
-      const registrationResult = await UserController.registerUser(username, email, pass);
-
-      if (registrationResult.success) {
-        res.json({ success: true, message: "Registration successful" });
-      } else {
-        console.error('Error registering user:', registrationResult.message);
-        res.status(500).send('Internal Server Error');
       }
-    } else {
-      res.status(500).send('Internal Server Error');
+      else
+      res.json({ success: true, message: "Operation successful" });
+      }
+      //res.redirect('/index');
+    } catch (error) {
+      console.error('Error checking out:', error);
+
+   res.status(500).json({ error: error.message });
     }
-  } catch (error) {
-    console.error('Error:', error);
-    res.status(500).send('Internal Server Error');
-  }
-});
+  });
   
   // login
   router.post('/login', async (req, res) => {
