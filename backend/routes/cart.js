@@ -83,15 +83,18 @@ router.post('/checkout', async (req, res) => {
                 $unset: { 'cart.items': "" } 
       });
       console.log(`${result.modifiedCount} documents updated.`);
+      res.status(500).json({ error: error.message });
     } catch (error) {
         console.error('Error copying and removing data:', error);
+        res.status(500).json({ error: error.message });
     }
       console.error('contract succesfull ');
       res.redirect('/user');
-  }
+  }else
+  {
   console.error('Error checking out:', error);
    // throw error;
-   res.status(500).json({ error: error.message });
+   res.status(500).json({ error: error.message });}
 } catch (error) {
     console.error('Error checking out:', error);
    // throw error;
