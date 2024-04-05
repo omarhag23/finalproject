@@ -76,6 +76,7 @@ router.post('/checkout', async (req, res) => {
     const totalPriceInDollars = total;
     const block = Blockchain.performTransaction(buyerAddress,totalPriceInDollars);
     if (block.success) {
+      console.log('successs,will try to update: ');
       // Authentication successful
       try {
         const result = await cart.update({}, { 
