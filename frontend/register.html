@@ -156,7 +156,7 @@
                     </span>
                   </div>
                   <div class="wrap-input100 validate-input" data-validate = "Email is required">
-                    <input class="input100" id="email" type="text" name="email" >
+                    <input class="input100" id="email" type="email" name="email" >
                     <span class="focus-input100"></span>
                   </div>
                 
@@ -360,7 +360,7 @@ var elForm = document.getElementById('signupForm');
 
 function checkFilled() {
   len = elPassword.value.length;
-    if (elUsername.value == "" || elPassword.value == "" || elEmail.value == "" || validateEmail(elEmail.value)==false ||len <8) {
+    if (elUsername.value == "" || elPassword.value == "" || elEmail.value == "" || validateEmail(elEmail)==false ||len <8) {
       console.log("value length : ",len)
         elMsg.innerHTML = 'Please check your credentials,Password must be not less than 8 characters';
         event.preventDefault();
