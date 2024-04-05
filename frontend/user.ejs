@@ -214,11 +214,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 
-  var elForm = document.getElementById('depositForm');
+ 
+var username = elOrderTotal.dataset.username;
+/*
+var elForm = document.getElementById('depositForm');
   var elAmount = document.getElementById('amount');
   var elMsg = document.getElementById('feedback');
   var elOrderTotal = document.getElementById('order');
-var username = elOrderTotal.dataset.username;
 
 console.log("usrn ",username);
 
@@ -257,7 +259,7 @@ if (elAmount.addEventListener) {
 }
 if (checkFilled()==true)
   {
-   
+   */
         $('#order').on('click', function (event)  {
     console.log("usrn 2 ",username);
  
@@ -293,7 +295,7 @@ if (checkFilled()==true)
           }
     });
   });
-};
+//};
 
 
  </script> 
