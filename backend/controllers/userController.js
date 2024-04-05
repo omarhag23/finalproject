@@ -36,12 +36,12 @@ registerUser :async (username,email,pass) => {
   } catch (err) {
     console.error('Error saving user controller:', err);
       // Throw error to be caught by the route handler
-      res.status(500).json({ error: error.message });
+      return { success: false, message: 'Error encountered while saving' };
   }
 } catch (err) {
   console.error('Error saving user controller:', err);
     // Throw error to be caught by the route handler
-    res.status(500).json({ error: error.message });
+    return { success: false, message: 'Error encountered while saving' };
 }
 },
 
@@ -54,13 +54,6 @@ checkBalance : async (username) => {
 },
 
 
-deposit : async (username) => {
-
-  const user = await User.findOne({username:username});
-  const addy = user.ethAddress;
-  const balance = Blockchain.getBalance(addy);
-  return balance;
-},
 
 
 
@@ -70,6 +63,7 @@ authenticateUser: async(username,password)=>{
      const user = await User.findOne({username:username})
       if(!user){
         console.error('User does not exist')
+        return { success: false, message: 'User does not exist' };
      } 
     
      if (user)
@@ -79,6 +73,7 @@ authenticateUser: async(username,password)=>{
       const passwordValidation = await bcryptjs.compare(password,user.password)
       if(!passwordValidation){
         console.error('password wrong')
+        return { success: false, message: 'Password or Username Wrong!' };
       }
       else {return user;}
     }

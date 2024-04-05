@@ -20,7 +20,7 @@ router.post('/register', async (req, res) => {
         if (userExists) {   
           console.error('Error checking out:', error);
           // throw error;
-          res.status(500).json({ error: error.message });
+          return { success: false, message: 'User already Exists!' };
 
       }
       else
@@ -28,8 +28,9 @@ router.post('/register', async (req, res) => {
       }
       //res.redirect('/index');
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: error.message });
+      console.error('Error checking out:', error);
+      // throw error;
+      return { success: false, message: 'Error Signing Up' };
     }
   });
   
@@ -46,11 +47,11 @@ router.post('/register', async (req, res) => {
         res.redirect('/');
       } else {
         // Authentication failed (invalid credentials)
-        res.status(500).json({ error: "something wrong" });
+        return { success: false, message: 'Authentication failed (invalid credentials)' };;
          
       }
     } catch (error) {
-      console.error(error);
+      return { success: false, message: 'Authentication failed (invalid credentials)' };
       
     }
   });
@@ -72,7 +73,7 @@ router.post('/register', async (req, res) => {
     }
     console.error('Error checking out:', error);
      // throw error;
-     res.status(500).json({ error: error.message });
+     return { success: false, message: 'Error making deposit failed (invalid credentials)' };
   
   });
 
