@@ -76,19 +76,20 @@ router.post('/checkout', async (req, res) => {
     const totalPriceInDollars = total;
     const block = Blockchain.performTransaction(buyerAddress,totalPriceInDollars);
     if (block.success) {
-      console.log('successs,will try to update: ');
-      // Authentication successful
+      console.log('Transaction successful, updating cart...');
+
       try {
-        const result = await cart.update({}, { 
-          $set: { 'cart.myItems': '$cart.items' }, 
-                $unset: { 'cart.items': "" } 
-      });
-      console.log(`${result.modifiedCount} documents updated.`);
-      res.status(200).json({ success: true, message: 'Deposit successful' });
-    } catch (error) {
-        console.error('Error copying and removing data:', error);
-        res.status(500).json({ error: "error.message" });
-    }
+          const result = await cart.updateOne({}, {
+              $set: { 'cart.myItems': cart.cart.items },
+              $unset: { 'cart.items': "" }
+          });
+
+          console.log(`${result.modifiedCount} documents updated.`);
+          res.status(200).json({ success: true, message: 'Checkout successful' });
+      } catch (error) {
+          console.error('Error updating cart:', error);
+          res.status(500).json({ error: error.message });
+      }
       console.error('contract succesfull ');
       res.json({ success: true, message: "Operation successful" });
   }else
