@@ -22,14 +22,14 @@ router.post('/register', async (req, res) => {
         res.json({ success: true, message: "Registration successful" });
       } else {
         console.error('Error registering user:', registrationResult.message);
-        res.status(500).json({success: false, message: registrationResult.message });
+        res.redirect('/register');
       }
     } else {
-      res.status(400).json({success: false, message: "Passwords do not match" });
+      res.redirect('/register');
     }
   } catch (error) {
     console.error('Error:', error);
-    res.status(500).json({success: false, message: "An unexpected error occurred" });
+    res.redirect('/register');
   }
 });
   
@@ -46,11 +46,11 @@ router.post('/register', async (req, res) => {
         res.redirect('/');
       } else {
         // Authentication failed (invalid credentials)
-        res.status(500).json({ error: "login credentials are wrnong" });}
+        res.redirect('/login');
          
-      
+      }  
     } catch (error) {
-      res.status(500).json({ error: "login credentials are wrnong" });}
+      res.redirect('/login');}
       
     
   });

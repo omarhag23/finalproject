@@ -173,10 +173,12 @@ app.get('/', (req, res) => {
 });
 
 
-app.get('/register', (req, res) => {
-
-    
+app.get('/register', (req, res) => {    
   res.render('register');
+});
+
+app.get('/login', (req, res) => {    
+  res.render('login');
 });
 // Start the server
 app.listen(3000, () => {
