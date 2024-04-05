@@ -56,7 +56,7 @@ router.post('/register', async (req, res) => {
   });
 
   router.post('/deposit', async (req, res) => {
-   
+   try{
       console.error('in the deposit')
       const {amount,username}  = req.body;
       console.error('in the deposit, amount : ',amount,"userna : ",username);
@@ -73,7 +73,9 @@ router.post('/register', async (req, res) => {
     }else
      // throw error;
      res.status(500).json({ error: "error.message" });
-  
+   }catch(err)
+   {
+   res.status(500).json({ error: "error.message" });}
   });
 
 
