@@ -19,18 +19,18 @@ router.post('/register', async (req, res) => {
             
         if (userExists) {   
           console.error('Error checking out:', error);
-          // throw error;
-          return { success: false, message: 'User already Exists!' };
+   // throw error;
+          res.status(500).json({ error: error.message });
 
       }
       else
-      res.redirect('/api/shop/login');
+      res.json({ success: true, message: "Operation successful" });
       }
       //res.redirect('/index');
     } catch (error) {
       console.error('Error checking out:', error);
-      // throw error;
-      return { success: false, message: 'Error Signing Up' };
+   // throw error;
+   res.status(500).json({ error: error.message });
     }
   });
   
@@ -40,7 +40,7 @@ router.post('/register', async (req, res) => {
       console.error('in the login')
       const { username, password } = req.body;
       const user = await UserController.authenticateUser(username, password);
-      if (user) {
+      if (user.success) {
         // Authentication successful
         console.error('authentication super OK',username, ' logged in,trying to redirect ');
         req.session.username = username;

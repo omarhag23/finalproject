@@ -89,7 +89,7 @@ router.post('/checkout', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
       console.error('contract succesfull ');
-      res.redirect('/user');
+      res.json({ success: true, message: "Operation successful" });
   }else
   {
   console.error('Error checking out:', error);
