@@ -9,10 +9,16 @@ registerUser :async (username,email,pass) => {
   try{
     console.log('controller  pass : email:', email,'username:', username,'password:', pass,);
     // Validation  to check if user exists!
-    const userExists = await User.findOne({email:email})
-    if(userExists){
+    const emailExists = await User.findOne({email:email})
+    if(emailExists){
       console.log('User already exists')
       return { userExists: true };
+    }else {
+      const userExists = await User.findOne({username:username})
+    if(userExists){
+      console.log('User already exists')
+      return { userExists: true, success: false, message: 'Error encountered while saving' };
+    }
     }
     // I created a hashed represenation of my password!
     const salt = await bcryptjs.genSalt(5)
