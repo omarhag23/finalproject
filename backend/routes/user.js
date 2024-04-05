@@ -46,13 +46,13 @@ router.post('/register', async (req, res) => {
         res.redirect('/');
       } else {
         // Authentication failed (invalid credentials)
-        return { success: false, message: 'Authentication failed (invalid credentials)' };;
+        res.status(500).json({ error: error.message });}
          
-      }
-    } catch (error) {
-      return { success: false, message: 'Authentication failed (invalid credentials)' };
       
-    }
+    } catch (error) {
+      res.status(500).json({ error: error.message });}
+      
+    
   });
 
   router.post('/deposit', async (req, res) => {
