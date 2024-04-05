@@ -81,17 +81,16 @@ router.post('/checkout', async (req, res) => {
       try {
           const result = await cart.update({}, {
               $set: { 'cart.myItems': cart.items },
-              $unset: { 'cart.items': "" }
+              $unset: { 'cart.items': "" } 
           });
-
+          console.error('contract succesfull ');
+          res.json({ success: true, message: "Operation successful" });
           console.log(`${result.modifiedCount} documents updated.`);
           res.status(200).json({ success: true, message: 'Checkout successful' });
       } catch (error) {
           console.error('Error updating cart:', error);
           res.status(500).json({ error: error.message });
       }
-      console.error('contract succesfull ');
-      res.json({ success: true, message: "Operation successful" });
   }else
   {
    // throw error;
