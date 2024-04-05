@@ -80,7 +80,7 @@ router.post('/checkout', async (req, res) => {
 
       try {
           const result = await cart.updateOne({}, {
-              $set: { 'cart.myItems': cart.cart.items },
+              $set: { 'cart.myItems': cart.items },
               $unset: { 'cart.items': "" }
           });
 
