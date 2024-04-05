@@ -6,6 +6,7 @@ const bcryptjs = require('bcryptjs');
 const UserController = {
 //register
 registerUser :async (username,email,pass) => {
+  try{
     console.log('controller  pass : email:', email,'username:', username,'password:', pass,);
     // Validation  to check if user exists!
     const userExists = await User.findOne({email:email})
@@ -19,7 +20,7 @@ registerUser :async (username,email,pass) => {
 
     console.log('HASHED PASS:', hashedPassword, "salt : ",salt);
     const count = await User.countDocuments();
-    const ethAddress = Blockchain.getAddress(count);
+    const ethAddress = await Blockchain.getAddress(count);
     // Code to insert data
     const user = new User({
         username:username,
@@ -36,9 +37,14 @@ registerUser :async (username,email,pass) => {
   } catch (err) {
     console.error('Error saving user controller:', err);
       // Throw error to be caught by the route handler
-      throw err;
+      res.status(500).json({ error: error.message });
   }
-} ,
+} catch (err) {
+  console.error('Error saving user controller:', err);
+    // Throw error to be caught by the route handler
+    res.status(500).json({ error: error.message });
+}
+},
 
 checkBalance : async (username) => {
 
