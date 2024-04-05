@@ -366,9 +366,12 @@ function checkFilled() {
         event.preventDefault();
         return false
     } 
+    else {
     if (validateEmail(elEmail.value)==false)return false;
+    else {
     elMsg.innerHTML = '';
-    return true;
+    return true;}
+  }
 }
 
 if (elForm.addEventListener) {
