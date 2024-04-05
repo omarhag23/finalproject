@@ -73,10 +73,10 @@ authenticateUser: async(username,password)=>{
         console.error('User does not exist')
         return { success: false, message: 'User does not exist' };
      } 
-    
+     else
+     {
      if (user)
      {
-
     // Validation 3 to check user password
       const passwordValidation = await bcryptjs.compare(password,user.password);
       if(!passwordValidation){
@@ -85,5 +85,5 @@ authenticateUser: async(username,password)=>{
       }
       else {return user;}
     }
- }}
+ }}}
 module.exports = UserController;
