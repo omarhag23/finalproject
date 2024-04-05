@@ -83,7 +83,7 @@ router.post('/checkout', async (req, res) => {
                 $unset: { 'cart.items': "" } 
       });
       console.log(`${result.modifiedCount} documents updated.`);
-      res.status(500).json({ error: "error.message" });
+      res.status(200).json({ success: true, message: 'Deposit successful' });
     } catch (error) {
         console.error('Error copying and removing data:', error);
         res.status(500).json({ error: "error.message" });
