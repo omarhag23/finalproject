@@ -117,11 +117,11 @@ const privateKey ='0xf52ad7084aa1fe9b5a1be33eba6d453d7e06b4d3ecb5971e2e469f4ab42
 
  */
 //const contractAddress= '0xE0e450Dfa15591CF333B4f5642700e3f40449300'; 
+const sellerAddress ='0x3867d06d5EC777Ce3fa7f474915d7d2117F65c90';
 
 async function deployContract(){
 	try {
 		const accounts = await web3.eth.getAccounts();
-        const sellerAddress =accounts[0];
 		const contract = new web3.eth.Contract(abi);
 		console.log("contract found,trying to deploy, seller address : ",sellerAddress);
 		const deploy = contract.deploy({
@@ -150,6 +150,7 @@ async function deployContract(){
 
 
 //const contractAddress = '0x31E6C828D34651DA31A1D47e245f8e4Fc92345ff'; 
+
 const contractAddress ='0x5511d49e5937F3a62d0bDA3159FF31D5e867876A';
 
 
@@ -190,7 +191,6 @@ const Blockchain = {
         try {
             const contractInstance = new web3.eth.Contract(abi, contractAddress);
             const accounts = await web3.eth.getAccounts();
-            const sellerAddress = accounts[0];
             const exchangeRate = 2000; // Ether exchange rate
             const totalPriceInEther = totalPriceInDollars / exchangeRate;
             const totalPriceInWei = web3.utils.toWei(totalPriceInEther.toString(), 'ether');
@@ -237,7 +237,6 @@ const Blockchain = {
         try {
             const contractInstance = new web3.eth.Contract(abi, contractAddress);
             const accounts = await web3.eth.getAccounts();
-            const sellerAddress = accounts[0];
             const exchangeRate = 2000; // Ether exchange rate
             const totalPriceInEther = totalPriceInDollars / exchangeRate;
             const totalPriceInWei = web3.utils.toWei(totalPriceInEther.toString(), 'ether');

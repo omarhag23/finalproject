@@ -409,7 +409,13 @@ if (elPassword.addEventListener) {
                     // Redirect to frontend page
                     window.location.href = 'index'; // Change '/index' to your frontend page URL
                 } 
-      }
+      },
+      error: function(xhr, status, error) {
+              console.error('Error:', error);
+              // Handle errors
+              alert("Username or password not recognized,please retry");
+              
+          }
     });
   });
 });}

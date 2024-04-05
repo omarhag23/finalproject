@@ -18,7 +18,7 @@ router.post('/register', async (req, res) => {
         const userExists = await UserController.registerUser(username, email, pass);
             
         if (userExists) {
-        res.status(409).send('User already exists');
+        res.status(500).json({ error: "user exists already" });
       }
       else
       res.redirect('/api/shop/login');
@@ -26,7 +26,7 @@ router.post('/register', async (req, res) => {
       //res.redirect('/index');
     } catch (error) {
       console.error(error);
-      res.status(500).send('Error registering user');
+      res.status(500).json({ error: error.message });
     }
   });
   
@@ -43,13 +43,37 @@ router.post('/register', async (req, res) => {
         res.redirect('/');
       } else {
         // Authentication failed (invalid credentials)
-          res.redirect('/');
+        res.status(500).json({ error: error.message });
+         
       }
     } catch (error) {
       console.error(error);
       
     }
   });
+
+  router.post('/deposit', async (req, res) => {
+   
+      console.error('in the deposit')
+      const {amount,username}  = req.body;
+      const user = await User.findOne({ username: username });
+      console.log('User Found ',user);
+      const buyerAddress= user.ethAddress;
+      const totalPriceInDollars = amount;
+      console.log('EthAddress Found ',buyerAddress);
+      const block = Blockchain.depositTransaction(buyerAddress,totalPriceInDollars);
+      if (block.success) {
+        // Authentication successful
+        console.error('deposit succesfull ');
+        res.redirect('/user');
+    }
+    console.error('Error checking out:', error);
+     // throw error;
+     res.status(500).json({ error: error.message });
+  
+  });
+
+
 
   router.get('/detail',async (req, res) => {
 

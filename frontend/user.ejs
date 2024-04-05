@@ -36,7 +36,7 @@
           <div class="container">
             <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
               <div class="col-lg-6">
-                <h1 class="h2 text-uppercase mb-0"><%=username%></h1>
+                <h1 class="h2 text-uppercase mb-0"><%=AmountelAmount%></h1>
               </div>
               <div class="col-lg-6 text-lg-end">
                 <nav aria-label="breadcrumb">
@@ -105,7 +105,7 @@
               <div class="bg-light px-4 py-3"  id="cartNav">
                 <div class="row align-items-center text-center">
                   <div class="col-md-6 mb-3 mb-md-0 text-md-start"><a class="btn btn-link p-0 text-dark btn-sm" href="shop.html"><i class="fas fa-long-arrow-alt-left me-2"> </i>Continue shopping</a></div>
-                  <div class="col-md-6 text-md-end"><a class="btn btn-outline-dark btn-sm addToCartButton" data-userId="<%= username %>"href="/checkout">Download Everything<i class="fas fa-long-arrow-alt-right ms-2"></i></a></div>
+                  <div class="col-md-6 text-md-end"><a class="btn btn-outline-dark btn-sm addToCartButton" data-userId="<%= AmountelAmount %>"href="/checkout">Download Everything<i class="fas fa-long-arrow-alt-right ms-2"></i></a></div>
                 </div>
               </div>
             </div>
@@ -120,9 +120,10 @@
                     <li class="border-bottom my-2"></li>
                     <li class="d-flex align-items-center justify-content-between mb-4"><strong class="text-uppercase small font-weight-bold">Balance</strong><span><%=balance %></span></li>
                     <li>
-                      <form action="#">
+                      <form id="depositForm" action="api/user/deposit">
                         <div class="input-group mb-0">
-                          <input class="form-control" type="text" placeholder="Enter the amount to deposit">
+                          <input id="amount" name="amount" class="form-control" type="text" placeholder="Enter the amount to deposit">
+                          <span class="txt1" id = "feedback"></span>
                           <button class="btn btn-dark btn-sm w-100" type="submit"> Deposit</button>
                         </div>
                       </form>
@@ -211,7 +212,85 @@
         
       </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
 
+  var elForm = document.getElementById('depositForm');
+  var elAmount = document.getElementById('amount');
+  var elMsg = document.getElementById('feedback');
+  var username = '<%=username%>';
+
+  function checkFilled() {
+  len = elAmount.value.length;
+    if (isNan(elAmount)||len ==0) {
+      console.log("value length : ",len)
+        elMsg.innerHTML = 'Please check the deposit amount';
+        event.preventDefault();
+        return false
+    } else {
+        
+        elMsg.innerHTML = '';
+        return true;
+    }
+}
+
+if (elForm.addEventListener) {
+    elForm.addEventListener('submit', function() {
+         checkFilled();
+    }, false);
+} else {
+    elForm.attachEvent('onsubmit', function() {
+         checkFilled();
+    });
+}
+
+if (elAmount.addEventListener) {
+    elAmount.addEventListener('blur', function() {
+        checkFilled();
+    }, false);
+} else {
+    elAmount.attachEvent('onblur', function() {
+        checkFilled();
+    });
+}
+if (checkFilled==true)
+    {
+    $(document).ready(function() {
+  $('#depositForm').submit(function(event) {
+ 
+    event.preventDefault(); // Prevent the form from submitting normally
+    
+    var formData = {
+      amount: $('#amount').val(),
+      username: username// Get the value of the amount input field
+     
+    };
+    
+    console.log(formData);
+  
+     $.ajax({
+      type: 'POST',
+      url: '/api/user/deposit', 
+      data: formData,
+      success: function(response) {
+        alert("User succesfull deposit");
+        console.log(response,'front 1');
+                if (response.message === 'Authentication successful frontesbd2') {
+                    // Redirect to frontend page
+                    window.location.href = 'index'; // Change '/index' to your frontend page URL
+                } 
+      },
+      error: function(xhr, status, error) {
+              console.error('Error:', error);
+              // Handle errors
+              alert("Username or password not recognized,please retry");
+              
+          }
+    });
+  });
+});}
+
+
+ </script> 
       <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     </div>
