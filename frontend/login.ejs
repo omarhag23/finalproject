@@ -337,9 +337,10 @@ if (elForm.addEventListener) {
 
   if (checkFilled()==true)
     {*/
-      $('#order').on('click', function (event)   {
+      $('#loginForm').submit(function(event)
+  {
         event.preventDefault(); 
- console.log("in thascript");
+   console.log("in thascript");
     
     var formData = {
       username: $('#username').val(), // Get the value of the username input field
