@@ -33,7 +33,6 @@ registerUser :async (username,email,pass) => {
       // Save the user
       const savedUser = await user.save();
       console.log('User object after saving:', savedUser);
-      return savedUser;
   } catch (err) {
     console.error('Error saving user controller:', err);
       // Throw error to be caught by the route handler
