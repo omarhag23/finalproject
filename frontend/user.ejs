@@ -120,7 +120,7 @@
                     <li class="border-bottom my-2"></li>
                     <li class="d-flex align-items-center justify-content-between mb-4"><strong class="text-uppercase small font-weight-bold">Balance</strong><span><%=balance %></span></li>
                     <li>
-                      <form id="depositForm" action="api/user/deposit">
+                      <form id="depositForm" action="api/user/deposit" method="POST">
                         <div class="input-group mb-0">
                           <input id="amount" name="amount" class="form-control" type="text" placeholder="Enter the amount to deposit">
                           <span class="txt1" id = "feedback"></span>
