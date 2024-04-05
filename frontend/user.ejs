@@ -68,6 +68,7 @@
               </tr>
             </thead>
             <tbody class="border-0">
+              <% var total=0 %>
               <% if (cart!=null && user!=null && balance!=null && cart.myItems!=null && cart.myItems.length > 0) { %>
                 <% cart.myItems.forEach(item => { %>
                   <tr>
