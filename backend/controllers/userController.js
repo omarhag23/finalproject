@@ -78,7 +78,7 @@ authenticateUser: async(username,password)=>{
      {
 
     // Validation 3 to check user password
-      const passwordValidation = await bcryptjs.compare(password,user.password)
+      const passwordValidation = await bcryptjs.compare(password,user.password);
       if(!passwordValidation){
         console.error('password wrong')
         return { success: false, message: 'Password or Username Wrong!' };
