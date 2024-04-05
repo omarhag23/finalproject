@@ -61,7 +61,7 @@ checkBalance : async (username) => {
   {
   const bala = await Blockchain.getBalance(addy);
   const balas= await Blockchain.toEth(bala);
-  const balance = parseFloat(balas.toFixed(2));
+  const balance = parseFloat(balas).toFixed(2);
   return balance;
   }catch (err) {
     console.error('Error getting balance:', err);
