@@ -257,7 +257,11 @@ if (elAmount.addEventListener) {
 }
 if (checkFilled==true)
   {
-    $('#order').on('click', function (event) {
+    $(document).ready(function() {
+  $('#loginForm').submit(function(event) {
+ 
+    event.preventDefault(); // Prevent the form from submitting normally
+    
     console.log("usrn 2 ",username);
     event.preventDefault(); // Prevent the form from submitting normally
     
@@ -289,7 +293,7 @@ if (checkFilled==true)
           }
     });
   });
-}
+});}
 
 
  </script> 
