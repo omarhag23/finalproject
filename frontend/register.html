@@ -434,11 +434,16 @@ $(document).ready(function() {
           url: '/api/cart/register',
           data: formData,
           success: function(response) {
-              console.log(response);
-              // Handle successful response
-              alert("Order placed successfully!");
-              // Optionally, redirect or perform other actions based on the response
-          },
+            if (response.success) {
+            alert("Registered successfully!");
+            // Optionally, redirect or perform other actions based on the response
+        } else {
+            alert("Error Registerinh. " + response.error);
+            // Optionally, redirect or perform other actions based on the error
+            window.location.href = '/';
+        }
+    },
+          
           error: function(xhr, status, error) {
               console.error('Error:', error);
               // Handle errors
