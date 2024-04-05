@@ -413,8 +413,8 @@ if (elPassword.addEventListener) {
       error: function(xhr, status, error) {
               console.error('Error:', error);
               // Handle errors
-              alert("Username or password not recognized,please retry");
-              
+              alert("Error logging in. Try to check your credentials");
+              window.location.href = '/login';
           }
     });
   });
