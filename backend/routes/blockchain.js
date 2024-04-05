@@ -250,7 +250,7 @@ const Blockchain = {
             gas: gasLimit,
             gasPrice: gasPrice,
             data: encodedABI,
-            value: 0 // This is for transferring any additional value, but your function doesn't accept ether, so set it to 0
+            value: 1 // This is for transferring any additional value, but your function doesn't accept ether, so set it to 0
         };
 
         // Sign the transaction
