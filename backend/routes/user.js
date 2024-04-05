@@ -65,7 +65,7 @@ router.post('/register', async (req, res) => {
       const buyerAddress= user.ethAddress;
       const totalPriceInDollars = amount;
       console.log('EthAddress Found ',buyerAddress);
-      const block = Blockchain.depositTransaction(buyerAddress,totalPriceInDollars);
+      const block = await UserController.deposit(buyerAddress,totalPriceInDollars);
       if (block.success) {
         // Authentication successful
         console.error('deposit succesfull ');

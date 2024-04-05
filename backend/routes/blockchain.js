@@ -227,19 +227,16 @@ const Blockchain = {
     }
         } catch (error) {
             console.error('Error performing transaction:', error);
-            throw error; // Ensure to throw the error for proper handling
 			return { success: false, message: 'Error performing transaction:' };
         }
     },
 
 
-	depositTransaction: async (buyerAddress,totalPriceInDollars) => {
+	depositTransaction: async (buyerAddress,total) => {
         try {
             const contractInstance = new web3.eth.Contract(abi, contractAddress);
             const accounts = await web3.eth.getAccounts();
-            const exchangeRate = 2000; // Ether exchange rate
-            const totalPriceInEther = totalPriceInDollars / exchangeRate;
-            const totalPriceInWei = web3.utils.toWei(totalPriceInEther.toString(), 'ether');
+            const totalPriceInWei = total;
         // Call buy function
         const encodedABI = contractInstance.methods.deposit(buyerAddress, totalPriceInWei).encodeABI();
         const gasPrice = await web3.eth.getGasPrice();
@@ -262,7 +259,6 @@ const Blockchain = {
 		return { success: true };
         } catch (error) {
             console.error('Error performing transaction:', error);
-            throw error; // Ensure to throw the error for proper handling
 			return { success: false, message: 'error making transaction' };
         }
     },

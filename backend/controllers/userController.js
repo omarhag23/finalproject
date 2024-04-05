@@ -57,10 +57,30 @@ checkBalance : async (username) => {
 
   const user = await User.findOne({username:username});
   const addy = user.ethAddress;
+  try
+  {
   const balance = Blockchain.getBalance(addy);
   return balance;
+  }catch (err) {
+    console.error('Error getting balance:', err);
+    // Return error response
+    return { success: false, message: 'Error encountered while registering user' };
+  }
 },
 
+
+deposit : async (address,total) => {
+
+  try
+  {
+  const balance = Blockchain.depositTransaction(address,total);
+  return balance;
+}catch (err) {
+  console.error('Error getting balance:', err);
+  // Return error response
+  return { success: false, message: 'Error encountered while registering user' };
+}
+},
 
 
 
