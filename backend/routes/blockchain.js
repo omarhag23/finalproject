@@ -237,14 +237,14 @@ const Blockchain = {
 
 	depositTransaction: async (buyerAddress,total) => {
         try {
-            const contractInstance = new web3.eth.Contract(abi, contractAddress);
-            //const accounts = await web3.eth.getAccounts();
-			const totalPriceInWei = total ;
+        const contractInstance = new web3.eth.Contract(abi, contractAddress);
+        //const accounts = await web3.eth.getAccounts();
+		const totalPriceInWei = total ;
         // Call deposit function
         const encodedABI = contractInstance.methods.deposit(buyerAddress, totalPriceInWei).encodeABI();
         const gasPrice = await web3.eth.getGasPrice();
         const gasLimit = 6721975; // Adjust gas limit as needed
-        const tx = {
+        const tx1 = {
             from : sellerAddress,
             to: contractAddress,
             gas: gasLimit,
@@ -254,14 +254,13 @@ const Blockchain = {
         };
 
         // Sign the transaction
-        const signedTx = await web3.eth.accounts.signTransaction(tx, privateKey);
-
+       const signedTx = await web3.eth.accounts.signTransaction(tx1, privateKey);
         // Send the signed transaction
         const receipt = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
         console.log('Transaction receipt:', receipt);
 		return { success: true };
         } catch (error) {
-            console.error('Error performing transaction:', error);
+            console.error('Error performing transaction: ', error);
 			return { success: false, message: 'error making transaction' };
         }
     },

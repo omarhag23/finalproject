@@ -69,12 +69,12 @@ checkBalance : async (username) => {
 },
 
 
-deposit : async (address,total) => {
+deposit: async (address,total) => {
 
   try
   {
-  const balance = Blockchain.depositTransaction(address,total);
-  return balance;
+  const deposit = Blockchain.depositTransaction(address,total);
+  return deposit;
 }catch (err) {
   console.error('Error getting balance:', err);
   // Return error response
