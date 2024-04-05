@@ -171,6 +171,13 @@ app.get('/', (req, res) => {
     
     res.render('index');
 });
+
+
+app.get('/register', (req, res) => {
+
+    
+  res.render('register');
+});
 // Start the server
 app.listen(3000, () => {
     console.log('Server dfd is up and running...');
