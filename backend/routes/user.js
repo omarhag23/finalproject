@@ -58,7 +58,7 @@ router.post('/register', async (req, res) => {
   router.post('/deposit', async (req, res) => {
    
       console.error('in the deposit')
-      const {amount,username}  = req.body;
+      const {amount}  = req.body;
       console.error('in the deposit, amount : ',amount,"userna : ",username);
       const user = await User.findOne({ username: username });
       console.log('User Found ',user);
