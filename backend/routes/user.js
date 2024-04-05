@@ -17,8 +17,10 @@ router.post('/register', async (req, res) => {
       {
         const userExists = await UserController.registerUser(username, email, pass);
             
-        if (userExists) {
+        if (userExists) {   
         res.status(500).json({ error: "user exists already" });
+        res.redirect('/api/shop/login');
+
       }
       else
       res.redirect('/api/shop/login');
@@ -43,7 +45,7 @@ router.post('/register', async (req, res) => {
         res.redirect('/');
       } else {
         // Authentication failed (invalid credentials)
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: "something wrong" });
          
       }
     } catch (error) {
