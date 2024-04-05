@@ -59,7 +59,8 @@ checkBalance : async (username) => {
   const addy = user.ethAddress;
   try
   {
-  const balance = Blockchain.getBalance(addy);
+  const bala = Blockchain.getBalance(addy);
+  const balance= web3.utils.fromWei(bala.toString(), 'ether');
   return balance;
   }catch (err) {
     console.error('Error getting balance:', err);

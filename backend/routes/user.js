@@ -87,7 +87,9 @@ router.post('/register', async (req, res) => {
       try {
         const cart = await Cart.findOne({ username: username }).populate('myItems.product_id');
         const user = await User.findOne({username:username});
-        const balance =  await UserController.checkBalance(username);
+        const bala =  await UserController.checkBalance(username);
+        const balance = 
+
 
         console.log('fetched,response',cart," user data : ",user," balance : ",balance);
 
