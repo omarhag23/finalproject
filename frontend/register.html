@@ -185,8 +185,7 @@
                     Sign Up
                   </button>
                 </div>
-      
-                
+
               </form>
             </div>
           </div>
@@ -350,6 +349,8 @@ var elForm = document.getElementById('signupForm');
   var elMsg = document.getElementById('feedback');
   var elUsername = document.getElementById('username');
   var elEmail = document.getElementById('email');
+  var elConf = document.getElementById('confpass');
+
 
   const validateEmail = (elEmail) => {
   return elEmail.match(
@@ -443,7 +444,7 @@ $(document).ready(function() {
           }
     });
   });
-});}
+});}else { alert("Error!User probably already exists or typo error, please retry");}
 </script>
 
 
