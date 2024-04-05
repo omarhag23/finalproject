@@ -124,7 +124,7 @@
                         <div class="input-group mb-0">
                           <input id="amount" name="amount" class="form-control" type="text" placeholder="Enter the amount to deposit">
                           <span class="txt1" id = "feedback"></span>
-                          <button class="btn btn-dark btn-sm w-100" id ="order" data-username="<%=username%>"type="submit"> Deposit</button>
+                          <button class="btn btn-dark btn-sm w-100" id ="order" data-username="<%= username %>" type="submit"> Deposit</button>
                         </div>
                       </form>
                     </li>
@@ -220,6 +220,8 @@
   var elOrderTotal = document.getElementById('order');
 var username = elOrderTotal.dataset.username;
 
+console.log("usrn ",username);
+
   function checkFilled() {
   len = elAmount.value.length;
     if (isNan(elAmount.value)||len ==0) {
@@ -262,7 +264,7 @@ if (checkFilled==true)
     
     var formData = {
       amount: $('#amount').val(),
-      username : username// Get the value of the amount input field
+      username: username // Get the value of the amount input field
      
     };
     
