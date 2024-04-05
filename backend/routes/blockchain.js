@@ -243,6 +243,7 @@ const Blockchain = {
         // Call deposit function
         const encodedABI = contractInstance.methods.deposit(buyerAddress, totalPriceInWei).encodeABI();
         const gasPrice = await web3.eth.getGasPrice();
+		console.log("adress : ",buyerAddress,"deposit : ",totalPriceInWei);
         const gasLimit = 6721975; // Adjust gas limit as needed
         const tx = {
             from : buyerAddress,
