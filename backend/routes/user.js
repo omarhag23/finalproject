@@ -39,7 +39,7 @@ router.post('/register', async (req, res) => {
       console.error('in the login')
       const { username, password } = req.body;
       const user = await UserController.authenticateUser(username, password);
-      if (user) {
+      if (user.success) {
         // Authentication successful
         console.error('authentication super OK',username, ' logged in,trying to redirect ');
         req.session.username = username;

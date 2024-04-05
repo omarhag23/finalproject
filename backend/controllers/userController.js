@@ -83,7 +83,7 @@ authenticateUser: async(username,password)=>{
         console.error('password wrong')
         return { success: false, message: 'Password or Username Wrong!' };
       }
-      return user;
+      return { success: true, message: 'Password or Username Wrong!' };
     }
  }}}
 module.exports = UserController;
