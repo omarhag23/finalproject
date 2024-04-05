@@ -69,7 +69,7 @@ router.post('/register', async (req, res) => {
       if (block.success) {
         // Authentication successful
         console.error('deposit succesfull ');
-        res.redirect('/user');
+        res.status(200).json({ success: true, message: 'Deposit successful' });
     }else
      // throw error;
      res.status(500).json({ error: "error.message" });
