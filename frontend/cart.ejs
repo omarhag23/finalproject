@@ -69,7 +69,7 @@
             </thead>
             <tbody class="border-0">
               <% var total=0; %>
-              <% if (cart && cart.items && cart.items.length > 0) { %>
+              <% if (username!=null && cart && cart.items && cart.items.length > 0) { %>
                 <% cart.items.forEach(item => { %>
                   <tr>
                     <th class="ps-0 py-3 border-light" scope="row">

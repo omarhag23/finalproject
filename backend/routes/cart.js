@@ -90,7 +90,8 @@ router.post('/checkout', async (req, res) => {
       res.redirect('/user');
   }} catch (error) {
     console.error('Error checking out:', error);
-    throw error;
+   // throw error;
+    return error;
   }   
     
 });
