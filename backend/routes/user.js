@@ -19,8 +19,8 @@ router.post('/register', async (req, res) => {
             
         if (userExists) {   
           console.error('Error checking out:', error);
-      throw error;
-        
+   // throw error;
+          res.status(500).json({ error: "user" });
 
       }
       else
@@ -29,7 +29,7 @@ router.post('/register', async (req, res) => {
       //res.redirect('/index');
     } catch (error) {
       console.error('Error checking out:', error);
-
+   // throw error;
    res.status(500).json({ error: error.message });
     }
   });
