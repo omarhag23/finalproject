@@ -46,11 +46,11 @@ router.post('/register', async (req, res) => {
         res.redirect('/');
       } else {
         // Authentication failed (invalid credentials)
-        res.status(500).json({ error: error.message });}
+        res.status(500).json({ error: "login credentials are wrnong" });}
          
       
     } catch (error) {
-      res.status(500).json({ error: error.message });}
+      res.status(500).json({ error: "login credentials are wrnong" });}
       
     
   });
