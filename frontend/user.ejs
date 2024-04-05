@@ -124,7 +124,7 @@
                         <div class="input-group mb-0">
                           <input id="amount" name="amount" class="form-control" type="text" placeholder="Enter the amount to deposit">
                           <span class="txt1" id = "feedback"></span>
-                          <button class="btn btn-dark btn-sm w-100" type="submit"> Deposit</button>
+                          <button class="btn btn-dark btn-sm w-100" id ="order" type="submit"> Deposit</button>
                         </div>
                       </form>
                     </li>
@@ -253,8 +253,8 @@ if (elAmount.addEventListener) {
 }
 if (checkFilled==true)
     {
-    $(document).ready(function() {
-  $('#depositForm').submit(function(event) {
+        $('#order').on('click', function (event) {
+  
  
     event.preventDefault(); // Prevent the form from submitting normally
     
@@ -286,7 +286,7 @@ if (checkFilled==true)
           }
     });
   });
-});}
+}
 
 
  </script> 
