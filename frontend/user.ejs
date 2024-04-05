@@ -214,15 +214,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 
- 
+var elOrderTotal = document.getElementById('order'); 
 var username = elOrderTotal.dataset.username;
+console.log("usrn ",username);
 /*
 var elForm = document.getElementById('depositForm');
   var elAmount = document.getElementById('amount');
   var elMsg = document.getElementById('feedback');
-  var elOrderTotal = document.getElementById('order');
+  
 
-console.log("usrn ",username);
+
 
   function checkFilled() {
   len = elAmount.value.length;
