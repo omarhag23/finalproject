@@ -365,7 +365,7 @@ function checkFilled() {
         event.preventDefault();
         return false
     } 
-    if (validateEmail(elEmail)==false)return false;
+    if (validateEmail(elEmail.value)==false)return false;
     elMsg.innerHTML = '';
     return true;
 }
