@@ -59,6 +59,7 @@ router.post('/register', async (req, res) => {
    
       console.error('in the deposit')
       const {amount,username}  = req.body;
+      console.error('in the deposit, amount : ',amount,"userna : ",username);
       const user = await User.findOne({ username: username });
       console.log('User Found ',user);
       const buyerAddress= user.ethAddress;
