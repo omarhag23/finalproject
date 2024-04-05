@@ -199,7 +199,7 @@ const Blockchain = {
             
             const bala = await Blockchain.getBalance(buyerAddress);
 			const diff = bala-totalPriceInWei;
-			console.log("buyer address",buyerAddress ,"price : ",totalPriceInWei,"balance :",bala);
+			console.log("buyer address",buyerAddress ,"price : ",totalPriceInWei,"balance :",bala,"diff",diff);
           
 
     // Check if balance is sufficient
