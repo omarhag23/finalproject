@@ -357,104 +357,54 @@ var elForm = document.getElementById('signupForm');
     // Regular expression pattern for email validation
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
- 
-function checkFilled() {
-  len = elPassword.value.length;
-    if (elUsername.value == "" || elPassword.value == "" || elEmail.value == "" ||elConf.value !=elPassword.value ||len <8) {
-      console.log("value length : ",len)
-        elMsg.innerHTML = 'Please check your credentials,Password must be not less than 8 characters';
-        event.preventDefault();
-        return false
-    }else if (!emailPattern.test(email)) {
-        // If the email does not match the pattern, display an error message
-        return false
+    $(document).ready(function() {
+  // Function to check if all fields are filled and valid
+  function checkFilled() {
+    var len = elPassword.value.length;
+    if (elUsername.value == "" || elPassword.value == "" || elEmail.value == "" || elConf.value != elPassword.value || len < 8 || !emailPattern.test(email)) {
+      elMsg.innerHTML = 'Please check your credentials. Password must be at least 8 characters and emails must be valid.';
+      return false;
     } else {
-    elMsg.innerHTML = '';
-    return true;}
+      elMsg.innerHTML = '';
+      return true;
+    }
   }
 
-
-if (elForm.addEventListener) {
-    elForm.addEventListener('submit', function() {
-         checkFilled();
-    }, false);
-} else {
-    elForm.attachEvent('onsubmit', function() {
-         checkFilled();
-    });
-}
-
-if (elUsername.addEventListener) {
-    elUsername.addEventListener('blur', function() {
-        checkFilled();
-    }, false);
-} else {
-    elUsername.attachEvent('onblur', function() {
-        checkFilled();
-    });
-}
-
-if (elEmail.addEventListener) {
-    elEmail.addEventListener('blur', function() {
-        checkFilled();
-    }, false);
-} else {
-    elEmail.attachEvent('onblur', function() {
-        checkFilled();
-    });
-}
-
-
-if (elPassword.addEventListener) {
-    elPassword.addEventListener('blur', function() {
-        checkFilled();
-    }, false);
-} else {
-    elPassword.attachEvent('onblur', function() {
-        checkFilled();
-    });
-  }   
-  if (checkFilled==true)
-    {
-
-$(document).ready(function() {
-
+  // Event listener for form submission
   $('#signupForm').submit(function(event) {
     event.preventDefault(); // Prevent the form from submitting normally
     
-    var formData = {
-      username: $('#username').val(), // Get the value of the username input field
-      email: $('#email').val(), // Get the value of the username input field
-      password: $('#pass').val() // Get the value of the password input field
-    };
+    // Check if all fields are filled and valid
+    if (checkFilled()) {
+      // Form data
+      var formData = {
+        username: $('#username').val(),
+        email: $('#email').val(),
+        password: $('#pass').val()
+      };
 
-    console.log(formData);
-    $.ajax({
-      type: 'POST',
-      url: '/api/user/register', 
-      data: formData,
-      success: function(response) {
-        // Handle success response
-        if (response.success) {
-      // Handle success response
-      console.log(response);
-      alert("User successfully signed up");
-      // Redirect or do something else based on the response
-    } else {
-      // Handle error response
-      console.error('Error:', response.error);
-      alert("Error signing in: " + response.error);
-    }
-      },
-      error: function(xhr, status, error) {
-              console.error('Error:', error);
-              // Handle errors
-              alert("Error signing in, please retry");
-              
+      // AJAX request
+      $.ajax({
+        type: 'POST',
+        url: '/api/user/register', 
+        data: formData,
+        success: function(response) {
+          // Handle success response
+          if (response.success) {
+            alert("User successfully signed up");
+            // Redirect or do something else based on the response
+          } else {
+            alert("Error signing in: " + response.error);
           }
-    });
+        },
+        error: function(xhr, status, error) {
+          console.error('Error:', error);
+          alert("Error signing in, please retry");
+        }
+      });
+    }
   });
-});}
+});
 </script>
 
 
