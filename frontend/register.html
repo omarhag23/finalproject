@@ -351,8 +351,8 @@ var elForm = document.getElementById('signupForm');
   var elUsername = document.getElementById('username');
   var elEmail = document.getElementById('email');
 
-  const validateEmail = (email) => {
-  return email.match(
+  const validateEmail = (elEmail) => {
+  return elEmail.match(
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   );
 };
@@ -365,7 +365,7 @@ function checkFilled() {
         event.preventDefault();
         return false
     } 
-    if (validateEmail(elEmail)==false)return false;
+    if (validateEmail()==false)return false;
     elMsg.innerHTML = '';
     return true;
 }
