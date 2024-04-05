@@ -12,7 +12,7 @@ registerUser :async (username,email,pass) => {
     const emailExists = await User.findOne({email:email})
     if(emailExists){
       console.log('User already exists')
-      return { userExists: true };
+      return { userExists: true, success: false, message: 'Error encountered while saving' };
     }else {
       const userExists = await User.findOne({username:username})
     if(userExists){
