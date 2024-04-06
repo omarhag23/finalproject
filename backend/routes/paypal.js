@@ -1,5 +1,5 @@
   
-
+require('dotenv').config();
 const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PORT = 8888 } = paypal.env;
 
 const base = "https://api-m.sandbox.paypal.com";
