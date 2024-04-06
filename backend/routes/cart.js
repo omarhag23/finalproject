@@ -80,7 +80,12 @@ router.post('/checkout', async (req, res) => {
 
       try {
         const items=cart.items;
-        console ("items : ",items);
+        console.log ("items : ",items);
+        cart.myItems = items;
+        cart.items = [];
+        // Save the updated cart document
+        await cart.save();
+        console.log('Array inserted successfully:', newItems);
         console.error('contract succesfull ');
         console.log(`${result.modifiedCount} documents updated.`);
         res.status(200).json({ success: true, message: 'Checkout successful' });
