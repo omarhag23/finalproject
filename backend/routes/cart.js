@@ -86,7 +86,6 @@ router.post('/checkout', async (req, res) => {
         // Save the updated cart document
         await cart.save();
         console.error('contract succesfull ');
-        console.log(`${result.modifiedCount} documents updated.`);
         res.status(200).json({ success: true, message: 'Checkout successful' });
     } catch (error) {
         console.error('Error updating cart:', error);
