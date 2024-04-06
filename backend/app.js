@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+require('dotenv').config();
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -17,6 +18,7 @@ app.use(express.static(path.join(__dirname, '..', 'frontend')));
 const shopRoutes = require('./routes/shop');
 const userRoutes = require('./routes/user');
 const cartRoutes = require('./routes/cart');
+const paypalRoutes = require('./routes/paypal');
 
 
 
@@ -37,6 +39,8 @@ mongoose.set('strictQuery', false);
 app.use('/api/shop', shopRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api/pay', paypalRoutes);
+
 
 const MURL = 'mongodb+srv://omarabbas300:BreezyWave88@cluster0.cj2gpyv.mongodb.net/Finalproject1?retryWrites=true&w=majority&appName=Cluster0';
 mongoose.connect(MURL, () => {
