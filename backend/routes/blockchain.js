@@ -115,8 +115,8 @@ const bytecode = '608060405234801561001057600080fd5b5060405161075738038061075783
 
  */
 //const contractAddress= '0xE0e450Dfa15591CF333B4f5642700e3f40449300'; 
-const sellerAddress ='0x1F80c833D0580910E2e3ecE17835CBA45253112a';
-const privateKey='0x56b090c5dfbbf1365dd10e754f4d785b5440212ead293be85641696cbd2df6fb';
+const sellerAddress ='0xf0035837C135F3D4108E1f61D9ADD05C0203F3b2';
+const privateKey='0x16ad0577b0c32f0b08fb9cb10a9bb4c356ca0d66b479dd0718c79f782e7d12e6';
 
 async function deployContract(){
 	try {
@@ -145,10 +145,10 @@ async function deployContract(){
 	}
 };
 
-//const contractAddress=deployContract();
+const contractAddress=deployContract();
 
 
-const contractAddress = '0x827c1C446ef138999bb817D965B8884d6045B078'; 
+//const contractAddress = '0x827c1C446ef138999bb817D965B8884d6045B078'; 
 
 //const contractAddress ='0x5511d49e5937F3a62d0bDA3159FF31D5e867876A';
 
