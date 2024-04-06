@@ -145,7 +145,7 @@ async function deployContract(){
 	}
 };
 
-const contractAddress=await deployContract();
+const contractAddress= deployContract;
 
 
 //const contractAddress = '0x827c1C446ef138999bb817D965B8884d6045B078'; 
