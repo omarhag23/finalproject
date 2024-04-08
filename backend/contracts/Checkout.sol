@@ -2,19 +2,24 @@
 pragma solidity ^0.8.0;
 
 contract Checkout {
-    address public seller;
+   address public owner;
+    mapping(address => uint) public balances;
 
-    constructor(address _seller) {
-       seller = _seller;
+    constructor(address payable seller) {
+        owner = seller; // Set the contract deployer as the owner
     }
 
-   function buy(address payable user, uint totalAmount) external {
-        require(user != address(0), "Invalid user address");
-        require(totalAmount > 0, "Total amount must be greater than zero");
-        require(msg.sender == seller, "Only the seller can initiate the purchase");
-        require(address(this).balance >= totalAmount, "Contract does not have enough balance");
+    function deposit(address payable user, uint amount) public payable {
+        balances[user] += amount;
+    }
 
-        // Transfer Ether from user's address to seller's address
-        user.transfer(totalAmount);
+    function buy(address payable user, uint amount) public payable {
+        require(balances[user] >= amount, "InsUfficient balance");
+        balances[user] -= amount;
+        balances[owner]+=amount; // Transfer the ether to the owner
+    }
+    
+        function getBalance(address account) public view returns (uint) {
+        return balances[account];
     }
 }
