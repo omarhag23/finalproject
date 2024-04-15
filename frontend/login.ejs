@@ -303,62 +303,7 @@
         
       </script>
 <script>
-
-
-  console.log("in the normal script");
- /* var elForm = document.getElementById('loginForm');
-  var elPassword = document.getElementById('password');
-
-  var elMsg = document.getElementById('feedback');
-  var elUsername = document.getElementById('username');
-
-
-function checkFilled() {
-  len = elPassword.value.length;
-    if (elUsername.value == "" || elPassword.value == "" ||len <8) {
-      console.log("value length : ",len)
-        elMsg.innerHTML = 'Please check your credentials';
-        event.preventDefault();
-        return false
-    } else {
-        
-        elMsg.innerHTML = '';
-        return true;
-    }
-}
-
-if (elForm.addEventListener) {
-    elForm.addEventListener('submit', function() {
-         checkFilled();
-    }, false);
-} else {
-    elForm.attachEvent('onsubmit', function() {
-         checkFilled();
-    });
-}
-
-if (elUsername.addEventListener) {
-    elUsername.addEventListener('blur', function() {
-        checkFilled();
-    }, false);
-} else {
-    elUsername.attachEvent('onblur', function() {
-        checkFilled();
-    });
-}
-
-if (elPassword.addEventListener) {
-    elPassword.addEventListener('blur', function() {
-        checkFilled();
-    }, false);
-} else {
-    elPassword.attachEvent('onblur', function() {
-        checkFilled();
-    });
-  }   
-  if (checkFilled()==true)
-    {*/
-   
+ console.log("in the script");
   $('#loginForm').submit(function(event) {
     console.log("in the loginform script");
     event.preventDefault(); // Prevent the form from submitting normally
@@ -390,8 +335,7 @@ if (elPassword.addEventListener) {
           }
     });
   });
-;
-//}
+
 </script>
 
 
