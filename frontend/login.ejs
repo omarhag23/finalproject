@@ -136,7 +136,7 @@
                 </div>
                 <span class="txt1" id = "feedback"></span>
                 <div class="container-login100-form-btn m-t-17">
-                  <button class="login100-form-btn">
+                  <button id="order" class="login100-form-btn">
                     Sign In
                   </button>
                 </div>
@@ -311,7 +311,13 @@
 
 
  console.log("in the script");
-  $('#loginForm').submit(function(event) {
+ $('#order').on('click', function (event) {
+   
+  var elPassword = document.getElementById('password');
+  console.log("password : ",elPassword);
+  var elUsername = document.getElementById('username');
+  console.log("username : ",elUsername);
+
     console.log("in the loginform script");
     event.preventDefault(); // Prevent the form from submitting normally
     
@@ -342,6 +348,7 @@
           }
     });
   });
+  
 
 </script>
 
