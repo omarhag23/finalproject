@@ -308,12 +308,10 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-   console.log("in the super normal script");
 
-  console.log("in the normal script");
   // Attach click event listener to the "Place order" button
   $('#order').on('click', function (event) {
-      console.log("in the order script");
+    
       var elPassword = document.getElementById('password');
 var elUsername = document.getElementById('username');
 
@@ -337,15 +335,15 @@ var elUsername = document.getElementById('username');
           success: function(response) {
               console.log(response);
               // Handle successful response
-              alert("Order placed successfully!,redirecting to Home");
+              alert("User logged in successfully!,redirecting to Home");
               window.location.href = '/';
               // Optionally, redirect or perform other actions based on the response
           },
           error: function(xhr, status, error) {
               console.error('Error:', error);
               // Handle errors
-              alert("Error placing order. Try to check your balance or make a deposit");
-              window.location.href = '/';
+              alert("Error logging in. Try to check your credentials and please retry");
+              window.location.href = '/login';
           }
       });
   });

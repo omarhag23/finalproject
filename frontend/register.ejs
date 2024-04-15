@@ -136,7 +136,7 @@
                   </span>
                 </div>
                 <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                  <input class="input100" type="password" name="pass" id="pass" >
+                  <input class="input100" type="password" name="password" id="password" >
                   <span class="focus-input100"></span>
                 </div>
       
@@ -146,12 +146,12 @@
                     </span>
                   </div>
                   <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                    <input class="input100" type="password" id="confpass" name="confpass" >
+                    <input class="input100" type="password" id="confpassword" name="confpassword" >
                     <span class="focus-input100"></span>
                   </div>
                   <span class="txt1" id = "feedback"></span>
                 <div class="container-login100-form-btn m-t-17">
-                  <button class="login100-form-btn">
+                  <button class="login100-form-btn" id="order">
                     Sign Up
                   </button>
                 </div>
@@ -312,25 +312,15 @@
 <script>
 
 
-
-var elForm = document.getElementById('signupForm');
-  var elPassword = document.getElementById('pass');
-
-  var elMsg = document.getElementById('feedback');
-  var elUsername = document.getElementById('username');
-  var elEmail = document.getElementById('email');
-  var elConf = document.getElementById('confpass');
-
-    // Get the typed email value
-    var email = elEmail.value.trim();
+  
 
     // Regular expression pattern for email validation
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
- 
-function checkFilled() {
+
+  function checkFilled(elPassword,elConfPassword,elEmail,elUsername) {
   len = elPassword.value.length;
-    if (elUsername.value == "" || elPassword.value == "" || elEmail.value == "" ||elConf.value !=elPassword.value ||len <8) {
+    if (elUsername.value == "" || elPassword.value == "" || elEmail.value == "" ||elConfPassword.value !=elPassword.value ||len <8) {
       console.log("value length : ",len)
         elMsg.innerHTML = 'Please check your credentials,Password must be not less than 8 characters';
         event.preventDefault();
@@ -343,88 +333,57 @@ function checkFilled() {
     return true;}
   }
 
+ 
 
-if (elForm.addEventListener) {
-    elForm.addEventListener('submit', function() {
-         checkFilled();
-    }, false);
-} else {
-    elForm.attachEvent('onsubmit', function() {
-         checkFilled();
-    });
-}
-
-if (elUsername.addEventListener) {
-    elUsername.addEventListener('blur', function() {
-        checkFilled();
-    }, false);
-} else {
-    elUsername.attachEvent('onblur', function() {
-        checkFilled();
-    });
-}
-
-if (elEmail.addEventListener) {
-    elEmail.addEventListener('blur', function() {
-        checkFilled();
-    }, false);
-} else {
-    elEmail.attachEvent('onblur', function() {
-        checkFilled();
-    });
-}
-
-
-if (elPassword.addEventListener) {
-    elPassword.addEventListener('blur', function() {
-        checkFilled();
-    }, false);
-} else {
-    elPassword.attachEvent('onblur', function() {
-        checkFilled();
-    });
-  }   
-  if (checkFilled==true)
-    {
-
-$(document).ready(function() {
-
-  $('#signupForm').submit(function(event) {
-    event.preventDefault(); // Prevent the form from submitting normally
+  // Attach click event listener to the "Place order" button
+  $('#order').on('click', function (event) {
     
+    var elPassword = document.getElementById('password');
+     
+    var elConfPassword = document.getElementById('confpassword');
+ 
+var elUsername = document.getElementById('username');
+var elEmail = document.getElementById('email');
+    // Get the typed email value
+    var email = elEmail.value.trim();
+
+
+    event.preventDefault(); // Prevent the form from submitting normally
+
+    // Assuming 'total' is defined or retrieved from somewhere
+     // Example value, replace with actual total
+
+     if (checkFilled(elPassword,elConfPassword,elEmail,elUsername)){
     var formData = {
-      username: $('#username').val(), // Get the value of the username input field
-      email: $('#email').val(), // Get the value of the username input field
-      password: $('#pass').val() // Get the value of the password input field
+        password : elPassword.value,
+        username: elUsername.value,
+        email :elEmail.value // Include the total in the form data
     };
 
-    console.log(formData);
-    $.ajax({
-          type: 'POST',
-          url: '/api/cart/register',
-          data: formData,
-          success: function(response) {
-            if (response.success) {
-            alert("Registered successfully!");
-            // Optionally, redirect or perform other actions based on the response
-        } else {
-            alert("Error Registerinh. " + response.error);
-            // Optionally, redirect or perform other actions based on the error
-            window.location.href = '/';
-        }
-    },
-          
-          error: function(xhr, status, error) {
-              console.error('Error:', error);
-              // Handle errors
-              alert("Error placing order. Try to check your balance or make a deposit");
-              window.location.href = '/';
-          }
-      });
-  });
-});}
-</script>
+    console.log("form data",formData);
 
+    $.ajax({
+        type: 'POST',
+        url: '/api/user/register',
+        data: formData,
+        success: function(response) {
+            console.log(response);
+            // Handle successful response
+            alert("User logged in successfully!,redirecting to Home");
+            window.location.href = '/';
+            // Optionally, redirect or perform other actions based on the response
+        },
+        error: function(xhr, status, error) {
+            console.error('Error:', error);
+            // Handle errors
+            alert("Error logging in. Try to check your credentials and please retry");
+            window.location.href = '/login';
+        }
+    });}
+});
+
+
+</script>
 
       <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
