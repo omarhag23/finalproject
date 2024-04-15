@@ -314,14 +314,18 @@
   // Attach click event listener to the "Place order" button
   $('#order').on('click', function (event) {
       console.log("in the order script");
+      var elPassword = document.getElementById('password');
+var elUsername = document.getElementById('username');
+
+
       event.preventDefault(); // Prevent the form from submitting normally
 
       // Assuming 'total' is defined or retrieved from somewhere
        // Example value, replace with actual total
 
       var formData = {
-          username : 'dumby',
-          password : 'hey' // Include the total in the form data
+          username : elPassword,
+          password : elUsername // Include the total in the form data
       };
 
       console.log("form data",formData);
