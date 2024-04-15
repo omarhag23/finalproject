@@ -304,12 +304,15 @@
       </script>
 <script>
 
-  var elForm = document.getElementById('loginForm');
+   console.log("in the super normal script");
+
+  console.log("in the normal script");
+ /* var elForm = document.getElementById('loginForm');
   var elPassword = document.getElementById('password');
 
   var elMsg = document.getElementById('feedback');
   var elUsername = document.getElementById('username');
-/*
+
 
 function checkFilled() {
   len = elPassword.value.length;
@@ -358,7 +361,7 @@ if (elPassword.addEventListener) {
     {*/
     $(document).ready(function() {
   $('#loginForm').submit(function(event) {
- 
+    console.log("in the loginform script");
     event.preventDefault(); // Prevent the form from submitting normally
     
     var formData = {
