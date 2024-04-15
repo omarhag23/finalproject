@@ -13,7 +13,8 @@ const cartItemSchema = new mongoose.Schema({
   // Define Schema for Cart
   const cartSchema = new mongoose.Schema({
     username: String ,
-    items: [cartItemSchema]
+    items: [cartItemSchema],
+    myItems :[cartItemSchema]
   });
 
 

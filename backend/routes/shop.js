@@ -41,6 +41,7 @@ router.get('/kits', async (req, res) => {
 router.get('/services', async (req, res) => {
   try {
     try {
+      
       const services = await Service.find(); // Correct usage of Mongoose find() method
       res.json({ services }); // Send cart data as JSON response
     } catch (error) {

@@ -70,14 +70,7 @@
                   <li class="mb-2"><a class="reset-anchor" href="#!">RnB</a></li>
                 </ul>
               
-                <h6 class="text-uppercase mb-4">BPM range</h6>
-                <div class="price-range pt-4 mb-5">
-                  <div id="range"></div>
-                  <div class="row pt-2">
-                    <div class="col-6"><strong class="small fw-bold text-uppercase">From</strong></div>
-                    <div class="col-6 text-end"><strong class="small fw-bold text-uppercase">To</strong></div>
-                  </div>
-                </div>
+                
                 <h6 class="text-uppercase mb-3">Show only</h6>
                 <div class="form-check mb-1">
                   <input class="form-check-input" type="checkbox" id="checkbox_1">
@@ -128,14 +121,14 @@
                     <div class="product text-center">
                     
                       <div class="mb-3 position-relative">
-                        <div class="badge text-white bg-"></div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src=<%= service.cover %> alt="..."></a>
+                        <div class="badge text-white bg-"></div><a class="d-block" href="/detail?productId=<%= service._id %>&type=Service"><img class="img-fluid w-100" src=<%= service.cover %> alt="..."></a>
                         <div class="product-overlay">
                           <ul class="mb-0 list-inline">
                             <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
                             <% if (username) { %>
                             <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark addToCartButton" href="#" data-price="<%=service.price %>" data-userId="<%= username %>" data-productId="<%= service._id %>" data-license="Exclusive" data-type="Service">Add to cart</a></li>
                             <% }else{ %>
-                              <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark " href="login.html" >Login to buy</a></li>
+                              <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark " href="/login" >Login to buy</a></li>
                               <% } %>
                             <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
                           </ul>

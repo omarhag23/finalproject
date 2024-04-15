@@ -36,13 +36,13 @@
           <div class="container">
             <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
               <div class="col-lg-6">
-                <h1 class="h2 text-uppercase mb-0">Cart</h1>
+                <h1 class="h2 text-uppercase mb-0"><%=username%></h1>
               </div>
               <div class="col-lg-6 text-lg-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb justify-content-lg-end mb-0 px-0 bg-light">
-                    <li class="breadcrumb-item"><a class="text-dark" href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                    <li class="breadcrumb-item"><a class="text-dark" href="index.html">User</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Detail</li>
                   </ol>
                 </nav>
               </div>
@@ -51,7 +51,7 @@
         </section>
       <div class="container"> 
         <section class="py-5">
-          <h2 class="h5 text-uppercase mb-4">Shopping cart</h2>
+          <h2 class="h5 text-uppercase mb-4">My Products</h2>
           <div class="row">
             <div class="col-lg-8 mb-4 mb-lg-0" id="cartSection">
                 <!-- CART TABLE-->
@@ -68,9 +68,9 @@
               </tr>
             </thead>
             <tbody class="border-0">
-              <% var total=0; %>
-              <% if (username!=null && cart && cart.items && cart.items.length > 0) { %>
-                <% cart.items.forEach(item => { %>
+              <% var total=0 %>
+              <% if (cart!=null && user!=null && balance!=null && cart.myItems!=null && cart.myItems.length > 0) { %>
+                <% cart.myItems.forEach(item => { %>
                   <tr>
                     <th class="ps-0 py-3 border-light" scope="row">
                       <div class="d-flex align-items-center">
@@ -96,7 +96,7 @@
                 <% }); %>
               <% } else { %>
                 <tr>
-                  <td colspan="5">Cart is empty</td>
+                  <td colspan="5">You have not bought any product yet!</td>
                 </tr>
               <% } %>
             </tbody>
@@ -106,7 +106,7 @@
               <div class="bg-light px-4 py-3"  id="cartNav">
                 <div class="row align-items-center text-center">
                   <div class="col-md-6 mb-3 mb-md-0 text-md-start"><a class="btn btn-link p-0 text-dark btn-sm" href="shop.html"><i class="fas fa-long-arrow-alt-left me-2"> </i>Continue shopping</a></div>
-                  <div class="col-md-6 text-md-end"><a class="btn btn-outline-dark btn-sm addToCartButton" data-price="<%=total %>" data-username="<%=username %>"href="/checkout">Procceed to checkout<i class="fas fa-long-arrow-alt-right ms-2"></i></a></div>
+                  <div class="col-md-6 text-md-end"><a class="btn btn-outline-dark btn-sm addToCartButton" href="checkout">Download Everything<i class="fas fa-long-arrow-alt-right ms-2"></i></a></div>
                 </div>
               </div>
             </div>
@@ -115,16 +115,18 @@
             <div class="col-lg-4" id="orderTotal">
               <div class="card border-0 rounded-0 p-lg-4 bg-light">
                 <div class="card-body">
-                  <h5 class="text-uppercase mb-4">Cart total</h5>
+                  <h5 class="text-uppercase mb-4">Ethereum Balance </h5>
                   <ul class="list-unstyled mb-0">
-          <% total=total.toFixed(2) %>
+          
                     <li class="border-bottom my-2"></li>
-                    <li class="d-flex align-items-center justify-content-between mb-4"><strong class="text-uppercase small font-weight-bold">Total</strong><span><%=total%></span></li>
+                    <li class="d-flex align-items-center justify-content-between mb-4"><strong class="text-uppercase small font-weight-bold">Balance</strong><span><%=balance %></span></li>
                     <li>
-                      <form action="#">
+                      <form id="depositForm" >
                         <div class="input-group mb-0">
-                          <input class="form-control" type="text" placeholder="Enter your coupon">
-                          <button class="btn btn-dark btn-sm w-100" type="submit"> <i class="fas fa-gift me-2"></i>Apply coupon</button>
+                          <input id="amount" name="amount" class="form-control" type="text" placeholder="Enter the amount to deposit">
+                        
+                          <button class="btn btn-dark btn-sm w-100" id ="order" data-username="<%= username %>" type="submit"> Deposit</button>
+                          <span class="txt1" id = "feedback"></span>
                         </div>
                       </form>
                     </li>
@@ -212,7 +214,83 @@
         
       </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
 
+var elOrderTotal = document.getElementById('order'); 
+var username = elOrderTotal.dataset.username;
+console.log("usrn ",username);
+/*
+var elForm = document.getElementById('depositForm');
+  var elAmount = document.getElementById('amount');
+  var elMsg = document.getElementById('feedback');
+  len = elAmount.value.length;
+
+
+  function checkFilled() {
+    if (isNaN(elAmount.value)||len ==0) {
+      console.log("value length : ",len);
+        elMsg.innerHTML = 'Please check the deposit amount';
+        return false
+    } else {
+        
+        elMsg.innerHTML = '';
+        return true;
+    }
+}
+
+
+
+
+if (elForm.addEventListener) {
+    elForm.addEventListener('submit', function() {
+         checkFilled();
+    }, false);
+} else {
+    elForm.attachEvent('onsubmit', function() {
+         checkFilled();
+    });
+}
+
+if (checkFilled()==true)
+  {
+   */
+    $('#order').on('click', function (event)  {
+    console.log("usrn 2 ",username);
+ 
+    event.preventDefault(); // Prevent the form from submitting normally
+    
+    console.log("usrn 2 ",username);
+    
+    var formData = {
+      amount: $('#amount').val(),
+    username: username // Get the value of the amount input field
+     
+    };
+
+    console.log("usrn ",username);
+  
+     $.ajax({
+      type: 'POST',
+      url: '/api/user/deposit', 
+      data: formData,
+      success: function(response) {
+        alert("Amount Deposited with Success");
+        console.log(response,'front 1');
+         window.location.href = '/'; // Change '/index' to your frontend page URL
+                
+      },
+      error: function(xhr, status, error) {
+              console.error('Error:', error);
+              // Handle errors
+              alert("Deposit Failed");
+              
+          }
+    });
+  });
+//};
+
+
+ </script> 
       <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     </div>
