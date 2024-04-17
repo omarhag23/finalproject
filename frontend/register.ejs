@@ -331,7 +331,7 @@ var elEmail = document.getElementById('email');
 len = elPassword.value.length;
     if (elUsername.value == "" || elPassword.value == "" || elEmail.value == "" ||elConfPassword.value != elPassword.value ||len <8) {
         alert('Please check your credentials,remeber,password must be not less than 8 characters');
-        event.preventDefault();
+
     }else if (!emailPattern.test(email)) {
       alert('Please check your credentials,Email must conform to email normatives');
         // If the email does not match the pattern, display an error message
