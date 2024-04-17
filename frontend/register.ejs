@@ -330,7 +330,7 @@ var elUsername = document.getElementById('username');
 var elEmail = document.getElementById('email');
 
 len = elPassword.value.length;
-    if (elUsername.value == "" || elPassword.value == "" || elEmail.value == "" ||elConfPassword.value != elPassword.value ||len <8) {
+    if (elUsername.value == "" || elPassword.value == "" || elEmail.value == "" ||elPasswordConf.value != elPassword.value ||len <8) {
         alert('Please check your credentials,remeber,password must be not less than 8 characters');
 
     }else if (!emailPattern.test(email)) {
