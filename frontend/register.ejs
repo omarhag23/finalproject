@@ -312,13 +312,13 @@
 <script>
 
 
-  
+  /*
 
     // Regular expression pattern for email validation
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     console.log("in the script");
 
-/*
+
   function checkFilled(elPassword,elConfPassword,elEmail,elUsername) {
   len = elPassword.value.length;
     if (elUsername.value == "" || elPassword.value == "" || elEmail.value == "" ||elConfPassword.value !=elPassword.value ||len <8) {
@@ -356,7 +356,7 @@ var elEmail = document.getElementById('email');
     // Assuming 'total' is defined or retrieved from somewhere
      // Example value, replace with actual total
 
-     if (checkFilled(elPassword,elConfPassword,elEmail,elUsername)){
+    // if (checkFilled(elPassword,elConfPassword,elEmail,elUsername)){
     var formData = {
         password : elPassword.value,
         username: elUsername.value,
@@ -383,7 +383,7 @@ var elEmail = document.getElementById('email');
             window.location.href = '/login';
         }
     });}
-});
+);
 
 
 </script>
