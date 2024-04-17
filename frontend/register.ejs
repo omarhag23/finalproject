@@ -324,7 +324,9 @@
   $('#order').on('click', function (event) {
     
       var elPassword = document.getElementById('password');
+      var elPasswordConf = document.getElementById('confpassword');
 var elUsername = document.getElementById('username');
+var elEmail = document.getElementById('email');
 
 
       event.preventDefault(); // Prevent the form from submitting normally
@@ -333,15 +335,17 @@ var elUsername = document.getElementById('username');
        // Example value, replace with actual total
 
       var formData = {
-          password : elPassword.value,
-          username: elUsername.value // Include the total in the form data
+          pass : elPassword.value,
+          confpass : elPasswordConf.value,
+          username: elUsername.value,
+          email : elEmail.value // Include the total in the form data
       };
 
       console.log("form data",formData);
 
       $.ajax({
           type: 'POST',
-          url: '/api/user/login',
+          url: '/api/user/register',
           data: formData,
           success: function(response) {
               console.log(response);
