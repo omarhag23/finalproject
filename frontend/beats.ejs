@@ -226,14 +226,9 @@
       url: '/api/cart/add', 
       data: formData,
       success: function(response) {
-        console.log(response,'front 1');
-                if (response.message === 'Authentication successful frontesbd2') {
-                  
-            alert("Product added to cart");
       
-                    // Redirect to frontend page
-                    window.location.href = 'index'; // Change '/index' to your frontend page URL
-                } 
+            alert("Product added to cart");
+   
       }
     });
   });
