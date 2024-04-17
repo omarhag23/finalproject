@@ -101,7 +101,7 @@ router.post('/register', async (req, res) => {
 
     router.get('/cancel',async (req, res) => {
 
-      const username = req.query.username;
+      const username = req.query.user;
       const id = req.query.id;
       console.log('username : ',username ," id : ",id );
         try {

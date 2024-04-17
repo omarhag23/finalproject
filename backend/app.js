@@ -94,10 +94,10 @@ app.get('/cart', async (req, res) => {
       
       // Assuming you
       const productId = req.query.id;
-      const type = req.query.user;
+      const user = req.query.user;
       console.log("in tha app detail , id : ",productId," type: ",type);
       // Construct the URL with the parameters
-      const url = `http://linux01.dcs.bbk.ac.uk:3000/api/user/cancel?productId=${productId}&type=${type}`;
+      const url = `http://linux01.dcs.bbk.ac.uk:3000/api/user/cancel?productId=${productId}&user=${user}`;
       const response = await fetch(url);
       const data = await response.json();
     } catch (error) {
