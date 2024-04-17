@@ -95,9 +95,15 @@ app.get('/cart', async (req, res) => {
       // Assuming you
       const productId = req.query.id;
       const user = req.query.user;
+      const type = req.query.type;
       console.log("in tha app detail , id : ",productId," type: ",type);
       // Construct the URL with the parameters
-      const url = `http://linux01.dcs.bbk.ac.uk:3000/api/user/cancel?productId=${productId}&user=${user}`;
+      if (type == "detail")
+
+      {const url = `http://linux01.dcs.bbk.ac.uk:3000/api/user/cancel?productId=${productId}&user=${user}`;}
+    else 
+    {const url = `http://linux01.dcs.bbk.ac.uk:3000/api/cart/cancel?productId=${productId}&user=${user}`;}
+
       const response = await fetch(url);
       const data = await response.json();
     } catch (error) {
