@@ -117,8 +117,13 @@ router.get('/cancel',async (req, res) => {
   console.log('username : ',username ," id : ",id );
     try {
       const cart = await Cart.findOne({ username: username }).populate('myItems.product_id');
-      cart.myItems.deleteMany( { product_id: id } )
-      res.json({cart});
+      await Cart.updateOne({ _id: cart._id }, { $pull: { myItems: { product_id: id } } });
+
+      // Optionally, you can re-fetch the cart after the update to get the updated data
+      const updatedCart = await Cart.findById(cart._id).populate('myItems.product_id');
+      
+      res.json({ cart: updatedCart });
+     
        // Send cart data as JSON response
     } catch (error) {
       console.error('Error getting user cart:', error);
