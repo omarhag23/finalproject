@@ -1,7 +1,10 @@
   
 require('dotenv').config();
 const express = require('express')
-const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PORT = 8888 } = process.env;
+const PAYPAL_CLIENT_ID='ATcmJa7xf_kme_GlsNQxrsMnDPvZUHeQpHsiBvSuPUqBCB3FdS7psKRqb9QFeph6kPuypigwMsvzemvh';
+
+const PAYPAL_CLIENT_SECRET='4032037044201404';
+const PORT = '8888 ';
 
 const base = "https://api-m.sandbox.paypal.com";
 
