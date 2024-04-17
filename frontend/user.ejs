@@ -124,7 +124,15 @@
                           <input id="amount" name="amount" class="form-control" type="text" placeholder="Enter the amount to deposit">
                           <div id="paypal-button-container" >
                         
-                       
+                            <div
+                            class="metamask-button"
+                            address="0x2b7dF997E54CD20a9fFa5AC460D0A9FBD5fB0c09"
+                            amount="1"
+                            amount-currency="ETH"
+                            fiat-currency="USD"
+                            text="Pay"
+                            logo-animated="true"
+                          ></div>
                         </div>
                         <button class="btn btn-dark btn-sm w-100" id ="order" data-username="<%= username %>" type="submit"> Deposit</button>
                           <span class="txt1" id = "feedback"></span>
@@ -190,6 +198,8 @@
       <script src="vendor/swiper/swiper-bundle.min.js"></script>
       <script src="vendor/choices.js/public/assets/scripts/choices.min.js"></script>
       <script src="js/front.js"></script>
+      <script src="https://cdn.rawgit.com/pierregoutheraud/metamask-transaction-button/6ebebf41/build/static/js/mtb.js"></script>
+
       <script>
         // ------------------------------------------------------- //
         //   Inject SVG Sprite - 
