@@ -316,6 +316,7 @@
 
     // Regular expression pattern for email validation
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    console.log("in the script");
 
 
   function checkFilled(elPassword,elConfPassword,elEmail,elUsername) {
@@ -337,6 +338,8 @@
 
   // Attach click event listener to the "Place order" button
   $('#order').on('click', function (event) {
+
+    console.log("in the function");
     
     var elPassword = document.getElementById('password');
      
