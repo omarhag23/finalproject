@@ -322,6 +322,7 @@
 
   // Attach click event listener to the "Place order" button
   $('#order').on('click', function (event) {
+    event.preventDefault(); 
     var elMsg = document.getElementById('feedback');
       var elPassword = document.getElementById('password');
       var elPasswordConf = document.getElementById('confpassword');
@@ -341,7 +342,7 @@ len = elPassword.value.length;
  
 
 
-      event.preventDefault(); // Prevent the form from submitting normally
+     // Prevent the form from submitting normally
 
       // Assuming 'total' is defined or retrieved from somewhere
        // Example value, replace with actual total
