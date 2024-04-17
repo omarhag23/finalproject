@@ -333,7 +333,7 @@ len = elPassword.value.length;
     if (elUsername.value == "" || elPassword.value == "" || elEmail.value == "" ||elPasswordConf.value != elPassword.value ||len <8) {
         alert('Please check your credentials,remeber,password must be not less than 8 characters');
 
-    }else if (!emailPattern.test(email)) {
+    }else if (!emailPattern.test(elEmail)) {
       alert('Please check your credentials,Email must conform to email normatives');
         // If the email does not match the pattern, display an error message
     } 
