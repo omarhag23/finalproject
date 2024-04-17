@@ -47,6 +47,25 @@ mongoose.connect(MURL, () => {
     console.log('MongoDB is up and running...');
 });
 
+
+
+app.get('/download', (req, res) => {
+  // Specify the file path you want to download
+  const filePath = '/products.zip';
+
+  // Send the file as a response
+  res.download(filePath, 'products.zip', (err) => {
+      if (err) {
+          console.error('Error downloading file:', err);
+          res.status(500).send('Error downloading file');
+      } else {
+          console.log('File downloaded successfully');
+          res.render('downloads');
+  
+      }
+  });
+});
+
 app.get('/detail', async (req, res) => {
   try {
 
