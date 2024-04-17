@@ -58,7 +58,7 @@ app.get('/download', (req, res) => {
       if (err) {
         console.log('Error downloading file:', err);
           res.status(500).send('Error downloading file');
-          res.render('/');
+          res.render('index');
       } else {
           console.log('File downloaded successfully');
           res.render('downloads');
