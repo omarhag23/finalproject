@@ -40,6 +40,7 @@ router.post('/add', async (req, res) => {
       { $push: { items: { product_id: productId, type: type,license:license,cover:cover,title:title,price:price } } },
       { upsert: true, new: true }
     );
+    res.status(200).json({ success: true, message: 'Checkout successful' });
   } catch (error) {
     throw error;
   }
