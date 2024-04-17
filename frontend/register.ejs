@@ -309,83 +309,47 @@
         injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg'); 
         
       </script>
+
 <script>
-
-
-  /*
-
-    // Regular expression pattern for email validation
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    console.log("in the script");
-
-
-  function checkFilled(elPassword,elConfPassword,elEmail,elUsername) {
-  len = elPassword.value.length;
-    if (elUsername.value == "" || elPassword.value == "" || elEmail.value == "" ||elConfPassword.value !=elPassword.value ||len <8) {
-      console.log("value length : ",len)
-        elMsg.innerHTML = 'Please check your credentials,Password must be not less than 8 characters';
-        event.preventDefault();
-        return false
-    }else if (!emailPattern.test(email)) {
-        // If the email does not match the pattern, display an error message
-        return false
-    } else {
-    elMsg.innerHTML = '';
-    return true;}
-  }
-*/
- 
 
   // Attach click event listener to the "Place order" button
   $('#order').on('click', function (event) {
-
-    console.log("in the function");
-    /*
-    var elPassword = document.getElementById('password');
-     
-    var elConfPassword = document.getElementById('confpassword');
- 
-var elUsername = document.getElementById('username');
-var elEmail = document.getElementById('email');
-    // Get the typed email value
-    var email = elEmail.value.trim();
-
-
-    event.preventDefault(); // Prevent the form from submitting normally
-
-    // Assuming 'total' is defined or retrieved from somewhere
-     // Example value, replace with actual total
-
-    // if (checkFilled(elPassword,elConfPassword,elEmail,elUsername)){
-    var formData = {
-        password : elPassword.value,
-        username: elUsername.value,
-        email :elEmail.value // Include the total in the form data
-    };
-
-    console.log("form data",formData);
-
-    $.ajax({
-        type: 'POST',
-        url: '/api/user/register',
-        data: formData,
-        success: function(response) {
-            console.log(response);
-            // Handle successful response
-            alert("User logged in successfully!,redirecting to Home");
-            window.location.href = '/';
-            // Optionally, redirect or perform other actions based on the response
-        },
-        error: function(xhr, status, error) {
-            console.error('Error:', error);
-            // Handle errors
-            alert("Error logging in. Try to check your credentials and please retry");
-            window.location.href = '/login';
-        }
-    });*/
-  }
     
-);
+      var elPassword = document.getElementById('password');
+var elUsername = document.getElementById('username');
+
+
+      event.preventDefault(); // Prevent the form from submitting normally
+
+      // Assuming 'total' is defined or retrieved from somewhere
+       // Example value, replace with actual total
+
+      var formData = {
+          password : elPassword.value,
+          username: elUsername.value // Include the total in the form data
+      };
+
+      console.log("form data",formData);
+
+      $.ajax({
+          type: 'POST',
+          url: '/api/user/login',
+          data: formData,
+          success: function(response) {
+              console.log(response);
+              // Handle successful response
+              alert("User logged in successfully!,redirecting to Home");
+              window.location.href = '/';
+              // Optionally, redirect or perform other actions based on the response
+          },
+          error: function(xhr, status, error) {
+              console.error('Error:', error);
+              // Handle errors
+              alert("Error logging in. Try to check your credentials and please retry");
+              window.location.href = '/login';
+          }
+      });
+  });
 
 
 </script>
