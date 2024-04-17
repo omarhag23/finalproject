@@ -88,6 +88,29 @@ app.get('/cart', async (req, res) => {
   });
 
 
+  app.get('/user/cancel', async (req, res) => {
+    try {
+  
+      
+      // Assuming you
+      const productId = req.query.id;
+      const type = req.query.user;
+      console.log("in tha app detail , id : ",productId," type: ",type);
+      // Construct the URL with the parameters
+      const url = `http://linux01.dcs.bbk.ac.uk:3000/api/user/cancel?productId=${productId}&type=${type}`;
+      const response = await fetch(url);
+      const data = await response.json();
+    } catch (error) {
+      console.error('Error fetching cart data:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+
+
+
+
+
+
   
 app.get('/user', async (req, res) => {
   try {
