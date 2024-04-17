@@ -99,22 +99,6 @@ router.post('/register', async (req, res) => {
     });
 
 
-    router.get('/cancel',async (req, res) => {
-
-      const username = req.query.user;
-      const id = req.query.id;
-      console.log('username : ',username ," id : ",id );
-        try {
-          const cart = await Cart.findOne({ username: username }).populate('myItems.product_id');
-          cart.myItems.deleteMany( { product_id: id } )
-          res.json("success");
-           // Send cart data as JSON response
-        } catch (error) {
-          console.error('Error getting user cart:', error);
-          throw error;
-        }
-      });
-
 
 
 

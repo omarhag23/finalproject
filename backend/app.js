@@ -88,25 +88,25 @@ app.get('/cart', async (req, res) => {
   });
 
 
-  app.get('/user/cancel', async (req, res) => {
+  app.get('/cancel', async (req, res) => {
     try {
   
       
       // Assuming you
       const productId = req.query.id;
       const user = req.query.user;
-      const type = req.query.type;
-      var url ;
-      console.log("in tha cancel , id : ",productId," type: ",type);
       // Construct the URL with the parameters
-      if (type == "detail")
-
-      {url = `http://linux01.dcs.bbk.ac.uk:3000/api/user/cancel?id=${productId}&user=${user}`;}
-    else 
-    {url = `http://linux01.dcs.bbk.ac.uk:3000/api/cart/cancel?id=${productId}&user=${user}`;}
+      const url = `http://linux01.dcs.bbk.ac.uk:3000/api/cart/cancel?id=${productId}&user=${user}`;
 
       const response = await fetch(url);
       const data = await response.json();
+      console.log('fetched,response',data.cart)
+      const cart = data.cart;
+      console.log('about to render')
+      // Render the view here using the cart data
+      res.render('cart', { cart });
+
+
     } catch (error) {
       console.error('Error fetching cart data:', error);
       res.status(500).send('Internal Server Error');
