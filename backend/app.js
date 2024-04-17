@@ -56,7 +56,7 @@ app.get('/download', (req, res) => {
   // Send the file as a response
   res.download(filePath, 'products.zip', (err) => {
       if (err) {
-          alert('Error downloading file:', err);
+        console.log('Error downloading file:', err);
           res.status(500).send('Error downloading file');
           res.render('/');
       } else {
