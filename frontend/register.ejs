@@ -322,11 +322,26 @@
 
   // Attach click event listener to the "Place order" button
   $('#order').on('click', function (event) {
-    
+    var elMsg = document.getElementById('feedback');
       var elPassword = document.getElementById('password');
       var elPasswordConf = document.getElementById('confpassword');
 var elUsername = document.getElementById('username');
 var elEmail = document.getElementById('email');
+
+len = elPassword.value.length;
+    if (elUsername.value == "" || elPassword.value == "" || elEmail.value == "" ||elConfPassword.value !=elPassword.value ||len <8) {
+      console.log("value length : ",len)
+        elMsg.innerHTML = 'Please check your credentials,Password must be not less than 8 characters';
+        event.preventDefault();
+    }else if (!emailPattern.test(email)) {
+      elMsg.innerHTML = 'Please check your credentials,Email must conform to email normatives';
+        // If the email does not match the pattern, display an error message
+    } else {
+    elMsg.innerHTML = '';
+  }
+  
+
+ 
 
 
       event.preventDefault(); // Prevent the form from submitting normally
@@ -350,15 +365,15 @@ var elEmail = document.getElementById('email');
           success: function(response) {
               console.log(response);
               // Handle successful response
-              alert("User logged in successfully!,redirecting to Home");
+              alert("User registered in successfully!,redirecting to Home");
               window.location.href = '/';
               // Optionally, redirect or perform other actions based on the response
           },
           error: function(xhr, status, error) {
               console.error('Error:', error);
               // Handle errors
-              alert("Error logging in. Try to check your credentials and please retry");
-              window.location.href = '/login';
+              alert("Error signing up. Try to check your credentials and please retry");
+              window.location.href = '/register';
           }
       });
   });
