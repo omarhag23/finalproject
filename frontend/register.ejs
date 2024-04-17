@@ -329,16 +329,15 @@ var elUsername = document.getElementById('username');
 var elEmail = document.getElementById('email');
 
 len = elPassword.value.length;
-    if (elUsername.value == "" || elPassword.value == "" || elEmail.value == "" ||elConfPassword.value !=elPassword.value ||len <8) {
-      console.log("value length : ",len)
-        elMsg.innerHTML = 'Please check your credentials,Password must be not less than 8 characters';
+    if (elUsername.value == "" || elPassword.value == "" || elEmail.value == "" ||elConfPassword.value != elPassword.value ||len <8) {
+        alert('Please check your credentials,Password must be not less than 8 characters');
+        window.location.href = '/register';
         event.preventDefault();
     }else if (!emailPattern.test(email)) {
-      elMsg.innerHTML = 'Please check your credentials,Email must conform to email normatives';
+      alert('Please check your credentials,Email must conform to email normatives');
+      window.location.href = '/register';
         // If the email does not match the pattern, display an error message
-    } else {
-    elMsg.innerHTML = '';
-  }
+    } 
   
 
  
