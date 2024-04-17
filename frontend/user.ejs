@@ -123,6 +123,8 @@
                         <div class="input-group mb-0">
                           <input id="amount" name="amount" class="form-control" type="text" placeholder="Enter the amount to deposit">
                          
+                  <div id="paypal-button-container" >
+                  </div>
                         <button class="btn btn-dark btn-sm w-100" id ="order" data-username="<%= username %>" type="submit"> Deposit</button>
                           <span class="txt1" id = "feedback"></span>
                         </div>
@@ -135,20 +137,7 @@
             </div>
           </div>
         </section>
-        <div id="paypal-button-container" >
-                        
-                           
-        </div>
-
-        <div
-                      class="metamask-button"
-                      address="0x2b7dF997E54CD20a9fFa5AC460D0A9FBD5fB0c09"
-                      amount="1"
-                      amount-currency="ETH"
-                      fiat-currency="USD"
-                      text="Pay"
-                      logo-animated="true"
-                    ></div>
+     
       <footer class="bg-dark text-white">
         <div class="container py-4">
           <div class="row py-5">
@@ -194,6 +183,7 @@
         
       </footer>
       <!-- JavaScript files-->
+      <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
       <script src="js/paypal.js"></script>
       <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
       <script src="vendor/glightbox/js/glightbox.min.js"></script>
