@@ -144,11 +144,11 @@ async function deployContract(){
 		throw error; // Ensure to throw the error for proper handling
 	}
 };
-const contractAddress= deployContract();
+//const contractAddress= deployContract();
 
 
 
-//const contractAddress =  '0xaa38f83Da1B22ac130dd65Cc5e66A94263226EB4';                                                                                                                                                             
+const contractAddress =  '0x620F5758693476e86745415C100C2Df29CFd361d';                                                                                                                                                             
 
 //const contractAddress ='0x5511d49e5937F3a62d0bDA3159FF31D5e867876A';
 
