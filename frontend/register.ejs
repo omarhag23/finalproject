@@ -324,9 +324,9 @@ len = elPassword.value.length;
         alert('Please check your credentials,remeber,password must be not less than 8 characters');
         window.location.href = '/register';
 
-        console.log("email .:",elEmail)
+        console.log("email .:",elEmail.value)
 
-    }else if (!emailPattern.test(elEmail)) {
+    }else if (!emailPattern.test(elEmail.value)) {
       alert('Please check your credentials,Email must conform to email normatives');
       window.location.href = '/register'; 
         // If the email does not match the pattern, display an error message
