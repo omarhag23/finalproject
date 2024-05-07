@@ -122,13 +122,14 @@ async function deployContract(){
 	try {
 		const accounts = await web3.eth.getAccounts();
 		const contract = new web3.eth.Contract(abi);
-		console.log("contract found,trying to deploy, seller address : ",sellerAddress);
+		console.log("Contract found, trying to deploy. Seller address: ", sellerAddress);
+		
 		const deploy = contract.deploy({
 			data: bytecode,
 			arguments: [sellerAddress]
 		});
-		console.log("contract deployed, estimating gas... ");
-	   // const as = '875000';
+
+		console.log("Contract deployed, estimating gas...");
 		const gas = await deploy.estimateGas();
 		
 		const receipt = await deploy.send({
@@ -136,6 +137,7 @@ async function deployContract(){
 			gas: gas,
 			gasPrice: '3000000000' // Gas price
 		});
+		
 		const contractAddress = receipt.options.address;
 		console.log('Contract deployed at address:', contractAddress);
 		return contractAddress;
@@ -144,6 +146,7 @@ async function deployContract(){
 		throw error; // Ensure to throw the error for proper handling
 	}
 };
+
 const contractAddress= deployContract();
 
 
