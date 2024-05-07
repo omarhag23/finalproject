@@ -2,7 +2,7 @@ const { Web3 } = require('web3');
 
 const fs = require('fs');
 
-const web3 = new Web3('HTTP://193.61.44.11:7545'); // Update with your Ganache RPC server address
+const web3 = new Web3('HTTP://127.0.0.1:7545'); // Update with your Ganache RPC server address
 
 
 
