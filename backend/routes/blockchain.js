@@ -140,9 +140,9 @@ async function deployContract(){
 	}
 };
 
-//const contractAddress= deployContract();
+const contractAddress= deployContract();
 
-const contractAddress =  '0x15FC47bbB2d93BF6c8F8E4ce6CbAfBCd4Ed74043';                                                                                                                                                             
+//const contractAddress =  '0x15FC47bbB2d93BF6c8F8E4ce6CbAfBCd4Ed74043';                                                                                                                                                             
 
 //const contractAddress ='0x5511d49e5937F3a62d0bDA3159FF31D5e867876A';
 
