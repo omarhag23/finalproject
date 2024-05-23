@@ -2,7 +2,7 @@ const { Web3 } = require('web3');
 
 const fs = require('fs');
 
-const web3 = new Web3('HTTP://193.61.44.53:7545'); // Update with your Ganache RPC server address
+const web3 = new Web3('HTTP://193.61.44.49:7545'); // Update with your Ganache RPC server address
 
 
 
@@ -140,9 +140,9 @@ async function deployContract(){
 	}
 };
 
-//const contractAddress= deployContract();
+const contractAddress= deployContract();
 
-const contractAddress = '0xfb32e0F92e22C4F8B24aeb0E1d70718b84542153';                                                                                                                                                             
+//const contractAddress = '0xfb32e0F92e22C4F8B24aeb0E1d70718b84542153';                                                                                                                                                             
 
 //const contractAddress ='0x5511d49e5937F3a62d0bDA3159FF31D5e867876A';
 
